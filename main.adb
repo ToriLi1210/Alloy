@@ -19,7 +19,7 @@ procedure Main is
 
    --  Memory database demo
    Mem  : MemoryStore.Database;
-   Loc1 : MemoryStore.Location_Index := 10;
+   Loc1 : MemoryStore.Location_Index := 10; 
    --  PIN demo
    PIN1 : PIN.PIN := PIN.From_String ("1234");
    PIN2 : PIN.PIN := PIN.From_String ("1234");
@@ -29,6 +29,7 @@ begin
    ------------------------------------------------------------------
    Put(MyCommandLine.Command_Name); Put_Line(" is running!");
    Put("I was invoked with "); Put(MyCommandLine.Argument_Count,0); Put_Line(" arguments.");
+   -- No arguement 
    for Arg in 1..MyCommandLine.Argument_Count loop
       Put("Argument "); Put(Arg,0); Put(": """);
       Put(MyCommandLine.Argument(Arg)); Put_Line("""");
@@ -37,18 +38,26 @@ begin
    ------------------------------------------------------------------
    --  MemoryStore CRUD(Create, Read, Update, Delete) demo
    ------------------------------------------------------------------
-
+   
+   -- Init memory stack with 
    MemoryStore.Init (Mem);
 
    Put_Line ("Storing 50 at location 10 ...");
-   MemoryStore.Put (Mem, Loc1, 50);
+   MemoryStore.Put (Mem, Loc1, 50); 
+   -- Mem :MemoryStore.Database {
+   --   Mem: Mem_Array [{10,50}]
+   --   Cnt: 1
+   -- }
 
    Put ("Location 10 now holds: ");
    Ada.Integer_Text_IO.Put (Integer (MemoryStore.Get (Mem, Loc1)), 0);
+   -- Put(50,0);  -- "50"
+   -- Put(50,5);  -- "     50" (4 space + 50)
    New_Line;
 
    Put_Line ("Listing defined locations:");
    MemoryStore.Print (Mem);
+   -- Pretty-print for the "list" command,"   10 => 50"
 
    Put_Line ("Removing location 10 ...");
    MemoryStore.Remove (Mem, Loc1);
@@ -58,19 +67,35 @@ begin
    else
       Put_Line ("Location 10 successfully removed.");
    end if;
+   -- Mem :MemoryStore.Database {
+   --   Mem: Mem_Array []
+   --   Cnt: 0
+   -- }
    
    ------------------------------------------------------------------
    --  Tokeniser demo
    ------------------------------------------------------------------
    Put_Line("Reading a line of input. Enter some text (at most 3 tokens): ");
-   Lines.Get_Line(S);
-
+   -- most 3 token Push2 a b 
+   Lines.Get_Line(S); -- 
    Put_Line("Splitting the text into at most 5 tokens");
+   
    declare
       T : MyStringTokeniser.TokenArray(1..5) := (others => (Start => 1, Length => 0));
+      --  T(1) = TokenExtent(Start => 1, Length => 0) 
+      --  T(2) = TokenExtent(Start => 1, Length => 0) 
+      --  T(3) = TokenExtent(Start => 1, Length => 0) 
+      --  T(4) = TokenExtent(Start => 1, Length => 0) 
+      --  T(5) = TokenExtent(Start => 1, Length => 0) 
       NumTokens : Natural;
    begin
       MyStringTokeniser.Tokenise(Lines.To_String(S),T,NumTokens);
+      
+         -- Index:     1 2 3 4 5 6 7 8 9
+         -- String:    p u s h 1   1 2 3
+         --  T(1) = TokenExtent(Start => 1, Length => 5) -- "push1"
+         --  T(2) = TokenExtent(Start => 7, Length => 3) -- "123"
+         --  T(3) = (Start => 1, Length => 0) 
       Put("You entered "); Put(NumTokens); Put_Line(" tokens.");
       for I in 1..NumTokens loop
          declare

@@ -1,0 +1,59 @@
+Summary of SPARK analysis
+=========================
+
+--------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total       Flow   Interval   CodePeer      Provers   Justified   Unproved
+--------------------------------------------------------------------------------------------------------
+Data Dependencies                 .          .          .          .            .           .          .
+Flow Dependencies                 .          .          .          .            .           .          .
+Initialization                   10         10          .          .            .           .          .
+Non-Aliasing                      1          1          .          .            .           .          .
+Run-time Checks                  93          .          .          .    91 (CVC4)           .          2
+Assertions                       16          .          .          .    16 (CVC4)           .          .
+Functional Contracts             14          .          .          .    13 (CVC4)           .          1
+LSP Verification                  .          .          .          .            .           .          .
+--------------------------------------------------------------------------------------------------------
+Total                           134    11 (8%)          .          .    120 (90%)           .     3 (2%)
+
+
+max steps used for successful proof: 1
+
+Analyzed 6 units
+in unit main, 11 subprograms and packages out of 11 analyzed
+  Main at main.adb:15 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 9 checks out of 12 proved
+  Main.Lines at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Main.Lines.Equal at mystring.ads:30, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
+  Main.Lines.From_String at mystring.ads:24, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
+  Main.Lines.Get at mystring.ads:42, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  Main.Lines.Get_Line at mystring.ads:45, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  Main.Lines.Length at mystring.ads:35, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  Main.Lines.Less at mystring.ads:28, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
+  Main.Lines.MyString at mystring.ads:18, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Main.Lines.Substring at mystring.ads:38, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
+  Main.Lines.To_String at mystring.ads:20, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
+in unit memorystore, 1 subprograms and packages out of 9 analyzed
+  MemoryStore at memorystore.ads:3 skipped
+  MemoryStore.Database at memorystore.ads:13 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  MemoryStore.Get at memorystore.ads:22 skipped
+  MemoryStore.Has at memorystore.ads:20 skipped
+  MemoryStore.Init at memorystore.ads:18 skipped
+  MemoryStore.Length at memorystore.ads:31 skipped
+  MemoryStore.Print at memorystore.ads:34 skipped
+  MemoryStore.Put at memorystore.ads:25 skipped
+  MemoryStore.Remove at memorystore.ads:29 skipped
+in unit mycommandline, 0 subprograms and packages out of 4 analyzed
+  MyCommandLine at mycommandline.ads:8 skipped
+  MyCommandLine.Argument at mycommandline.ads:14 skipped
+  MyCommandLine.Argument_Count at mycommandline.ads:10 skipped
+  MyCommandLine.Command_Name at mycommandline.ads:12 skipped
+in unit mystringtokeniser, 3 subprograms and packages out of 3 analyzed
+  MyStringTokeniser at mystringtokeniser.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  MyStringTokeniser.Is_Whitespace at mystringtokeniser.ads:16 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  MyStringTokeniser.Tokenise at mystringtokeniser.ads:23 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (34 checks)
+in unit pin, 3 subprograms and packages out of 3 analyzed
+  PIN at pin.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  PIN.From_String at pin.ads:5 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
+  PIN.PIN at pin.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+in unit stringtointeger, 2 subprograms and packages out of 2 analyzed
+  StringToInteger at stringtointeger.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  StringToInteger.From_String at stringtointeger.ads:6 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (13 checks)

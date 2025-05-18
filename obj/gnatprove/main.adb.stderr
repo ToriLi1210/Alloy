@@ -1,0 +1,3 @@
+main.adb:53:49: medium: precondition might fail, cannot prove Has (D, Loc) (e.g. when Loc1 = 10 and Mem = (Mem => (others => (Valid => False, Val => 0)), Cnt => 0)) [possible explanation: call at line 46 should mention D (for argument Mem) in a postcondition][#0]
+main.adb:102:90: medium: array index check might fail (e.g. when I = 6 and TokStr'First = 5 and TokStr'Last = 5)[#1]
+main.adb:126:45: medium: overflow check might fail[#2]

@@ -1,0 +1,75 @@
+V "GNAT Lib v2019"
+A -x
+A ada
+A -gnatA
+A -gnatc
+P GP FX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U mystringtokeniser%b	mystringtokeniser.adb	010c15de OO PK
+
+U mystringtokeniser%s	mystringtokeniser.ads	f80c0257 OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.latin_1%s  a-chlat1.ads	a-chlat1.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-charac.ads		20190518041255 2d3ec45b ada.characters%s
+D a-chlat1.ads		20190518041255 66457d31 ada.characters.latin_1%s
+D mystringtokeniser.ads	20250518141752 9e497f66 mystringtokeniser%s
+D mystringtokeniser.adb	20250517060857 9f456ab8 mystringtokeniser%b
+D system.ads		20190518041255 085b6ffb system%s
+G a Z
+X 1 ada.ads
+16K9*Ada 20e8 4|1r6 17r24 18r14
+X 2 a-charac.ads
+16K13*Characters 18e19 4|1r10 17r28 18r18
+X 3 a-chlat1.ads
+18K24*Latin_1 296e27 4|1w21 17r39 18r29
+34e4*HT{character} 4|18r37
+35e4*LF{character} 4|17r47
+X 4 mystringtokeniser.ads
+3K9*MyStringTokeniser 36l5 36e22 5|2b14 65l5 65t22
+5R9*TokenExtent 8e14 12r51 5|8r16
+6i7*Start{positive} 31r26 33r62 5|20r26 22r54 32m20
+7i7*Length{natural} 32r25 33r27 5|21r30 22r23 33m20 36r42 37r38 37r73 38r57
+. 39m23 39r40 54r32 58r40
+12A9*TokenArray(5R9)<integer> 23r54 5|6r54
+16V13*Is_Whitespace{boolean} 16>27 5|27s63 30s65 38s28
+16e27 Ch{character} 17r7 17r19 18r9
+23U14*Tokenise 23>23 23=38 23<66 5|6b14 63l8 63t16
+23a23 S{string} 24r17 24r35 24r46 31r35 33r39 5|6b23 12r11 12r21 16r16 17r50
+. 20r35 22r35 27r26 27r46 27r77 30r23 30r44 30r79 37r48 37r83 38r42 54r16
+23a38 Tokens{12A9} 24r58 24r74 30r24 30r38 31r12 32r11 33r13 33r48 5|6b38
+. 10r29 17r25 17r73 19r26 20r16 21r20 22r13 22r44 24r44 42m13 46r28
+23i66 Count{natural} 30r52 5|6b66 13m10 47m16 55m16 62m7
+30i15 Index{integer} 31r19 32r18 33r20 33r55
+X 5 mystringtokeniser.adb
+7i7 Index{positive} 16m7 17r41 27r17 27r38 27r79 28m13 28r22 30r14 30r35
+. 30r81 32r29 36r52 37r25 37r60 38r44 54r41 58m16 58r25
+8r7 Extent{4|5R9} 32m13 33m13 36r35 37r31 37r66 38r50 39m16 39r33 42r33 54r25
+. 58r33
+9i7 Processed{natural} 13r19 17r61 24r59 43m13 43r26 47r25 55r25 62r16
+10i7 OutIndex{integer} 17r13 19r40 24r33 42r20 46r17 50m16 50r28
+19i21 J{integer} 20r23 21r27 22r20 22r51
+
+QQ SPARKVERSION 2019 (20190517)
+GG EK_DIRECT_CALLS mystringtokeniser__is_whitespace 0
+GG EK_GLOBALS mystringtokeniser__is_whitespace local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_DIRECT_CALLS mystringtokeniser__tokenise 1 mystringtokeniser__is_whitespace
+GG EK_GLOBALS mystringtokeniser__tokenise local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 FALSE TRUE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_DIRECT_CALLS mystringtokeniser 0
+GG EK_GLOBALS mystringtokeniser local FALSE E_PACKAGE TRUE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 initializes 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_FLOW_SCOPE ada__characters TRUE FALSE FALSE FALSE FALSE ada
+GG EK_FLOW_SCOPE mystringtokeniser__tokenise FALSE FALSE FALSE FALSE TRUE mystringtokeniser VISIBLE_PART
+GG EK_FLOW_SCOPE mystringtokeniser TRUE FALSE FALSE FALSE FALSE __standard
+GG EK_FLOW_SCOPE mystringtokeniser__is_whitespace FALSE FALSE FALSE FALSE TRUE mystringtokeniser VISIBLE_PART
+GG EK_FLOW_SCOPE ada__characters__latin_1 TRUE FALSE FALSE FALSE FALSE ada__characters
+GG EK_FLOW_SCOPE ada TRUE FALSE FALSE FALSE FALSE __standard
+GG EK_END_MARKER

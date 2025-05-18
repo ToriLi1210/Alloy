@@ -1,0 +1,111 @@
+{
+  "spark": [
+    {
+      "name": "MemoryStore",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 3
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Database",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 13
+        }
+      ],
+      "spark": "all"
+    },
+    {
+      "name": "MemoryStore.Init",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 18
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Has",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 20
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Get",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 22
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Put",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 25
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Remove",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 29
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Length",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 31
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "MemoryStore.Print",
+      "sloc": [
+        {
+          "file": "memorystore.ads",
+          "line": 34
+        }
+      ],
+      "spark": "spec"
+    }
+  ],
+  "flow": [
+  ],
+  "proof": [
+  ],
+  "assumptions": [
+  ],
+  "timings": {
+    "marking": 2.77299992740154E-03,
+    "globals (basic)": 2.66500003635883E-03,
+    "globals/properties (advanced)": 3.49700008518994E-03,
+    "flow analysis": 1.77099998109043E-03,
+    "codepeer results": 3.99999998990097E-06,
+    "init_why_sections": 2.95000005280599E-04,
+    "translation of standard": 5.89299993589520E-03,
+    "translation of compilation unit": 1.07330000028014E-02,
+    "proof": 9.99999997475243E-07
+  }
+}

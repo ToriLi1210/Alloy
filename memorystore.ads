@@ -39,7 +39,7 @@ private
    --  Internal representation: fixed array of option cells
    --------------------------------------------------------------------
    type Cell_Opt is record
-      Valid : Boolean := False;
+      Valid : Boolean := False; -- （un）defined
       Val   : Int32   := 0;
    end record;
 
@@ -49,4 +49,5 @@ private
       Mem : Mem_Array;
       Cnt : Natural := 0;
    end record;
+
 end MemoryStore;
