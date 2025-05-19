@@ -2065,7 +2065,7 @@ module System__default_priority
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant default_priority [#"system.ads" 129 0 0][@model_trace:12507] [@name:Default_Priority] 
+ val constant default_priority [#"system.ads" 129 0 0][@model_trace:12457] [@name:Default_Priority] 
    : int
 
  
@@ -2148,7 +2148,7 @@ module Main__lines__max_mystring_length
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant max_mystring_length [#"mystring.ads" 14 0 0][@model_trace:26198] [@name:Max_MyString_Length] 
+ val constant max_mystring_length [#"mystring.ads" 14 0 0][@name:Max_MyString_Length] [@model_trace:26053] 
    : int
 
  
@@ -2396,9 +2396,9 @@ module Main__lines__mystring__rep
  use        Array__Int__Standard__character as Array__Int__Standard__character
 
  type __split_fields =
-  { rec__main__lines__mystring__length [@model_trace:.26107] [@name:Length] : Main__lines__mystring__T13b.t13b; rec__main__lines__mystring__str [@model_trace:.26122] [@name:Str] : Array__Int__Standard__character.map }
+  { rec__main__lines__mystring__length [@model_trace:.25962] [@name:Length] : Main__lines__mystring__T13b.t13b; rec__main__lines__mystring__str [@model_trace:.25977] [@name:Str] : Array__Int__Standard__character.map }
  
- function __split_fields_rec__main__lines__mystring__length__projection [@model_trace:.26107] [@name:Length] 
+ function __split_fields_rec__main__lines__mystring__length__projection [@model_trace:.25962] [@name:Length] 
    (a : __split_fields) : Main__lines__mystring__T13b.t13b =
   a.rec__main__lines__mystring__length
  
@@ -2406,7 +2406,7 @@ module Main__lines__mystring__rep
  
  meta "inline:no" function __split_fields_rec__main__lines__mystring__length__projection
  
- function __split_fields_rec__main__lines__mystring__str__projection [@model_trace:.26122] [@name:Str] 
+ function __split_fields_rec__main__lines__mystring__str__projection [@model_trace:.25977] [@name:Str] 
    (a : __split_fields) : Array__Int__Standard__character.map =
   a.rec__main__lines__mystring__str
  
@@ -2592,7 +2592,7 @@ module Main__lines__to_string__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m [#"mystring.ads" 20 0 0][@model_projected] [@model_trace:25806] [@name:M] 
+ val constant m [#"mystring.ads" 20 0 0][@model_projected] [@name:M] [@model_trace:25661] 
    : Main__lines__mystring.mystring
 
  
@@ -2616,7 +2616,7 @@ module Main__lines__length__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m [#"mystring.ads" 35 0 0][@model_projected] [@name:M] [@model_trace:25957] 
+ val constant m [#"mystring.ads" 35 0 0][@model_trace:25812] [@model_projected] [@name:M] 
    : Main__lines__mystring.mystring
 
  
@@ -2669,7 +2669,7 @@ module Main__lines__from_string__s
  use        "int".Int
  use        Standard__string as Standard__string
 
- val constant s [#"mystring.ads" 24 0 0][@model_projected] [@model_trace:25840] [@name:S] 
+ val constant s [#"mystring.ads" 24 0 0][@model_trace:25695] [@model_projected] [@name:S] 
    : Standard__string.string
 
  
@@ -2708,7 +2708,7 @@ module Main__lines__less__m1
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m1 [#"mystring.ads" 28 0 0][@model_trace:25859] [@model_projected] [@name:M1] 
+ val constant m1 [#"mystring.ads" 28 0 0][@model_projected] [@name:M1] [@model_trace:25714] 
    : Main__lines__mystring.mystring
 
  
@@ -2732,7 +2732,7 @@ module Main__lines__less__m2
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m2 [#"mystring.ads" 28 0 0][@model_projected] [@name:M2] [@model_trace:25868] 
+ val constant m2 [#"mystring.ads" 28 0 0][@model_projected] [@model_trace:25723] [@name:M2] 
    : Main__lines__mystring.mystring
 
  
@@ -2770,7 +2770,7 @@ module Main__lines__equal__m1
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m1 [#"mystring.ads" 30 0 0][@model_projected] [@model_trace:25923] [@name:M1] 
+ val constant m1 [#"mystring.ads" 30 0 0][@model_trace:25778] [@model_projected] [@name:M1] 
    : Main__lines__mystring.mystring
 
  
@@ -2794,7 +2794,7 @@ module Main__lines__equal__m2
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m2 [#"mystring.ads" 30 0 0][@model_trace:25932] [@model_projected] [@name:M2] 
+ val constant m2 [#"mystring.ads" 30 0 0][@model_projected] [@name:M2] [@model_trace:25787] 
    : Main__lines__mystring.mystring
 
  
@@ -2860,7 +2860,7 @@ module Main__lines__get__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m [#"mystring.ads" 42 0 0][@model_trace:26043] [@model_projected] [@name:M] 
+ val constant m [#"mystring.ads" 42 0 0][@model_trace:25898] [@model_projected] [@name:M] 
    : Main__lines__mystring.mystring
 
  
@@ -2883,7 +2883,7 @@ module Main__lines__get__index
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant index [#"mystring.ads" 42 0 0][@name:Index] [@model_trace:26052] 
+ val constant index [#"mystring.ads" 42 0 0][@model_trace:25907] [@name:Index] 
    : int
 
  
@@ -2935,7 +2935,7 @@ module Main__lines__substring__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val constant m [#"mystring.ads" 38 0 0][@model_projected] [@model_trace:25999] [@name:M] 
+ val constant m [#"mystring.ads" 38 0 0][@model_trace:25854] [@model_projected] [@name:M] 
    : Main__lines__mystring.mystring
 
  
@@ -2958,7 +2958,7 @@ module Main__lines__substring__from
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant from [#"mystring.ads" 38 0 0][@name:From] [@model_trace:26008] 
+ val constant from [#"mystring.ads" 38 0 0][@name:From] [@model_trace:25863] 
    : int
 
  
@@ -2981,7 +2981,7 @@ module Main__lines__substring__to
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant to__ [#"mystring.ads" 38 0 0][@model_trace:26017] [@name:To] 
+ val constant to__ [#"mystring.ads" 38 0 0][@model_trace:25872] [@name:To] 
    : int
 
  
@@ -3857,9 +3857,9 @@ module Memorystore__cell_opt__rep
  use        Memorystore__int32__rep as Memorystore__int32__rep
 
  type __split_fields =
-  { rec__memorystore__cell_opt__valid [@name:Valid] [@model_trace:.6813] : bool; rec__memorystore__cell_opt__val [@model_trace:.6824] [@name:Val] : Memorystore__int32.int32 }
+  { rec__memorystore__cell_opt__valid [@name:Valid] [@model_trace:.6763] : bool; rec__memorystore__cell_opt__val [@name:Val] [@model_trace:.6774] : Memorystore__int32.int32 }
  
- function __split_fields_rec__memorystore__cell_opt__valid__projection [@name:Valid] [@model_trace:.6813] 
+ function __split_fields_rec__memorystore__cell_opt__valid__projection [@name:Valid] [@model_trace:.6763] 
    (a : __split_fields) : bool =
   a.rec__memorystore__cell_opt__valid
  
@@ -3867,7 +3867,7 @@ module Memorystore__cell_opt__rep
  
  meta "inline:no" function __split_fields_rec__memorystore__cell_opt__valid__projection
  
- function __split_fields_rec__memorystore__cell_opt__val__projection [@model_trace:.6824] [@name:Val] 
+ function __split_fields_rec__memorystore__cell_opt__val__projection [@name:Val] [@model_trace:.6774] 
    (a : __split_fields) : Memorystore__int32.int32 =
   a.rec__memorystore__cell_opt__val
  
@@ -4220,9 +4220,9 @@ module Memorystore__database__rep
  use        Array__Int__Memorystore__cell_opt as Array__Int__Memorystore__cell_opt
 
  type __split_fields =
-  { rec__memorystore__database__mem [@name:Mem] [@model_trace:.6859] : Array__Int__Memorystore__cell_opt.map; rec__memorystore__database__cnt [@name:Cnt] [@model_trace:.6869] : Standard__natural.natural }
+  { rec__memorystore__database__mem [@name:Mem] [@model_trace:.6809] : Array__Int__Memorystore__cell_opt.map; rec__memorystore__database__cnt [@name:Cnt] [@model_trace:.6819] : Standard__natural.natural }
  
- function __split_fields_rec__memorystore__database__mem__projection [@name:Mem] [@model_trace:.6859] 
+ function __split_fields_rec__memorystore__database__mem__projection [@name:Mem] [@model_trace:.6809] 
    (a : __split_fields) : Array__Int__Memorystore__cell_opt.map =
   a.rec__memorystore__database__mem
  
@@ -4230,7 +4230,7 @@ module Memorystore__database__rep
  
  meta "inline:no" function __split_fields_rec__memorystore__database__mem__projection
  
- function __split_fields_rec__memorystore__database__cnt__projection [@name:Cnt] [@model_trace:.6869] 
+ function __split_fields_rec__memorystore__database__cnt__projection [@name:Cnt] [@model_trace:.6819] 
    (a : __split_fields) : Standard__natural.natural =
   a.rec__memorystore__database__cnt
  
@@ -4580,7 +4580,7 @@ module Pin__from_string__s
  use        "int".Int
  use        Standard__string as Standard__string
 
- val constant s [#"pin.ads" 5 0 0][@model_trace:6497] [@model_projected] [@name:S] 
+ val constant s [#"pin.ads" 5 0 0][@model_projected] [@model_trace:6447] [@name:S] 
    : Standard__string.string
 
  
@@ -4702,7 +4702,7 @@ module Ada__text_io__put__4__item
  use        "int".Int
  use        Standard__string as Standard__string
 
- val constant item [#"a-textio.ads" 465 0 0][@name:Item] [@model_trace:10736] [@model_projected] 
+ val constant item [#"a-textio.ads" 465 0 0][@name:Item] [@model_trace:10686] [@model_projected] 
    : Standard__string.string
 
  
@@ -4754,7 +4754,7 @@ module Ada__text_io__put_line__2__item
  use        "int".Int
  use        Standard__string as Standard__string
 
- val constant item [#"a-textio.ads" 509 0 0][@name:Item] [@model_trace:11048] [@model_projected] 
+ val constant item [#"a-textio.ads" 509 0 0][@name:Item] [@model_projected] [@model_trace:10998] 
    : Standard__string.string
 
  
@@ -5022,7 +5022,7 @@ module Ada__integer_text_io__put__2__item
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant item [#"a-tiinio.ads" 81 0 0][@name:Item] [@model_trace:24775] 
+ val constant item [#"a-tiinio.ads" 81 0 0][@name:Item] [@model_trace:24630] 
    : int
 
  
@@ -5045,7 +5045,7 @@ module Ada__integer_text_io__put__2__width
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant width [#"a-tiinio.ads" 82 0 0][@model_trace:24784] [@name:Width] 
+ val constant width [#"a-tiinio.ads" 82 0 0][@model_trace:24639] [@name:Width] 
    : int
 
  
@@ -5068,7 +5068,7 @@ module Ada__integer_text_io__put__2__base
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant base [#"a-tiinio.ads" 83 0 0][@model_trace:24794] [@name:Base] 
+ val constant base [#"a-tiinio.ads" 83 0 0][@model_trace:24649] [@name:Base] 
    : int
 
  
@@ -5325,7 +5325,7 @@ module Memorystore__put__loc
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant loc [#"memorystore.ads" 26 0 0][@model_trace:6719] [@name:Loc] 
+ val constant loc [#"memorystore.ads" 26 0 0][@model_trace:6669] [@name:Loc] 
    : int
 
  
@@ -5348,7 +5348,7 @@ module Memorystore__put__val
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant val__ [#"memorystore.ads" 27 0 0][@name:Val] [@model_trace:6728] 
+ val constant val__ [#"memorystore.ads" 27 0 0][@name:Val] [@model_trace:6678] 
    : int
 
  
@@ -5400,7 +5400,7 @@ module Memorystore__get__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val constant d [#"memorystore.ads" 22 0 0][@model_projected] [@name:D] [@model_trace:6674] 
+ val constant d [#"memorystore.ads" 22 0 0][@model_trace:6624] [@model_projected] [@name:D] 
    : Memorystore__database.database
 
  
@@ -5423,7 +5423,7 @@ module Memorystore__get__loc
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant loc [#"memorystore.ads" 22 0 0][@model_trace:6683] [@name:Loc] 
+ val constant loc [#"memorystore.ads" 22 0 0][@name:Loc] [@model_trace:6633] 
    : int
 
  
@@ -5447,7 +5447,7 @@ module Memorystore__has__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val constant d [#"memorystore.ads" 20 0 0][@model_projected] [@name:D] [@model_trace:6646] 
+ val constant d [#"memorystore.ads" 20 0 0][@model_projected] [@name:D] [@model_trace:6596] 
    : Memorystore__database.database
 
  
@@ -5470,7 +5470,7 @@ module Memorystore__has__loc
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant loc [#"memorystore.ads" 20 0 0][@model_trace:6655] [@name:Loc] 
+ val constant loc [#"memorystore.ads" 20 0 0][@name:Loc] [@model_trace:6605] 
    : int
 
  
@@ -5589,7 +5589,7 @@ module Ada__text_io__new_line__2__spacing
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant spacing [#"a-textio.ads" 264 0 0][@name:Spacing] [@model_trace:9188] 
+ val constant spacing [#"a-textio.ads" 264 0 0][@name:Spacing] [@model_trace:9138] 
    : int
 
  
@@ -5641,7 +5641,7 @@ module Memorystore__print__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val constant d [#"memorystore.ads" 34 0 0][@model_projected] [@name:D] [@model_trace:6792] 
+ val constant d [#"memorystore.ads" 34 0 0][@model_trace:6742] [@model_projected] [@name:D] 
    : Memorystore__database.database
 
  
@@ -5692,7 +5692,7 @@ module Memorystore__remove__loc
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant loc [#"memorystore.ads" 29 0 0][@name:Loc] [@model_trace:6755] 
+ val constant loc [#"memorystore.ads" 29 0 0][@model_trace:6705] [@name:Loc] 
    : int
 
  
@@ -6370,48 +6370,6 @@ module Mystringtokeniser__tokenise__s___axiom
 
 end
 
-(* Module for axiomatizing type "T7s" defined at mystringtokeniser.ads:30, created in Gnat2Why.Types.Translate_Type *)
-module Mystringtokeniser__tokenise__L6s__T7s
- use        "_gnatprove_standard".Main
- use        "int".Int
- use        "int".Int
- use        Standard__integer as Standard__integer
- use        Standard__integer__rep as Standard__integer__rep
-
- type t7s =
-  Standard__integer.integer
- 
- predicate dynamic_property 
-   (first_int : int) (last_int : int) (x : int) =
-  ( (first_int <= x) /\ (x <= last_int) )
- val dynamic_property 
-   (first_int : int) (last_int : int) (x : int) : bool
-  ensures { result <-> dynamic_property (first_int : int) (last_int : int) (x : int) }
- 
- clone export "ada__model".Dynamic_Discrete with axiom .,
- type t = t7s, 
- type rep_type = int, 
- function base_to_rep = Standard__integer__rep.to_rep, 
- function base_of_rep = Standard__integer__rep.of_rep, 
- predicate dynamic_property = dynamic_property
- 
- type t7s__ref =
-  { mutable t7s__content : t7s }
- 
- function t7s__ref_t7s__content__projection 
-   (a : t7s__ref) : t7s =
-  a.t7s__content
- 
- meta "model_projection" function t7s__ref_t7s__content__projection
- 
- meta "inline:no" function t7s__ref_t7s__content__projection
- 
- val t7s__havoc 
-   (x : t7s__ref) : unit
-  writes {x}
-
-end
-
 (* Module for axiomatizing type "T36b" defined at main.adb:99, created in Gnat2Why.Types.Translate_Type *)
 module Main__B_2__T36b
  use        "_gnatprove_standard".Main
@@ -6699,7 +6657,7 @@ module Stringtointeger__from_string__s
  use        "int".Int
  use        Standard__string as Standard__string
 
- val constant s [#"stringtointeger.ads" 6 0 0][@model_projected] [@model_trace:6451] [@name:S] 
+ val constant s [#"stringtointeger.ads" 6 0 0][@model_projected] [@model_trace:6401] [@name:S] 
    : Standard__string.string
 
  
@@ -6876,7 +6834,7 @@ module Main__lines__get_line__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val m__split_fields [#"mystring.ads" 45 0 0][@model_trace:26071] [@model_projected] [@name:M]  : Main__lines__mystring.__split_fields__ref 
+ val m__split_fields [#"mystring.ads" 45 0 0][@model_projected] [@model_trace:25926] [@name:M]  : Main__lines__mystring.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -6899,13 +6857,13 @@ module Main__lines__to_string__result
  use        Standard__integer as Standard__integer
  use        Array__Int__Standard__character as Array__Int__Standard__character
 
- val result__ [#"mystring.adb" 21 0 0][@model_projected] [@model_trace:29004] [@name:Result]  : Array__Int__Standard__character.map__ref 
+ val result__ [#"mystring.adb" 21 0 0][@model_trace:28859] [@model_projected] [@name:Result]  : Array__Int__Standard__character.map__ref 
  
- val constant result____first [#"mystring.adb" 21 0 0][@model_trace:29004'First] [@model_projected] [@name:Result] 
+ val constant result____first [#"mystring.adb" 21 0 0][@model_projected] [@model_trace:28859'First] [@name:Result] 
    : Standard__integer.integer
 
  
- val constant result____last [#"mystring.adb" 21 0 0][@model_projected] [@model_trace:29004'Last] [@name:Result] 
+ val constant result____last [#"mystring.adb" 21 0 0][@model_trace:28859'Last] [@model_projected] [@name:Result] 
    : Standard__integer.integer
 
  
@@ -6929,7 +6887,7 @@ module Main__lines__from_string__m
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val m__split_fields [#"mystring.adb" 28 0 0][@model_trace:29059] [@model_projected] [@name:M]  : Main__lines__mystring.__split_fields__ref 
+ val m__split_fields [#"mystring.adb" 28 0 0][@model_projected] [@name:M] [@model_trace:28914]  : Main__lines__mystring.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -6950,7 +6908,7 @@ module Main__lines__from_string__j
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val j [#"mystring.adb" 29 0 0][@model_projected] [@model_trace:29078] [@name:J]  : int__ref 
+ val j [#"mystring.adb" 29 0 0][@model_trace:28933] [@model_projected] [@name:J]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -6971,7 +6929,7 @@ module Main__lines__from_string__L_1__i
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val i [#"mystring.adb" 35 0 0][@model_projected] [@model_trace:29155] [@name:I]  : int__ref 
+ val i [#"mystring.adb" 35 0 0][@model_trace:29010] [@model_projected] [@name:I]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -6992,7 +6950,7 @@ module Main__lines__less__i
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val i [#"mystring.adb" 44 0 0][@model_projected] [@name:I] [@model_trace:29222]  : int__ref 
+ val i [#"mystring.adb" 44 0 0][@model_projected] [@model_trace:29077] [@name:I]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7013,7 +6971,7 @@ module Main__lines__equal__i
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val i [#"mystring.adb" 68 0 0][@model_trace:29399] [@model_projected] [@name:I]  : int__ref 
+ val i [#"mystring.adb" 68 0 0][@model_projected] [@name:I] [@model_trace:29254]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7035,7 +6993,7 @@ module Main__lines__substring__r
  use        "int".Int
  use        Main__lines__mystring as Main__lines__mystring
 
- val r__split_fields [#"mystring.adb" 87 0 0][@model_trace:29599] [@model_projected] [@name:R]  : Main__lines__mystring.__split_fields__ref 
+ val r__split_fields [#"mystring.adb" 87 0 0][@model_projected] [@name:R] [@model_trace:29454]  : Main__lines__mystring.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7056,7 +7014,7 @@ module Main__lines__substring__j
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val j [#"mystring.adb" 88 0 0][@model_projected] [@model_trace:29622] [@name:J]  : int__ref 
+ val j [#"mystring.adb" 88 0 0][@model_trace:29477] [@model_projected] [@name:J]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7077,7 +7035,7 @@ module Main__lines__substring__L_4__i
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val i [#"mystring.adb" 90 0 0][@model_projected] [@name:I] [@model_trace:29688]  : int__ref 
+ val i [#"mystring.adb" 90 0 0][@model_projected] [@model_trace:29543] [@name:I]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7100,13 +7058,13 @@ module Ada__text_io__get_line__2__item
  use        Standard__integer as Standard__integer
  use        Array__Int__Standard__character as Array__Int__Standard__character
 
- val item [#"a-textio.ads" 482 0 0][@model_trace:10858] [@name:Item] [@model_projected]  : Array__Int__Standard__character.map__ref 
+ val item [#"a-textio.ads" 482 0 0][@name:Item] [@model_projected] [@model_trace:10808]  : Array__Int__Standard__character.map__ref 
  
- val constant item__first [#"a-textio.ads" 482 0 0][@name:Item] [@model_projected] [@model_trace:10858'First] 
+ val constant item__first [#"a-textio.ads" 482 0 0][@name:Item] [@model_projected] [@model_trace:10808'First] 
    : Standard__integer.integer
 
  
- val constant item__last [#"a-textio.ads" 482 0 0][@name:Item] [@model_projected] [@model_trace:10858'Last] 
+ val constant item__last [#"a-textio.ads" 482 0 0][@name:Item] [@model_trace:10808'Last] [@model_projected] 
    : Standard__integer.integer
 
  
@@ -7129,7 +7087,7 @@ module Ada__text_io__get_line__2__last
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val last [#"a-textio.ads" 483 0 0][@model_projected] [@name:Last] [@model_trace:10867]  : int__ref 
+ val last [#"a-textio.ads" 483 0 0][@model_trace:10817] [@model_projected] [@name:Last]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7257,7 +7215,7 @@ module Ada__integer_text_io__default_base
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val default_base [#"a-tiinio.ads" 49 0 0][@name:Default_Base] [@model_trace:24557] [@model_projected]  : int__ref 
+ val default_base [#"a-tiinio.ads" 49 0 0][@name:Default_Base] [@model_projected] [@model_trace:24412]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7300,7 +7258,7 @@ module Memorystore__init__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val d__split_fields [#"memorystore.ads" 18 0 0][@model_trace:6628] [@model_projected] [@name:D]  : Memorystore__database.__split_fields__ref 
+ val d__split_fields [#"memorystore.ads" 18 0 0][@model_projected] [@model_trace:6578] [@name:D]  : Memorystore__database.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7322,7 +7280,7 @@ module Memorystore__put__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val d__split_fields [#"memorystore.ads" 25 0 0][@model_projected] [@name:D] [@model_trace:6710]  : Memorystore__database.__split_fields__ref 
+ val d__split_fields [#"memorystore.ads" 25 0 0][@model_projected] [@name:D] [@model_trace:6660]  : Memorystore__database.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7344,7 +7302,7 @@ module Memorystore__remove__d
  use        "int".Int
  use        Memorystore__database as Memorystore__database
 
- val d__split_fields [#"memorystore.ads" 29 0 0][@model_trace:6746] [@model_projected] [@name:D]  : Memorystore__database.__split_fields__ref 
+ val d__split_fields [#"memorystore.ads" 29 0 0][@model_trace:6696] [@model_projected] [@name:D]  : Memorystore__database.__split_fields__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -7460,7 +7418,7 @@ module Ada__integer_text_io__default_width
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val default_width [#"a-tiinio.ads" 48 0 0][@model_projected] [@name:Default_Width] [@model_trace:24546]  : int__ref 
+ val default_width [#"a-tiinio.ads" 48 0 0][@model_trace:24401] [@model_projected] [@name:Default_Width]  : int__ref 
  
  val constant attr__ATTRIBUTE_ADDRESS 
    : int
@@ -9254,14 +9212,6 @@ module Main__B_2__T35b___axiom
 
 end
 
-(* Module giving axioms for type "T7s" defined at mystringtokeniser.ads:30, created in Gnat2Why.Types.Generate_Type_Completion *)
-module Mystringtokeniser__tokenise__L6s__T7s___axiom
- use        "_gnatprove_standard".Main
- use        "int".Int
-
-
-end
-
 (* Module giving axioms for type "T36b" defined at main.adb:99, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Main__B_2__T36b___axiom
  use        "_gnatprove_standard".Main
@@ -10120,13 +10070,13 @@ module Main__lines__length___axiom
  val length 
    (m : Main__lines__mystring.mystring) : int
   requires {  true }
-  ensures {  ( ( (result = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard result m) )/\( (Standard__natural___axiom.dynamic_invariant result True False True True) /\ ( (result = (Main__lines__mystring__T13b__rep.to_rep m.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) /\ ( [@GP_Pretty_Ada:26345] (result <= (2048 : int)) ) ) ) ) }
+  ensures {  ( ( (result = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard result m) )/\( (Standard__natural___axiom.dynamic_invariant result True False True True) /\ ( (result = (Main__lines__mystring__T13b__rep.to_rep m.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) /\ ( [@GP_Pretty_Ada:26200] (result <= (2048 : int)) ) ) ) ) }
  
  axiom length__post_axiom :
   (forall m   : Main__lines__mystring.mystring [(Main__lines__length.length m)].
    ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) -> (let result = (Main__lines__length.length m) in (
     (if ((Main__lines__length.length__function_guard result m)) then (
-     ( ( ( [@GP_Pretty_Ada:26345] (result <= (2048 : int)) ) /\ (Standard__natural___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
+     ( ( ( [@GP_Pretty_Ada:26200] (result <= (2048 : int)) ) /\ (Standard__natural___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
     ))
  
  axiom length__def_axiom :
@@ -10152,16 +10102,16 @@ module Main__lines__to_string___axiom
  val to_string 
    (m : Main__lines__mystring.mystring) : Standard__string.string
   requires {  true }
-  ensures {  ( ( (result = (Main__lines__to_string.to_string m)) /\ (Main__lines__to_string.to_string__function_guard result m) )/\( (Standard__string___axiom.dynamic_invariant result True False True True) /\ ( ( ( [@GP_Pretty_Ada:25778] ((Standard__string.length result) = (epsilon temp___result_223 : int.
-   ( (temp___result_223 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_223 m) ))) ) /\ ( [@GP_Pretty_Ada:25785] ((Standard__string.first result) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25790] ((Standard__string.last result) = (epsilon temp___result_224 : int.
+  ensures {  ( ( (result = (Main__lines__to_string.to_string m)) /\ (Main__lines__to_string.to_string__function_guard result m) )/\( (Standard__string___axiom.dynamic_invariant result True False True True) /\ ( ( ( [@GP_Pretty_Ada:25633] ((Standard__string.length result) = (epsilon temp___result_223 : int.
+   ( (temp___result_223 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_223 m) ))) ) /\ ( [@GP_Pretty_Ada:25640] ((Standard__string.first result) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25645] ((Standard__string.last result) = (epsilon temp___result_224 : int.
    ( (temp___result_224 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_224 m) ))) ) ) ) ) }
  
  axiom to_string__post_axiom :
   (forall m   : Main__lines__mystring.mystring [(Main__lines__to_string.to_string m)].
    ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) -> (let result = (Main__lines__to_string.to_string m) in (
     (if ((Main__lines__to_string.to_string__function_guard result m)) then (
-     ( ( ( ( ( [@GP_Pretty_Ada:25778] ((Standard__string.length result) = (epsilon temp___result_225 : int.
-      ( (temp___result_225 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_225 m) ))) ) /\ ( [@GP_Pretty_Ada:25785] ((Standard__string.first result) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25790] ((Standard__string.last result) = (epsilon temp___result_226 : int.
+     ( ( ( ( ( [@GP_Pretty_Ada:25633] ((Standard__string.length result) = (epsilon temp___result_225 : int.
+      ( (temp___result_225 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_225 m) ))) ) /\ ( [@GP_Pretty_Ada:25640] ((Standard__string.first result) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25645] ((Standard__string.last result) = (epsilon temp___result_226 : int.
       ( (temp___result_226 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_226 m) ))) ) ) /\ (Standard__string___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
     ))
 
@@ -10181,15 +10131,15 @@ module Main__lines__from_string___axiom
 
  val from_string 
    (s : Standard__string.string) : Main__lines__mystring.mystring
-  requires {  ( [@GP_Pretty_Ada:26263] ((Standard__string.length s) <= (2048 : int)) ) }
-  ensures {  ( ( (result = (Main__lines__from_string.from_string s)) /\ (Main__lines__from_string.from_string__function_guard result s) )/\( (Main__lines__mystring___axiom.dynamic_invariant result True False True True) /\ ( [@GP_Pretty_Ada:26277] ((epsilon temp___result_227 : int.
+  requires {  ( [@GP_Pretty_Ada:26118] ((Standard__string.length s) <= (2048 : int)) ) }
+  ensures {  ( ( (result = (Main__lines__from_string.from_string s)) /\ (Main__lines__from_string.from_string__function_guard result s) )/\( (Main__lines__mystring___axiom.dynamic_invariant result True False True True) /\ ( [@GP_Pretty_Ada:26132] ((epsilon temp___result_227 : int.
    ( (temp___result_227 = (Main__lines__length.length result)) /\ (Main__lines__length.length__function_guard temp___result_227 result) )) = (Standard__string.length s)) ) ) ) }
  
  axiom from_string__post_axiom :
   (forall s   : Standard__string.string [(Main__lines__from_string.from_string s)].
-   ( ( (Standard__string___axiom.dynamic_invariant s True True True True) /\ ( [@GP_Pretty_Ada:26263] ((Standard__string.length s) <= (2048 : int)) ) ) -> (let result = (Main__lines__from_string.from_string s) in (
+   ( ( (Standard__string___axiom.dynamic_invariant s True True True True) /\ ( [@GP_Pretty_Ada:26118] ((Standard__string.length s) <= (2048 : int)) ) ) -> (let result = (Main__lines__from_string.from_string s) in (
     (if ((Main__lines__from_string.from_string__function_guard result s)) then (
-     ( ( ( [@GP_Pretty_Ada:26277] ((epsilon temp___result_228 : int.
+     ( ( ( [@GP_Pretty_Ada:26132] ((epsilon temp___result_228 : int.
       ( (temp___result_228 = (Main__lines__length.length result)) /\ (Main__lines__length.length__function_guard temp___result_228 result) )) = (Standard__string.length s)) ) /\ (Main__lines__mystring___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
     ))
 
@@ -10228,7 +10178,7 @@ module Main__lines__get___axiom
 
  val get 
    (m : Main__lines__mystring.mystring) (index : int) : int
-  requires {  ( [@GP_Pretty_Ada:26413] (index <= (epsilon temp___result_229 : int.
+  requires {  ( [@GP_Pretty_Ada:26268] (index <= (epsilon temp___result_229 : int.
    ( (temp___result_229 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_229 m) ))) ) }
   ensures {  ( ( (result = (Main__lines__get.get m index)) /\ (Main__lines__get.get__function_guard result m index) )/\( (Standard__character___axiom.dynamic_invariant result True False True True) /\ (result = (Standard__character__rep.to_rep (let temp___230 [@mlw:proxy_symbol] [@introduced] = m.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
    (Array__Int__Standard__character.get temp___230 index)))
@@ -10237,7 +10187,7 @@ module Main__lines__get___axiom
  axiom get__post_axiom :
   (forall m   : Main__lines__mystring.mystring.
   (forall index   : int [(Main__lines__get.get m index)].
-   ( ( ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) /\ (Standard__positive___axiom.dynamic_invariant index True True True True) ) /\ ( [@GP_Pretty_Ada:26413] (index <= (epsilon temp___result_231 : int.
+   ( ( ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) /\ (Standard__positive___axiom.dynamic_invariant index True True True True) ) /\ ( [@GP_Pretty_Ada:26268] (index <= (epsilon temp___result_231 : int.
     ( (temp___result_231 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_231 m) ))) ) ) -> (let result = (Main__lines__get.get m index) in (
     (if ((Main__lines__get.get__function_guard result m index)) then (
      ( ( true /\ (Standard__character___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
@@ -10268,14 +10218,14 @@ module Main__lines__equal___axiom
    (m1 : Main__lines__mystring.mystring) (m2 : Main__lines__mystring.mystring) : bool
   requires {  true }
   ensures {  ( ( (result = (Main__lines__equal.equal m1 m2)) /\ (Main__lines__equal.equal__function_guard result m1 m2) )/\(if ((result = True)) then (
-   ( ( [@GP_Pretty_Ada:25884] ((epsilon temp___result_233 : int.
+   ( ( [@GP_Pretty_Ada:25739] ((epsilon temp___result_233 : int.
     ( (temp___result_233 = (Main__lines__length.length m1)) /\ (Main__lines__length.length__function_guard temp___result_233 m1) )) = (epsilon temp___result_234 : int.
-    ( (temp___result_234 = (Main__lines__length.length m2)) /\ (Main__lines__length.length__function_guard temp___result_234 m2) ))) ) /\ (forall i   [@model_trace:25902] [@name:I]  : int.
+    ( (temp___result_234 = (Main__lines__length.length m2)) /\ (Main__lines__length.length__function_guard temp___result_234 m2) ))) ) /\ (forall i   [@name:I] [@model_trace:25757]  : int.
     ( ( ((1 : int) <= i) /\ (i <= (epsilon temp___result_235 : int.
-     ( (temp___result_235 = (Main__lines__length.length m1)) /\ (Main__lines__length.length__function_guard temp___result_235 m1) ))) ) -> ( [@GP_Pretty_Ada:25892] ((epsilon temp___result_236 : int.
+     ( (temp___result_235 = (Main__lines__length.length m1)) /\ (Main__lines__length.length__function_guard temp___result_235 m1) ))) ) -> ( [@GP_Pretty_Ada:25747] ((epsilon temp___result_236 : int.
      ( (temp___result_236 = (Main__lines__get.get m1 i)) /\ (Main__lines__get.get__function_guard temp___result_236 m1 i) )) = (epsilon temp___result_237 : int.
      ( (temp___result_237 = (Main__lines__get.get m2 i)) /\ (Main__lines__get.get__function_guard temp___result_237 m2 i) ))) ) )) )) else (
-   ( [@GP_Pretty_Ada:26491] true ))) ) }
+   ( [@GP_Pretty_Ada:26346] true ))) ) }
 
 end
 
@@ -10292,18 +10242,18 @@ module Main__lines__substring___axiom
 
  val substring 
    (m : Main__lines__mystring.mystring) (from : int) (to__ : int) : Main__lines__mystring.mystring
-  requires {  ( ( [@GP_Pretty_Ada:25970] (from <= to__) ) /\ ( [@GP_Pretty_Ada:25973] (to__ <= (epsilon temp___result_238 : int.
+  requires {  ( ( [@GP_Pretty_Ada:25825] (from <= to__) ) /\ ( [@GP_Pretty_Ada:25828] (to__ <= (epsilon temp___result_238 : int.
    ( (temp___result_238 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_238 m) ))) ) ) }
-  ensures {  ( ( (result = (Main__lines__substring.substring m from to__)) /\ (Main__lines__substring.substring__function_guard result m from to__) )/\( (Main__lines__mystring___axiom.dynamic_invariant result True False True True) /\ ( [@GP_Pretty_Ada:26386] ((epsilon temp___result_239 : int.
+  ensures {  ( ( (result = (Main__lines__substring.substring m from to__)) /\ (Main__lines__substring.substring__function_guard result m from to__) )/\( (Main__lines__mystring___axiom.dynamic_invariant result True False True True) /\ ( [@GP_Pretty_Ada:26241] ((epsilon temp___result_239 : int.
    ( (temp___result_239 = (Main__lines__length.length result)) /\ (Main__lines__length.length__function_guard temp___result_239 result) )) = ((to__ - from) + (1 : int))) ) ) ) }
  
  axiom substring__post_axiom :
   (forall m   : Main__lines__mystring.mystring.
   (forall from   to__   : int [(Main__lines__substring.substring m from to__)].
-   ( ( ( ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) /\ (Standard__positive___axiom.dynamic_invariant from True True True True) ) /\ (Standard__positive___axiom.dynamic_invariant to__ True True True True) ) /\ ( ( [@GP_Pretty_Ada:25970] (from <= to__) ) /\ ( [@GP_Pretty_Ada:25973] (to__ <= (epsilon temp___result_240 : int.
+   ( ( ( ( (Main__lines__mystring___axiom.dynamic_invariant m True True True True) /\ (Standard__positive___axiom.dynamic_invariant from True True True True) ) /\ (Standard__positive___axiom.dynamic_invariant to__ True True True True) ) /\ ( ( [@GP_Pretty_Ada:25825] (from <= to__) ) /\ ( [@GP_Pretty_Ada:25828] (to__ <= (epsilon temp___result_240 : int.
     ( (temp___result_240 = (Main__lines__length.length m)) /\ (Main__lines__length.length__function_guard temp___result_240 m) ))) ) ) ) -> (let result = (Main__lines__substring.substring m from to__) in (
     (if ((Main__lines__substring.substring__function_guard result m from to__)) then (
-     ( ( ( [@GP_Pretty_Ada:26386] ((epsilon temp___result_241 : int.
+     ( ( ( [@GP_Pretty_Ada:26241] ((epsilon temp___result_241 : int.
       ( (temp___result_241 = (Main__lines__length.length result)) /\ (Main__lines__length.length__function_guard temp___result_241 result) )) = ((to__ - from) + (1 : int))) ) /\ (Main__lines__mystring___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
     )))
 
@@ -10400,9 +10350,9 @@ module Ada__text_io__get_line__2___axiom
  val get_line__2 
    (item : Array__Int__Standard__character.map__ref) (item__first : Standard__integer.integer) (item__last : Standard__integer.integer) (last : int__ref) : unit
   requires {  true }
-  ensures {  ( ( ( ( [@GP_Pretty_Ada:10886] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:10892] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) /\ (if (((Integer.length (Standard__integer__rep.to_rep item__first) (Standard__integer__rep.to_rep item__last)) > (0 : int))) then (
-   ( [@GP_Pretty_Ada:10901] ( (((Standard__integer__rep.to_rep item__first) - (1 : int)) <= last.int__content) /\ (last.int__content <= (Standard__integer__rep.to_rep item__last)) ) )) else (
-   ( [@GP_Pretty_Ada:10912] (last.int__content = ((Standard__integer__rep.to_rep item__first) - (1 : int))) ))) ) /\ ( (if (True) then (
+  ensures {  ( ( ( ( [@GP_Pretty_Ada:10836] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:10842] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) /\ (if (((Integer.length (Standard__integer__rep.to_rep item__first) (Standard__integer__rep.to_rep item__last)) > (0 : int))) then (
+   ( [@GP_Pretty_Ada:10851] ( (((Standard__integer__rep.to_rep item__first) - (1 : int)) <= last.int__content) /\ (last.int__content <= (Standard__integer__rep.to_rep item__last)) ) )) else (
+   ( [@GP_Pretty_Ada:10862] (last.int__content = ((Standard__integer__rep.to_rep item__first) - (1 : int))) ))) ) /\ ( (if (True) then (
    true) else (
    (Standard__string.dynamic_property Standard__positive.first Standard__positive.last (Standard__integer__rep.to_rep item__first) (Standard__integer__rep.to_rep item__last)))) /\ (Standard__natural___axiom.dynamic_invariant last.int__content True True True True) ) ) }
   reads {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
@@ -10429,14 +10379,14 @@ module Pin__from_string___axiom
 
  val from_string 
    (s : Standard__string.string) : int
-  requires {  ( ( [@GP_Pretty_Ada:6517] ((Standard__string.length s) = (4 : int)) ) /\ (forall i   [@name:I] [@model_trace:6520]  : int.
-   ( ( ((Standard__string.first s) <= i) /\ (i <= (Standard__string.last s)) ) -> ( ( [@GP_Pretty_Ada:6534] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) >= (48 : int)) ) /\ ( [@GP_Pretty_Ada:6540] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) <= (57 : int)) ) ) )) ) }
+  requires {  ( ( [@GP_Pretty_Ada:6467] ((Standard__string.length s) = (4 : int)) ) /\ (forall i   [@name:I] [@model_trace:6470]  : int.
+   ( ( ((Standard__string.first s) <= i) /\ (i <= (Standard__string.last s)) ) -> ( ( [@GP_Pretty_Ada:6484] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) >= (48 : int)) ) /\ ( [@GP_Pretty_Ada:6490] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) <= (57 : int)) ) ) )) ) }
   ensures {  ( ( (result = (Pin__from_string.from_string s)) /\ (Pin__from_string.from_string__function_guard result s) )/\(Pin__pin___axiom.dynamic_invariant result True False True True) ) }
  
  axiom from_string__post_axiom :
   (forall s   : Standard__string.string [(Pin__from_string.from_string s)].
-   ( ( (Standard__string___axiom.dynamic_invariant s True True True True) /\ ( ( [@GP_Pretty_Ada:6517] ((Standard__string.length s) = (4 : int)) ) /\ (forall i   [@name:I] [@model_trace:6520]  : int.
-    ( ( ((Standard__string.first s) <= i) /\ (i <= (Standard__string.last s)) ) -> ( ( [@GP_Pretty_Ada:6534] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) >= (48 : int)) ) /\ ( [@GP_Pretty_Ada:6540] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) <= (57 : int)) ) ) )) ) ) -> (let result = (Pin__from_string.from_string s) in (
+   ( ( (Standard__string___axiom.dynamic_invariant s True True True True) /\ ( ( [@GP_Pretty_Ada:6467] ((Standard__string.length s) = (4 : int)) ) /\ (forall i   [@name:I] [@model_trace:6470]  : int.
+    ( ( ((Standard__string.first s) <= i) /\ (i <= (Standard__string.last s)) ) -> ( ( [@GP_Pretty_Ada:6484] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) >= (48 : int)) ) /\ ( [@GP_Pretty_Ada:6490] ((Standard__character__rep.to_rep (Array__Int__Standard__character.get (Standard__string.to_array s) i)) <= (57 : int)) ) ) )) ) ) -> (let result = (Pin__from_string.from_string s) in (
     (if ((Pin__from_string.from_string__function_guard result s)) then (
      ( ( true /\ (Pin__pin___axiom.dynamic_invariant result True False True True) )/\true )) else true)))
     ))
@@ -10512,7 +10462,7 @@ module Ada__text_io__put__4___axiom
  val put__4 
    (item : Standard__string.string) : unit
   requires {  true }
-  ensures {  ( ( [@GP_Pretty_Ada:10755] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:10761] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:10705] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:10711] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
   reads {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
   writes {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
 
@@ -10572,7 +10522,7 @@ module Ada__text_io__put_line__2___axiom
  val put_line__2 
    (item : Standard__string.string) : unit
   requires {  true }
-  ensures {  ( ( [@GP_Pretty_Ada:11067] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:11073] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:11017] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:11023] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
   reads {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
   writes {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
 
@@ -10652,7 +10602,7 @@ module Ada__integer_text_io__put__2___axiom
  val put__2 
    (item : int) (width : int) (base : int) : unit
   requires {  true }
-  ensures {  ( ( [@GP_Pretty_Ada:24752] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:24756] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:24607] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:24611] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
   reads {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
   writes {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
 
@@ -10670,7 +10620,7 @@ module Mycommandline__argument___axiom
 
  val argument 
    (number : int) : Standard__string.string
-  requires {  ( [@GP_Pretty_Ada:17079] (number <= (epsilon temp___result_346 : int.
+  requires {  ( [@GP_Pretty_Ada:17029] (number <= (epsilon temp___result_346 : int.
    ( (temp___result_346 = (Mycommandline__argument_count.argument_count ())) /\ (Mycommandline__argument_count.argument_count__function_guard temp___result_346 ()) ))) ) }
   ensures {  ( ( (result = (Mycommandline__argument.argument number)) /\ (Mycommandline__argument.argument__function_guard result number) )/\(Standard__string___axiom.dynamic_invariant result True False True True) ) }
 
@@ -10732,7 +10682,7 @@ module Memorystore__get___axiom
 
  val get 
    (d : Memorystore__database.database) (loc : int) : int
-  requires {  ( [@GP_Pretty_Ada:18785] ((epsilon temp___result_352 : bool.
+  requires {  ( [@GP_Pretty_Ada:18640] ((epsilon temp___result_352 : bool.
    ( (temp___result_352 = (Memorystore__has.has d loc)) /\ (Memorystore__has.has__function_guard temp___result_352 d loc) )) = True) ) }
   ensures {  ( ( (result = (Memorystore__get.get d loc)) /\ (Memorystore__get.get__function_guard result d loc) )/\(Memorystore__int32___axiom.dynamic_invariant result True False True True) ) }
  
@@ -10798,7 +10748,7 @@ module Ada__text_io__new_line__2___axiom
  val new_line__2 
    (spacing : int) : unit
   requires {  true }
-  ensures {  ( ( [@GP_Pretty_Ada:9208] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:9214] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:9158] ((old (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__line_length__2.line_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) /\ ( [@GP_Pretty_Ada:9164] ((old (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content) ) = (Ada__text_io__page_length__2.page_length__2 Ada__text_io__standard_in.standard_in.Main.__private__content Ada__text_io__file_system.file_system.Main.__private__content Ada__text_io__standard_out.standard_out.Main.__private__content Ada__text_io__standard_err.standard_err.Main.__private__content Ada__text_io__current_in.current_in.Main.__private__content Ada__text_io__current_out.current_out.Main.__private__content Ada__text_io__current_err.current_err.Main.__private__content)) ) ) }
   reads {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
   writes {Ada__text_io__standard_in.standard_in, Ada__text_io__file_system.file_system, Ada__text_io__standard_out.standard_out, Ada__text_io__standard_err.standard_err, Ada__text_io__current_in.current_in, Ada__text_io__current_out.current_out, Ada__text_io__current_err.current_err}
 
@@ -10837,12 +10787,10 @@ module Mystringtokeniser__tokenise___axiom
  use        "_gnatprove_standard".Main
  use        "int".Int
  use        "int".Int
+ use        "_gnatprove_standard".Integer as Integer
  use        Standard__integer as Standard__integer
- use        Standard__natural as Standard__natural
  use        Standard__natural___axiom as Standard__natural___axiom
- use        Standard__natural__rep as Standard__natural__rep
  use        Standard__positive as Standard__positive
- use        Standard__positive__rep as Standard__positive__rep
  use        Standard__string as Standard__string
  use        Standard__integer__rep as Standard__integer__rep
  use        Mystringtokeniser__tokenextent as Mystringtokeniser__tokenextent
@@ -10855,9 +10803,8 @@ module Mystringtokeniser__tokenise___axiom
    (s : Standard__string.string) (tokens : Array__Int__Mystringtokeniser__tokenextent.map__ref) (tokens__first : Standard__integer.integer) (tokens__last : Standard__integer.integer) (count : int__ref) : unit
   requires {  ( (if (((Standard__string.length s) > (0 : int))) then (
    ( [@GP_Pretty_Ada:3523] ((Standard__string.first s) <= (Standard__string.last s)) )) else (
-   ( [@GP_Pretty_Ada:18470] true ))) /\ ( [@GP_Pretty_Ada:3532] ((Standard__integer__rep.to_rep tokens__first) <= (Standard__integer__rep.to_rep tokens__last)) ) ) }
-  ensures {  ( (forall index   [@model_trace:3539] [@name:Index]  : int.
-   ( ( ((Standard__integer__rep.to_rep tokens__first) <= index) /\ (index <= ((Standard__integer__rep.to_rep tokens__first) + (count.int__content - (1 : int)))) ) -> ( ( ( [@GP_Pretty_Ada:3564] ((Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start) >= (Standard__string.first s)) ) /\ ( [@GP_Pretty_Ada:3574] ((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) > (0 : int)) ) ) /\ ( [@GP_Pretty_Ada:3584] (((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) - (1 : int)) <= ((Standard__string.last s) - (Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start))) ) ) )) /\ ( ( (if (True) then (
+   ( [@GP_Pretty_Ada:18380] true ))) /\ ( [@GP_Pretty_Ada:3532] ((Standard__integer__rep.to_rep tokens__first) <= (Standard__integer__rep.to_rep tokens__last)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:18344] (count.int__content <= (Integer.length (Standard__integer__rep.to_rep tokens__first) (Standard__integer__rep.to_rep tokens__last))) ) /\ ( ( (if (True) then (
    true) else (
    (Mystringtokeniser__tokenarray.dynamic_property Standard__positive.first Standard__positive.last (Standard__integer__rep.to_rep tokens__first) (Standard__integer__rep.to_rep tokens__last)))) /\ (forall temp___392   : int.
    (if (( ((Standard__integer__rep.to_rep tokens__first) <= temp___392) /\ (temp___392 <= (Standard__integer__rep.to_rep tokens__last)) )) then (
@@ -11544,12 +11491,12 @@ module Main__lines__length__subprogram_def
  use        Main__lines__mystring___axiom as Main__lines__mystring___axiom
  use        Main__lines__mystring__T13b___axiom as Main__lines__mystring__T13b___axiom
 
- val main__lines__length__result [@model_projected] [@name:Length] [@model_trace:25949@result]  : int__ref 
+ val main__lines__length__result [@model_projected] [@name:Length] [@model_trace:25804@result]  : int__ref 
  
  let def [#"mystring.ads" 35 0 0][@GP_Subp:mystring.ads:35] 
    (__void_param : unit)
   requires { [#"mystring.ads" 35 0 0] true }
-  ensures { [#"mystring.ads" 35 0 0] ([#"mystring.ads" 36 0 0] ( [@comment:     Post => Length'Result <= Max_MyString_Length;              ^ mystring.ads:36:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Reason:VC_POSTCONDITION] [@GP_Id:12] [@GP_Shape:pragargs__cmp] [@GP_Sloc:mystring.ads:36:14:instantiated:main.adb:17:4] [@model_vc_post] ( [@GP_Sloc:mystring.ads:36:14:instantiated:main.adb:17:4] [@GP_Pretty_Ada:26345] (main__lines__length__result.int__content <= (2048 : int)) ) )) }
+  ensures { [#"mystring.ads" 35 0 0] ([#"mystring.ads" 36 0 0] ( [@comment:     Post => Length'Result <= Max_MyString_Length;              ^ mystring.ads:36:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Reason:VC_POSTCONDITION] [@GP_Id:12] [@GP_Shape:pragargs__cmp] [@GP_Sloc:mystring.ads:36:14:instantiated:main.adb:17:4] [@model_vc_post] ( [@GP_Pretty_Ada:26200] [@GP_Sloc:mystring.ads:36:14:instantiated:main.adb:17:4] (main__lines__length__result.int__content <= (2048 : int)) ) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystring.ads:35 instantiated at main.adb:17 *)
   ;
@@ -11624,13 +11571,13 @@ module Main__lines__to_string__subprogram_def
  use        Main__lines__to_string__TresultS___axiom as Main__lines__to_string__TresultS___axiom
  use        Main__lines__to_string__T52b___axiom as Main__lines__to_string__T52b___axiom
 
- val main__lines__to_string__result [@name:To_String] [@model_trace:25798@result] [@model_projected]  : Standard__string.string__ref 
+ val main__lines__to_string__result [@name:To_String] [@model_trace:25653@result] [@model_projected]  : Standard__string.string__ref 
  
  let def [#"mystring.ads" 20 0 0][@GP_Subp:mystring.ads:20] 
    (__void_param : unit)
   requires { [#"mystring.ads" 20 0 0] true }
-  ensures { [#"mystring.ads" 20 0 0] ([#"mystring.ads" 21 0 0] ( [@GP_Reason:VC_POSTCONDITION] [@comment:     Post => To_String'Result'Length = Length(M) and              ^ mystring.ads:21:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Id:19] [@GP_Sloc:mystring.ads:21:14:instantiated:main.adb:17:4] [@model_vc_post] [@GP_Shape:pragargs__and] ( ( ( [@GP_Pretty_Ada:25778] [@GP_Sloc:mystring.ads:21:14:instantiated:main.adb:17:4] ((Standard__string.length main__lines__to_string__result.Standard__string.string__content) = (epsilon temp___result_447 : int.
-   ( (temp___result_447 = (Main__lines__length.length Main__lines__to_string__m.m)) /\ (Main__lines__length.length__function_guard temp___result_447 Main__lines__to_string__m.m) ))) ) /\ ( [@GP_Sloc:mystring.ads:22:14:instantiated:main.adb:17:4] [@GP_Pretty_Ada:25785] ((Standard__string.first main__lines__to_string__result.Standard__string.string__content) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25790] [@GP_Sloc:mystring.ads:22:45:instantiated:main.adb:17:4] ((Standard__string.last main__lines__to_string__result.Standard__string.string__content) = (epsilon temp___result_448 : int.
+  ensures { [#"mystring.ads" 20 0 0] ([#"mystring.ads" 21 0 0] ( [@GP_Reason:VC_POSTCONDITION] [@comment:     Post => To_String'Result'Length = Length(M) and              ^ mystring.ads:21:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Id:19] [@GP_Sloc:mystring.ads:21:14:instantiated:main.adb:17:4] [@model_vc_post] [@GP_Shape:pragargs__and] ( ( ( [@GP_Sloc:mystring.ads:21:14:instantiated:main.adb:17:4] [@GP_Pretty_Ada:25633] ((Standard__string.length main__lines__to_string__result.Standard__string.string__content) = (epsilon temp___result_447 : int.
+   ( (temp___result_447 = (Main__lines__length.length Main__lines__to_string__m.m)) /\ (Main__lines__length.length__function_guard temp___result_447 Main__lines__to_string__m.m) ))) ) /\ ( [@GP_Pretty_Ada:25640] [@GP_Sloc:mystring.ads:22:14:instantiated:main.adb:17:4] ((Standard__string.first main__lines__to_string__result.Standard__string.string__content) = (1 : int)) ) ) /\ ( [@GP_Pretty_Ada:25645] [@GP_Sloc:mystring.ads:22:45:instantiated:main.adb:17:4] ((Standard__string.last main__lines__to_string__result.Standard__string.string__content) = (epsilon temp___result_448 : int.
    ( (temp___result_448 = (Main__lines__length.length Main__lines__to_string__m.m)) /\ (Main__lines__length.length__function_guard temp___result_448 Main__lines__to_string__m.m) ))) ) ) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystring.ads:20 instantiated at main.adb:17 *)
@@ -11776,12 +11723,12 @@ module Main__lines__from_string__subprogram_def
  use        Temp_____aggregate_def_449___axiom as Temp_____aggregate_def_449___axiom
  use        Main__lines__from_string__L_1__T57b___axiom as Main__lines__from_string__L_1__T57b___axiom
 
- val main__lines__from_string__result [@model_trace:25832@result] [@name:From_String] [@model_projected]  : Main__lines__mystring.mystring__ref 
+ val main__lines__from_string__result [@name:From_String] [@model_trace:25687@result] [@model_projected]  : Main__lines__mystring.mystring__ref 
  
  let def [#"mystring.ads" 24 0 0][@GP_Subp:mystring.ads:24] 
    (__void_param : unit)
   requires { [#"mystring.ads" 24 0 0] true }
-  ensures { [#"mystring.ads" 24 0 0] ([#"mystring.ads" 26 0 0] ( [@GP_Reason:VC_POSTCONDITION] [@GP_Sloc:mystring.ads:26:15:instantiated:main.adb:17:4] [@GP_Shape:pragargs__cmp] [@comment:     Post => (Length(From_String'Result) = S'Length);               ^ mystring.ads:26:15:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Id:30] [@model_vc_post] ( [@GP_Sloc:mystring.ads:26:15:instantiated:main.adb:17:4] [@GP_Pretty_Ada:26277] ((epsilon temp___result_465 : int.
+  ensures { [#"mystring.ads" 24 0 0] ([#"mystring.ads" 26 0 0] ( [@GP_Reason:VC_POSTCONDITION] [@GP_Sloc:mystring.ads:26:15:instantiated:main.adb:17:4] [@GP_Shape:pragargs__cmp] [@comment:     Post => (Length(From_String'Result) = S'Length);               ^ mystring.ads:26:15:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Id:30] [@model_vc_post] ( [@GP_Pretty_Ada:26132] [@GP_Sloc:mystring.ads:26:15:instantiated:main.adb:17:4] ((epsilon temp___result_465 : int.
    ( (temp___result_465 = (Main__lines__length.length main__lines__from_string__result.Main__lines__mystring.mystring__content)) /\ (Main__lines__length.length__function_guard temp___result_465 main__lines__from_string__result.Main__lines__mystring.mystring__content) )) = (Standard__string.length Main__lines__from_string__s.s)) ) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystring.ads:24 instantiated at main.adb:17 *)
@@ -11799,7 +11746,7 @@ module Main__lines__from_string__subprogram_def
    in () end ;
   () (* Assume Pre of the subprogram mystring.ads:24 instantiated at main.adb:17 *)
   ;
-   assume {  ( [@GP_Pretty_Ada:26263] ((Standard__string.length Main__lines__from_string__s.s) <= (2048 : int)) ) };
+   assume {  ( [@GP_Pretty_Ada:26118] ((Standard__string.length Main__lines__from_string__s.s) <= (2048 : int)) ) };
    try
    ( ();
    ([#"mystring.adb" 27 0 0] ());
@@ -11812,11 +11759,11 @@ module Main__lines__from_string__subprogram_def
    [#"mystring.adb" 29 0 0] assume { [#"mystring.adb" 29 0 0] (Standard__integer___axiom.dynamic_invariant Main__lines__from_string__j.j.int__content True False True True) } ));
    ([#"mystring.adb" 35 0 0] ());
    ();
-   ( [@GP_Sloc:mystring.adb:31:7:instantiated:main.adb:17:4] ([#"mystring.adb" 31 0 0] (if (( ([#"mystring.adb" 31 0 0] [#"mystring.adb" 31 0 0] (([@branch_id=29138] Main.spark__branch).bool__content <- ( (([#"mystring.adb" 31 0 0] ( [@GP_Sloc:mystring.adb:31:11:instantiated:main.adb:17:4] [@comment:      if S'Length > Max_MyString_Length then           ^ mystring.adb:31:11:instantiated:main.adb:17:4:VC_RANGE_CHECK] [@vc:annotation] [@GP_Reason:VC_RANGE_CHECK] [@GP_Shape:if__cmp__typeconv__length_ref] [@GP_Id:21] (Standard__integer.range_check_(( [#"mystring.adb" 31 0 0] begin ensures {true} let _ = (let _ = Main__lines__from_string__s.s in (
+   ( [@GP_Sloc:mystring.adb:31:7:instantiated:main.adb:17:4] ([#"mystring.adb" 31 0 0] (if (( ([#"mystring.adb" 31 0 0] [#"mystring.adb" 31 0 0] (([@branch_id=28993] Main.spark__branch).bool__content <- ( (([#"mystring.adb" 31 0 0] ( [@GP_Sloc:mystring.adb:31:11:instantiated:main.adb:17:4] [@comment:      if S'Length > Max_MyString_Length then           ^ mystring.adb:31:11:instantiated:main.adb:17:4:VC_RANGE_CHECK] [@vc:annotation] [@GP_Reason:VC_RANGE_CHECK] [@GP_Shape:if__cmp__typeconv__length_ref] [@GP_Id:21] (Standard__integer.range_check_(( [#"mystring.adb" 31 0 0] begin ensures {true} let _ = (let _ = Main__lines__from_string__s.s in (
     ()))
     in () end ;
    (Standard__string.length(Main__lines__from_string__s.s)) ))) )) > (2048 : int)) )));
-   ( [@branch_id=29138] Main.spark__branch ).bool__content )) then (
+   ( [@branch_id=28993] Main.spark__branch ).bool__content )) then (
     ( ();
     ( [@GP_Sloc:mystring.adb:32:10:instantiated:main.adb:17:4] ([#"mystring.adb" 32 0 0] ([#"mystring.adb" 32 0 0] ( [@GP_Reason:VC_RAISE] [@GP_Sloc:mystring.adb:32:10:instantiated:main.adb:17:4] [@vc:annotation] [@GP_Shape:if__raise_constraint_error] [@GP_Id:20] [@comment:         raise Constraint_Error;          ^ mystring.adb:32:10:instantiated:main.adb:17:4:VC_RAISE] absurd ))) ) )) else (
     ()))) );
@@ -11877,7 +11824,7 @@ module Main__lines__from_string__subprogram_def
          ;
           while True do
           invariant { 
-           ([#"mystring.adb" 36 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@GP_Sloc:mystring.adb:36:33:instantiated:main.adb:17:4] [@vc:annotation] [@GP_Shape:L_1_while__pragargs__cmp] [@GP_Id:27] [@comment:         pragma Loop_Invariant (J = I - S'First + 1);                                 ^ mystring.adb:36:33:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] ( [@GP_Sloc:mystring.adb:36:33:instantiated:main.adb:17:4] [@GP_Pretty_Ada:29166] (Main__lines__from_string__j.j.int__content = ((Main__lines__from_string__L_1__i.i.int__content - (Standard__string.first Main__lines__from_string__s.s)) + (1 : int))) ) ))
+           ([#"mystring.adb" 36 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@GP_Sloc:mystring.adb:36:33:instantiated:main.adb:17:4] [@vc:annotation] [@GP_Shape:L_1_while__pragargs__cmp] [@GP_Id:27] [@comment:         pragma Loop_Invariant (J = I - S'First + 1);                                 ^ mystring.adb:36:33:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] ( [@GP_Sloc:mystring.adb:36:33:instantiated:main.adb:17:4] [@GP_Pretty_Ada:29021] (Main__lines__from_string__j.j.int__content = ((Main__lines__from_string__L_1__i.i.int__content - (Standard__string.first Main__lines__from_string__s.s)) + (1 : int))) ) ))
            }
           ( () (* Assume implicit invariants from the loop mystring.adb:35 instantiated at main.adb:17 *)
           ;
@@ -11979,7 +11926,7 @@ module Main__lines__less__subprogram_def
  use        Main__lines__less__i___axiom as Main__lines__less__i___axiom
  use        Main__lines__less__L_2___axiom as Main__lines__less__L_2___axiom
 
- val main__lines__less__result [@model_trace:25851@result] [@model_projected] [@name:Less]  : bool__ref 
+ val main__lines__less__result [@model_projected] [@name:Less] [@model_trace:25706@result]  : bool__ref 
  
  let def [#"mystring.ads" 28 0 0][@GP_Subp:mystring.ads:28] 
    (__void_param : unit)
@@ -12004,13 +11951,13 @@ module Main__lines__less__subprogram_def
    [#"mystring.adb" 44 0 0] assume { [#"mystring.adb" 44 0 0] (Standard__integer___axiom.dynamic_invariant Main__lines__less__i.i.int__content True False True True) } ));
    ([#"mystring.adb" 51 0 0] ());
    ();
-   ( [@GP_Sloc:mystring.adb:46:7:instantiated:main.adb:17:4] ([#"mystring.adb" 46 0 0] (if (( ([#"mystring.adb" 46 0 0] [#"mystring.adb" 46 0 0] (([@branch_id=29295] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) < (Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
-   ( [@branch_id=29295] Main.spark__branch ).bool__content )) then (
+   ( [@GP_Sloc:mystring.adb:46:7:instantiated:main.adb:17:4] ([#"mystring.adb" 46 0 0] (if (( ([#"mystring.adb" 46 0 0] [#"mystring.adb" 46 0 0] (([@branch_id=29150] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) < (Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
+   ( [@branch_id=29150] Main.spark__branch ).bool__content )) then (
     ( ();
     ( [@GP_Sloc:mystring.adb:47:10:instantiated:main.adb:17:4] ([#"mystring.adb" 47 0 0] ( [#"mystring.adb" 47 0 0] (main__lines__less__result.bool__content <- ( (Boolean.of_int((1 : int))) ));
     [#"mystring.adb" 47 0 0] raise Return__exc )) ) )) else (
-    ( [@GP_Sloc:mystring.adb:48:7:instantiated:main.adb:17:4] (if (( ([#"mystring.adb" 48 0 0] [#"mystring.adb" 48 0 0] (([@branch_id=29305] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) > (Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
-    ( [@branch_id=29305] Main.spark__branch ).bool__content )) then (
+    ( [@GP_Sloc:mystring.adb:48:7:instantiated:main.adb:17:4] (if (( ([#"mystring.adb" 48 0 0] [#"mystring.adb" 48 0 0] (([@branch_id=29160] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) > (Main__lines__mystring__T13b__rep.to_rep(Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
+    ( [@branch_id=29160] Main.spark__branch ).bool__content )) then (
      ( ();
      ( [@GP_Sloc:mystring.adb:49:10:instantiated:main.adb:17:4] ([#"mystring.adb" 49 0 0] ( [#"mystring.adb" 49 0 0] (main__lines__less__result.bool__content <- ( (Boolean.of_int((0 : int))) ));
      [#"mystring.adb" 49 0 0] raise Return__exc )) ) )) else (
@@ -12036,7 +11983,7 @@ module Main__lines__less__subprogram_def
         ;
         [#"mystring.adb" 51 0 0] while True do
          invariant { 
-          ([#"mystring.adb" 52 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@vc:annotation] [@comment:            pragma Loop_Invariant (I >= M1.Str'First);                                    ^ mystring.adb:52:36:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:36] [@GP_Shape:if__L_2_while__pragargs__cmp] [@GP_Sloc:mystring.adb:52:36:instantiated:main.adb:17:4] ( [@GP_Pretty_Ada:29326] [@GP_Sloc:mystring.adb:52:36:instantiated:main.adb:17:4] (Main__lines__less__i.i.int__content >= (1 : int)) ) ))
+          ([#"mystring.adb" 52 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@vc:annotation] [@comment:            pragma Loop_Invariant (I >= M1.Str'First);                                    ^ mystring.adb:52:36:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:36] [@GP_Shape:if__L_2_while__pragargs__cmp] [@GP_Sloc:mystring.adb:52:36:instantiated:main.adb:17:4] ( [@GP_Pretty_Ada:29181] [@GP_Sloc:mystring.adb:52:36:instantiated:main.adb:17:4] (Main__lines__less__i.i.int__content >= (1 : int)) ) ))
           }
          ( () (* Assume implicit invariants from the loop mystring.adb:51 instantiated at main.adb:17 *)
          ;
@@ -12048,25 +11995,25 @@ module Main__lines__less__subprogram_def
          ();
          ( [@GP_Sloc:mystring.adb:53:23:instantiated:main.adb:17:4] ([#"mystring.adb" 53 0 0] ()) );
          ( [@GP_Sloc:mystring.adb:53:35:instantiated:main.adb:17:4] ([#"mystring.adb" 53 0 0] ()) );
-         ( [@GP_Sloc:mystring.adb:53:13:instantiated:main.adb:17:4] ([#"mystring.adb" 53 0 0] (if (( ([#"mystring.adb" 53 0 0] [#"mystring.adb" 53 0 0] (([@branch_id=29333] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___468 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
+         ( [@GP_Sloc:mystring.adb:53:13:instantiated:main.adb:17:4] ([#"mystring.adb" 53 0 0] (if (( ([#"mystring.adb" 53 0 0] [#"mystring.adb" 53 0 0] (([@branch_id=29188] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___468 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
           (Array__Int__Standard__character.get(temp___468) (( [#"mystring.adb" 53 0 0] assert { [#"mystring.adb" 53 0 0] ([#"mystring.adb" 53 0 0] ( [@GP_Sloc:mystring.adb:53:23:instantiated:main.adb:17:4] [@GP_Shape:if__L_2_while__if__cmp__ixdcomp] [@comment:            if M1.Str(I) < M2.Str(I) then                       ^ mystring.adb:53:23:instantiated:main.adb:17:4:VC_INDEX_CHECK] [@vc:annotation] [@GP_Id:34] [@GP_Reason:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__less__i.i.int__content) /\ (Main__lines__less__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
           Main__lines__less__i.i.int__content )))))
          )) < (Standard__character__rep.to_rep((let temp___469 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
           (Array__Int__Standard__character.get(temp___469) ((  assert {  ([#"mystring.adb" 53 0 0] ( [@GP_Shape:if__L_2_while__if__cmp__ixdcomp] [@GP_Sloc:mystring.adb:53:35:instantiated:main.adb:17:4] [@vc:annotation] [@comment:            if M1.Str(I) < M2.Str(I) then                                   ^ mystring.adb:53:35:instantiated:main.adb:17:4:VC_INDEX_CHECK] [@GP_Id:35] [@GP_Reason:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__less__i.i.int__content) /\ (Main__lines__less__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
           Main__lines__less__i.i.int__content )))))
          ))) )));
-         ( [@branch_id=29333] Main.spark__branch ).bool__content )) then (
+         ( [@branch_id=29188] Main.spark__branch ).bool__content )) then (
           ( ();
           ( [@GP_Sloc:mystring.adb:54:16:instantiated:main.adb:17:4] ([#"mystring.adb" 54 0 0] ( [#"mystring.adb" 54 0 0] (main__lines__less__result.bool__content <- ( (Boolean.of_int((1 : int))) ));
           [#"mystring.adb" 54 0 0] raise Return__exc )) ) )) else (
-          ( [@GP_Sloc:mystring.adb:55:13:instantiated:main.adb:17:4] (if (( ([#"mystring.adb" 55 0 0] [#"mystring.adb" 55 0 0] (([@branch_id=29347] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___466 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
+          ( [@GP_Sloc:mystring.adb:55:13:instantiated:main.adb:17:4] (if (( ([#"mystring.adb" 55 0 0] [#"mystring.adb" 55 0 0] (([@branch_id=29202] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___466 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
            (Array__Int__Standard__character.get(temp___466) (( [#"mystring.adb" 55 0 0] assert { [#"mystring.adb" 55 0 0] ([#"mystring.adb" 55 0 0] ( [@comment:            elsif M1.Str(I) > M2.Str(I) then                          ^ mystring.adb:55:26:instantiated:main.adb:17:4:VC_INDEX_CHECK] [@GP_Sloc:mystring.adb:55:26:instantiated:main.adb:17:4] [@GP_Shape:if__L_2_while__if__cmp__ixdcomp] [@vc:annotation] [@GP_Id:32] [@GP_Reason:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__less__i.i.int__content) /\ (Main__lines__less__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
            Main__lines__less__i.i.int__content )))))
           )) > (Standard__character__rep.to_rep((let temp___467 [@mlw:proxy_symbol] [@introduced] = Main__lines__less__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
            (Array__Int__Standard__character.get(temp___467) ((  assert {  ([#"mystring.adb" 55 0 0] ( [@GP_Shape:if__L_2_while__if__cmp__ixdcomp] [@vc:annotation] [@comment:            elsif M1.Str(I) > M2.Str(I) then                                      ^ mystring.adb:55:38:instantiated:main.adb:17:4:VC_INDEX_CHECK] [@GP_Sloc:mystring.adb:55:38:instantiated:main.adb:17:4] [@GP_Id:33] [@GP_Reason:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__less__i.i.int__content) /\ (Main__lines__less__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
            Main__lines__less__i.i.int__content )))))
           ))) )));
-          ( [@branch_id=29347] Main.spark__branch ).bool__content )) then (
+          ( [@branch_id=29202] Main.spark__branch ).bool__content )) then (
            ( ();
            ( [@GP_Sloc:mystring.adb:56:16:instantiated:main.adb:17:4] ([#"mystring.adb" 56 0 0] ( [#"mystring.adb" 56 0 0] (main__lines__less__result.bool__content <- ( (Boolean.of_int((0 : int))) ));
            [#"mystring.adb" 56 0 0] raise Return__exc )) ) )) else (
@@ -12128,7 +12075,7 @@ module Main__lines__get__subprogram_def
  use        Main__lines__TmystringstrD1___axiom as Main__lines__TmystringstrD1___axiom
  use        Main__lines__mystring__T13b___axiom as Main__lines__mystring__T13b___axiom
 
- val main__lines__get__result [@model_trace:26035@result] [@model_projected] [@name:Get]  : int__ref 
+ val main__lines__get__result [@model_trace:25890@result] [@model_projected] [@name:Get]  : int__ref 
  
  let def [#"mystring.ads" 42 0 0][@GP_Subp:mystring.ads:42] 
    (__void_param : unit)
@@ -12147,7 +12094,7 @@ module Main__lines__get__subprogram_def
    in () end ;
   () (* Assume Pre of the subprogram mystring.ads:42 instantiated at main.adb:17 *)
   ;
-  [#"mystring.ads" 42 0 0] assume { [#"mystring.ads" 42 0 0] ( [@GP_Pretty_Ada:26413] (Main__lines__get__index.index <= (epsilon temp___result_473 : int.
+  [#"mystring.ads" 42 0 0] assume { [#"mystring.ads" 42 0 0] ( [@GP_Pretty_Ada:26268] (Main__lines__get__index.index <= (epsilon temp___result_473 : int.
    ( (temp___result_473 = (Main__lines__length.length Main__lines__get__m.m)) /\ (Main__lines__length.length__function_guard temp___result_473 Main__lines__get__m.m) ))) ) };
   [#"mystring.ads" 42 0 0] try
    ( ();
@@ -12215,20 +12162,20 @@ module Main__lines__equal__subprogram_def
  use        Main__lines__equal__i___axiom as Main__lines__equal__i___axiom
  use        Main__lines__equal__L_3___axiom as Main__lines__equal__L_3___axiom
 
- val main__lines__equal__result [@name:Equal] [@model_projected] [@model_trace:25915@result]  : bool__ref 
+ val main__lines__equal__result [@model_trace:25770@result] [@name:Equal] [@model_projected]  : bool__ref 
  
  let def [#"mystring.ads" 30 0 0][@GP_Subp:mystring.ads:30] 
    (__void_param : unit)
   requires { [#"mystring.ads" 30 0 0] true }
   ensures { [#"mystring.ads" 30 0 0] ([#"mystring.ads" 31 0 0] ( [@GP_Sloc:mystring.ads:31:15:instantiated:main.adb:17:4] [@GP_Reason:VC_POSTCONDITION] [@GP_Id:47] [@comment:     Post => (if Equal'Result then               ^ mystring.ads:31:15:instantiated:main.adb:17:4:VC_POSTCONDITION] [@model_vc_post] [@GP_Shape:pragargs__if] (if ((main__lines__equal__result.bool__content = True)) then (
-   ( ( [@GP_Pretty_Ada:25884] [@GP_Sloc:mystring.ads:32:11:instantiated:main.adb:17:4] ((epsilon temp___result_487 : int.
+   ( ( [@GP_Pretty_Ada:25739] [@GP_Sloc:mystring.ads:32:11:instantiated:main.adb:17:4] ((epsilon temp___result_487 : int.
     ( (temp___result_487 = (Main__lines__length.length Main__lines__equal__m1.m1)) /\ (Main__lines__length.length__function_guard temp___result_487 Main__lines__equal__m1.m1) )) = (epsilon temp___result_488 : int.
-    ( (temp___result_488 = (Main__lines__length.length Main__lines__equal__m2.m2)) /\ (Main__lines__length.length__function_guard temp___result_488 Main__lines__equal__m2.m2) ))) ) /\ (forall i [#"mystring.ads" 31 0 0]  [@model_trace:25902] [@name:I]  : int.
+    ( (temp___result_488 = (Main__lines__length.length Main__lines__equal__m2.m2)) /\ (Main__lines__length.length__function_guard temp___result_488 Main__lines__equal__m2.m2) ))) ) /\ (forall i [#"mystring.ads" 31 0 0]  [@name:I] [@model_trace:25757]  : int.
     ( ( ((1 : int) <= i) /\ (i <= (epsilon temp___result_489 : int.
-     ( (temp___result_489 = (Main__lines__length.length Main__lines__equal__m1.m1)) /\ (Main__lines__length.length__function_guard temp___result_489 Main__lines__equal__m1.m1) ))) ) -> ( [@GP_Sloc:mystring.ads:33:40:instantiated:main.adb:17:4] [@GP_Pretty_Ada:25892] ((epsilon temp___result_490 : int.
+     ( (temp___result_489 = (Main__lines__length.length Main__lines__equal__m1.m1)) /\ (Main__lines__length.length__function_guard temp___result_489 Main__lines__equal__m1.m1) ))) ) -> ( [@GP_Sloc:mystring.ads:33:40:instantiated:main.adb:17:4] [@GP_Pretty_Ada:25747] ((epsilon temp___result_490 : int.
      ( (temp___result_490 = (Main__lines__get.get Main__lines__equal__m1.m1 i)) /\ (Main__lines__get.get__function_guard temp___result_490 Main__lines__equal__m1.m1 i) )) = (epsilon temp___result_491 : int.
      ( (temp___result_491 = (Main__lines__get.get Main__lines__equal__m2.m2 i)) /\ (Main__lines__get.get__function_guard temp___result_491 Main__lines__equal__m2.m2 i) ))) ) )) )) else (
-   ( [@GP_Sloc:mystring.ads:31:15:instantiated:main.adb:17:4] [@GP_Pretty_Ada:26491] true ))) )) }
+   ( [@GP_Sloc:mystring.ads:31:15:instantiated:main.adb:17:4] [@GP_Pretty_Ada:26346] true ))) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystring.ads:30 instantiated at main.adb:17 *)
   ;
@@ -12249,8 +12196,8 @@ module Main__lines__equal__subprogram_def
    [#"mystring.adb" 68 0 0] assume { [#"mystring.adb" 68 0 0] (Standard__integer___axiom.dynamic_invariant Main__lines__equal__i.i.int__content True False True True) } ));
    ([#"mystring.adb" 73 0 0] ());
    ();
-   ( [@GP_Sloc:mystring.adb:70:7:instantiated:main.adb:17:4] ([#"mystring.adb" 70 0 0] (if (( ([#"mystring.adb" 70 0 0] [#"mystring.adb" 70 0 0] (([@branch_id=29484] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) <> (Main__lines__mystring__T13b__rep.to_rep(Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
-   ( [@branch_id=29484] Main.spark__branch ).bool__content )) then (
+   ( [@GP_Sloc:mystring.adb:70:7:instantiated:main.adb:17:4] ([#"mystring.adb" 70 0 0] (if (( ([#"mystring.adb" 70 0 0] [#"mystring.adb" 70 0 0] (([@branch_id=29339] Main.spark__branch).bool__content <- ( ((Main__lines__mystring__T13b__rep.to_rep(Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length)) <> (Main__lines__mystring__T13b__rep.to_rep(Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length))) )));
+   ( [@branch_id=29339] Main.spark__branch ).bool__content )) then (
     ( ();
     ( [@GP_Sloc:mystring.adb:71:10:instantiated:main.adb:17:4] ([#"mystring.adb" 71 0 0] ( [#"mystring.adb" 71 0 0] (main__lines__equal__result.bool__content <- ( (Boolean.of_int((0 : int))) ));
     [#"mystring.adb" 71 0 0] raise Return__exc )) ) )) else (
@@ -12283,7 +12230,7 @@ module Main__lines__equal__subprogram_def
           in () end ))))
        ;
         (val _f : bool
-       ensures { ( (result = True) <-> (forall j   [@model_trace:29525] [@name:J]  : int.
+       ensures { ( (result = True) <-> (forall j   [@model_trace:29380] [@name:J]  : int.
         ( ( ((1 : int) <= j) /\ (j <= (Main__lines__equal__i.i.int__content - (1 : int))) ) -> ((Standard__character__rep.to_rep (let temp___480 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
          (Array__Int__Standard__character.get temp___480 j)))
         ) = (Standard__character__rep.to_rep (let temp___481 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
@@ -12296,8 +12243,8 @@ module Main__lines__equal__subprogram_def
        ;
         while True do
         invariant { 
-         ([#"mystring.adb" 74 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@comment:            pragma Loop_Invariant (I >= M1.Str'First and                                    ^ mystring.adb:74:36:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:44] [@vc:annotation] [@GP_Shape:if__L_3_while__pragargs__and] [@GP_Sloc:mystring.adb:74:36:instantiated:main.adb:17:4] ( ( [@GP_Sloc:mystring.adb:74:36:instantiated:main.adb:17:4] [@GP_Pretty_Ada:29506] (Main__lines__equal__i.i.int__content >= (1 : int)) ) /\ (forall j [#"mystring.adb" 74 0 0]  [@model_trace:29525] [@name:J]  : int.
-          ( ( ((1 : int) <= j) /\ (j <= (Main__lines__equal__i.i.int__content - (1 : int))) ) -> ( [@GP_Pretty_Ada:29513] [@GP_Sloc:mystring.adb:75:60:instantiated:main.adb:17:4] ((Standard__character__rep.to_rep (let temp___482 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
+         ([#"mystring.adb" 74 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@comment:            pragma Loop_Invariant (I >= M1.Str'First and                                    ^ mystring.adb:74:36:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:44] [@vc:annotation] [@GP_Shape:if__L_3_while__pragargs__and] [@GP_Sloc:mystring.adb:74:36:instantiated:main.adb:17:4] ( ( [@GP_Pretty_Ada:29361] [@GP_Sloc:mystring.adb:74:36:instantiated:main.adb:17:4] (Main__lines__equal__i.i.int__content >= (1 : int)) ) /\ (forall j [#"mystring.adb" 74 0 0]  [@model_trace:29380] [@name:J]  : int.
+          ( ( ((1 : int) <= j) /\ (j <= (Main__lines__equal__i.i.int__content - (1 : int))) ) -> ( [@GP_Pretty_Ada:29368] [@GP_Sloc:mystring.adb:75:60:instantiated:main.adb:17:4] ((Standard__character__rep.to_rep (let temp___482 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
            (Array__Int__Standard__character.get temp___482 j)))
           ) = (Standard__character__rep.to_rep (let temp___483 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
            (Array__Int__Standard__character.get temp___483 j)))
@@ -12313,14 +12260,14 @@ module Main__lines__equal__subprogram_def
         ();
         ( [@GP_Sloc:mystring.adb:76:23:instantiated:main.adb:17:4] ([#"mystring.adb" 76 0 0] ()) );
         ( [@GP_Sloc:mystring.adb:76:36:instantiated:main.adb:17:4] ([#"mystring.adb" 76 0 0] ()) );
-        ( [@GP_Sloc:mystring.adb:76:13:instantiated:main.adb:17:4] ([#"mystring.adb" 76 0 0] (if (( ([#"mystring.adb" 76 0 0] [#"mystring.adb" 76 0 0] (([@branch_id=29538] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___474 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
+        ( [@GP_Sloc:mystring.adb:76:13:instantiated:main.adb:17:4] ([#"mystring.adb" 76 0 0] (if (( ([#"mystring.adb" 76 0 0] [#"mystring.adb" 76 0 0] (([@branch_id=29393] Main.spark__branch).bool__content <- ( ((Standard__character__rep.to_rep((let temp___474 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
          (Array__Int__Standard__character.get(temp___474) (( [#"mystring.adb" 76 0 0] assert { [#"mystring.adb" 76 0 0] ([#"mystring.adb" 76 0 0] ( [@GP_Shape:if__L_3_while__if__cmp__ixdcomp] [@GP_Sloc:mystring.adb:76:23:instantiated:main.adb:17:4] [@vc:annotation] [@GP_Id:39] [@GP_Reason:VC_INDEX_CHECK] [@comment:            if M1.Str(I) /= M2.Str(I) then                       ^ mystring.adb:76:23:instantiated:main.adb:17:4:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__equal__i.i.int__content) /\ (Main__lines__equal__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
          Main__lines__equal__i.i.int__content )))))
         )) <> (Standard__character__rep.to_rep((let temp___475 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
          (Array__Int__Standard__character.get(temp___475) ((  assert {  ([#"mystring.adb" 76 0 0] ( [@GP_Shape:if__L_3_while__if__cmp__ixdcomp] [@GP_Id:40] [@vc:annotation] [@GP_Sloc:mystring.adb:76:36:instantiated:main.adb:17:4] [@comment:            if M1.Str(I) /= M2.Str(I) then                                    ^ mystring.adb:76:36:instantiated:main.adb:17:4:VC_INDEX_CHECK] [@GP_Reason:VC_INDEX_CHECK] ( (Main__lines__TmystringstrD1.first <= Main__lines__equal__i.i.int__content) /\ (Main__lines__equal__i.i.int__content <= Main__lines__TmystringstrD1.last) ) )) };
          Main__lines__equal__i.i.int__content )))))
         ))) )));
-        ( [@branch_id=29538] Main.spark__branch ).bool__content )) then (
+        ( [@branch_id=29393] Main.spark__branch ).bool__content )) then (
          ( ();
          ( [@GP_Sloc:mystring.adb:77:16:instantiated:main.adb:17:4] ([#"mystring.adb" 77 0 0] ( [#"mystring.adb" 77 0 0] (main__lines__equal__result.bool__content <- ( (Boolean.of_int((0 : int))) ));
          [#"mystring.adb" 77 0 0] raise Return__exc )) ) )) else (
@@ -12346,7 +12293,7 @@ module Main__lines__equal__subprogram_def
            in () end ))))
         ;
          (val _f : bool
-        ensures { ( (result = True) <-> (forall j   [@model_trace:29525] [@name:J]  : int.
+        ensures { ( (result = True) <-> (forall j   [@model_trace:29380] [@name:J]  : int.
          ( ( ((1 : int) <= j) /\ (j <= (Main__lines__equal__i.i.int__content - (1 : int))) ) -> ((Standard__character__rep.to_rep (let temp___480 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m1.m1.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
           (Array__Int__Standard__character.get temp___480 j)))
          ) = (Standard__character__rep.to_rep (let temp___481 [@mlw:proxy_symbol] [@introduced] = Main__lines__equal__m2.m2.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__str in (
@@ -12377,9 +12324,9 @@ module Main__lines__equal__subprogram_def
       in () end ))))
    ;
     (val _f : bool
-   ensures { ( (result = True) <-> (forall i   [@model_trace:25902] [@name:I]  : int.
+   ensures { ( (result = True) <-> (forall i   [@name:I] [@model_trace:25757]  : int.
     ( ( ((1 : int) <= i) /\ (i <= (epsilon temp___result_484 : int.
-     ( (temp___result_484 = (Main__lines__length.length Main__lines__equal__m1.m1)) /\ (Main__lines__length.length__function_guard temp___result_484 Main__lines__equal__m1.m1) ))) ) -> ( [@GP_Pretty_Ada:25892] ((epsilon temp___result_485 : int.
+     ( (temp___result_484 = (Main__lines__length.length Main__lines__equal__m1.m1)) /\ (Main__lines__length.length__function_guard temp___result_484 Main__lines__equal__m1.m1) ))) ) -> ( [@GP_Pretty_Ada:25747] ((epsilon temp___result_485 : int.
      ( (temp___result_485 = (Main__lines__get.get Main__lines__equal__m1.m1 i)) /\ (Main__lines__get.get__function_guard temp___result_485 Main__lines__equal__m1.m1 i) )) = (epsilon temp___result_486 : int.
      ( (temp___result_486 = (Main__lines__get.get Main__lines__equal__m2.m2 i)) /\ (Main__lines__get.get__function_guard temp___result_486 Main__lines__equal__m2.m2 i) ))) ) )) )} 
    in _f) )))) else (
@@ -12461,12 +12408,12 @@ module Main__lines__substring__subprogram_def
  use        Temp_____aggregate_def_492___axiom as Temp_____aggregate_def_492___axiom
  use        Main__lines__substring__L_4__T73b___axiom as Main__lines__substring__L_4__T73b___axiom
 
- val main__lines__substring__result [@model_projected] [@name:Substring] [@model_trace:25991@result]  : Main__lines__mystring.mystring__ref 
+ val main__lines__substring__result [@model_projected] [@name:Substring] [@model_trace:25846@result]  : Main__lines__mystring.mystring__ref 
  
  let def [#"mystring.ads" 38 0 0][@GP_Subp:mystring.ads:38] 
    (__void_param : unit)
   requires { [#"mystring.ads" 38 0 0] true }
-  ensures { [#"mystring.ads" 38 0 0] ([#"mystring.ads" 40 0 0] ( [@GP_Id:57] [@GP_Reason:VC_POSTCONDITION] [@GP_Shape:pragargs__cmp] [@model_vc_post] [@comment:     Post => Length(Substring'Result) = To - From + 1;              ^ mystring.ads:40:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Sloc:mystring.ads:40:14:instantiated:main.adb:17:4] ( [@GP_Pretty_Ada:26386] [@GP_Sloc:mystring.ads:40:14:instantiated:main.adb:17:4] ((epsilon temp___result_508 : int.
+  ensures { [#"mystring.ads" 38 0 0] ([#"mystring.ads" 40 0 0] ( [@GP_Id:57] [@GP_Reason:VC_POSTCONDITION] [@GP_Shape:pragargs__cmp] [@model_vc_post] [@comment:     Post => Length(Substring'Result) = To - From + 1;              ^ mystring.ads:40:14:instantiated:main.adb:17:4:VC_POSTCONDITION] [@GP_Sloc:mystring.ads:40:14:instantiated:main.adb:17:4] ( [@GP_Pretty_Ada:26241] [@GP_Sloc:mystring.ads:40:14:instantiated:main.adb:17:4] ((epsilon temp___result_508 : int.
    ( (temp___result_508 = (Main__lines__length.length main__lines__substring__result.Main__lines__mystring.mystring__content)) /\ (Main__lines__length.length__function_guard temp___result_508 main__lines__substring__result.Main__lines__mystring.mystring__content) )) = ((Main__lines__substring__to.to__ - Main__lines__substring__from.from) + (1 : int))) ) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystring.ads:38 instantiated at main.adb:17 *)
@@ -12483,7 +12430,7 @@ module Main__lines__substring__subprogram_def
    in () end ;
   () (* Assume Pre of the subprogram mystring.ads:38 instantiated at main.adb:17 *)
   ;
-   assume {  ( ( [@GP_Pretty_Ada:25970] (Main__lines__substring__from.from <= Main__lines__substring__to.to__) ) /\ ( [@GP_Pretty_Ada:25973] (Main__lines__substring__to.to__ <= (epsilon temp___result_507 : int.
+   assume {  ( ( [@GP_Pretty_Ada:25825] (Main__lines__substring__from.from <= Main__lines__substring__to.to__) ) /\ ( [@GP_Pretty_Ada:25828] (Main__lines__substring__to.to__ <= (epsilon temp___result_507 : int.
    ( (temp___result_507 = (Main__lines__length.length Main__lines__substring__m.m)) /\ (Main__lines__length.length__function_guard temp___result_507 Main__lines__substring__m.m) ))) ) ) };
    try
    ( ();
@@ -12503,23 +12450,23 @@ module Main__lines__substring__subprogram_def
     ;
     (if ((Boolean.andb((temp___496 <= Main__lines__substring__L_4__i.i.int__content)) ((Main__lines__substring__L_4__i.i.int__content <= temp___497)))) then (
      [#"mystring.adb" 90 0 0] try
-      ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = Main__lines__substring__j.j.int__content in (
+      ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content } in (
        ()))
        in () end ;
-      (let temp___505 [@mlw:proxy_symbol] [@introduced] = [#"mystring.adb" 90 0 0] (val _f : int
-      ensures {[#"mystring.adb" 90 0 0] (result = Main__lines__substring__j.j.int__content)} 
+      (let temp___504 [@mlw:proxy_symbol] [@introduced] = [#"mystring.adb" 90 0 0] (val _f : Main__lines__mystring.mystring
+      ensures {[#"mystring.adb" 90 0 0] (result = { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content })} 
       in _f) in (
-       ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content } in (
+       ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = Main__lines__substring__L_4__i.i.int__content in (
         ()))
         in () end ;
-       (let temp___503 [@mlw:proxy_symbol] [@introduced] = [#"mystring.adb" 90 0 0] (val _f : Main__lines__mystring.mystring
-       ensures {[#"mystring.adb" 90 0 0] (result = { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content })} 
+       (let temp___503 [@mlw:proxy_symbol] [@introduced] = [#"mystring.adb" 90 0 0] (val _f : int
+       ensures {[#"mystring.adb" 90 0 0] (result = Main__lines__substring__L_4__i.i.int__content)} 
        in _f) in (
-        ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = Main__lines__substring__L_4__i.i.int__content in (
+        ( [#"mystring.adb" 90 0 0] begin ensures {true} let _ = (let _ = Main__lines__substring__j.j.int__content in (
          ()))
          in () end ;
         (let temp___502 [@mlw:proxy_symbol] [@introduced] = [#"mystring.adb" 90 0 0] (val _f : int
-        ensures {[#"mystring.adb" 90 0 0] (result = Main__lines__substring__L_4__i.i.int__content)} 
+        ensures {[#"mystring.adb" 90 0 0] (result = Main__lines__substring__j.j.int__content)} 
         in _f) in (
          ( () (* First unroling of the loop statements appearing before the loop invariant of loop mystring.adb:90 instantiated at main.adb:17 *)
          ;
@@ -12532,12 +12479,12 @@ module Main__lines__substring__subprogram_def
          ;
           while True do
           invariant { 
-           ([#"mystring.adb" 91 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@vc:annotation] [@GP_Shape:L_4_while__pragargs__cmp] [@GP_Sloc:mystring.adb:91:33:instantiated:main.adb:17:4] [@comment:         pragma Loop_Invariant (J = I - From + 1);                                 ^ mystring.adb:91:33:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:55] ( [@GP_Sloc:mystring.adb:91:33:instantiated:main.adb:17:4] [@GP_Pretty_Ada:29700] (Main__lines__substring__j.j.int__content = ((Main__lines__substring__L_4__i.i.int__content - Main__lines__substring__from.from) + (1 : int))) ) ))
+           ([#"mystring.adb" 91 0 0] ( [@GP_Reason:VC_LOOP_INVARIANT] [@vc:annotation] [@GP_Shape:L_4_while__pragargs__cmp] [@GP_Sloc:mystring.adb:91:33:instantiated:main.adb:17:4] [@comment:         pragma Loop_Invariant (J = I - From + 1);                                 ^ mystring.adb:91:33:instantiated:main.adb:17:4:VC_LOOP_INVARIANT] [@GP_Id:55] ( [@GP_Sloc:mystring.adb:91:33:instantiated:main.adb:17:4] [@GP_Pretty_Ada:29555] (Main__lines__substring__j.j.int__content = ((Main__lines__substring__L_4__i.i.int__content - Main__lines__substring__from.from) + (1 : int))) ) ))
            }
           ( () (* Assume implicit invariants from the loop mystring.adb:90 instantiated at main.adb:17 *)
           ;
-           assume {  (Boolean.andb(( ( ( ( ( ( true /\ (if (( True \/ (Main__lines__substring__from.from <= Main__lines__substring__to.to__) )) then (
-           (Main__lines__substring__L_4__T73b.dynamic_property Main__lines__substring__from.from Main__lines__substring__to.to__ Main__lines__substring__L_4__i.i.int__content)) else true) )/\true ) /\ (Main__lines__mystring___axiom.dynamic_invariant { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content } True True True True) )/\({ Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content }.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length = temp___503.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length) ) /\ (Standard__positive___axiom.dynamic_invariant Main__lines__substring__j.j.int__content True True True True) )/\true )) (( (Main__lines__substring__from.from <= Main__lines__substring__L_4__i.i.int__content) /\ (Main__lines__substring__L_4__i.i.int__content <= Main__lines__substring__to.to__) ))) };
+           assume {  (Boolean.andb(( ( ( ( ( ( true /\ (Standard__positive___axiom.dynamic_invariant Main__lines__substring__j.j.int__content True True True True) )/\true ) /\ (if (( True \/ (Main__lines__substring__from.from <= Main__lines__substring__to.to__) )) then (
+           (Main__lines__substring__L_4__T73b.dynamic_property Main__lines__substring__from.from Main__lines__substring__to.to__ Main__lines__substring__L_4__i.i.int__content)) else true) )/\true ) /\ (Main__lines__mystring___axiom.dynamic_invariant { Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content } True True True True) )/\({ Main__lines__mystring.__split_fields = Main__lines__substring__r.r__split_fields.Main__lines__mystring.__split_fields__content }.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length = temp___504.Main__lines__mystring.__split_fields.Main__lines__mystring.rec__main__lines__mystring__length) )) (( (Main__lines__substring__from.from <= Main__lines__substring__L_4__i.i.int__content) /\ (Main__lines__substring__L_4__i.i.int__content <= Main__lines__substring__to.to__) ))) };
           () (* Check for absence of RTE in the invariant of loop mystring.adb:90 instantiated at main.adb:17 *)
           ;
           () (* Loop statements appearing after the loop invariant of loop mystring.adb:90 instantiated at main.adb:17 *)

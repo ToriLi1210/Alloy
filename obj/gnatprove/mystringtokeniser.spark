@@ -1525,9 +1525,9 @@
     },
     {
       "file": "mystringtokeniser.ads",
-      "line": 30,
-      "col": 50,
-      "rule": "VC_OVERFLOW_CHECK",
+      "line": 34,
+      "col": 29,
+      "rule": "VC_RANGE_CHECK",
       "severity": "info",
       "entity": {
         "name": "MyStringTokeniser.Tokenise",
@@ -1543,7 +1543,7 @@
           "proof_attempts": {
             "CVC4": {
               "result": "Valid",
-              "steps": 264,
+              "steps": 14,
               "time": 0
             }
           },
@@ -1552,8 +1552,8 @@
         }
       ],
       "check_file": "mystringtokeniser.ads",
-      "check_line": 30,
-      "check_col": 50,
+      "check_line": 34,
+      "check_col": 29,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
@@ -1565,252 +1565,8 @@
     },
     {
       "file": "mystringtokeniser.ads",
-      "line": 31,
-      "col": 19,
-      "rule": "VC_INDEX_CHECK",
-      "severity": "info",
-      "entity": {
-        "name": "MyStringTokeniser.Tokenise",
-        "sloc": [
-          {
-            "file": "mystringtokeniser.ads",
-            "line": 23
-          }
-        ]
-      },
-      "check_tree": [
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        }
-      ],
-      "check_file": "mystringtokeniser.ads",
-      "check_line": 31,
-      "check_col": 19,
-      "how_proved": "prover",
-      "stats": {
-        "CVC4": {
-          "count": 2,
-          "max_steps": 1,
-          "max_time": 0.00000000000000E+00
-        }
-      }
-    },
-    {
-      "file": "mystringtokeniser.ads",
-      "line": 32,
-      "col": 18,
-      "rule": "VC_INDEX_CHECK",
-      "severity": "info",
-      "entity": {
-        "name": "MyStringTokeniser.Tokenise",
-        "sloc": [
-          {
-            "file": "mystringtokeniser.ads",
-            "line": 23
-          }
-        ]
-      },
-      "check_tree": [
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 219,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        }
-      ],
-      "check_file": "mystringtokeniser.ads",
-      "check_line": 32,
-      "check_col": 18,
-      "how_proved": "prover",
-      "stats": {
-        "CVC4": {
-          "count": 2,
-          "max_steps": 1,
-          "max_time": 0.00000000000000E+00
-        }
-      }
-    },
-    {
-      "file": "mystringtokeniser.ads",
-      "line": 33,
-      "col": 20,
-      "rule": "VC_INDEX_CHECK",
-      "severity": "info",
-      "entity": {
-        "name": "MyStringTokeniser.Tokenise",
-        "sloc": [
-          {
-            "file": "mystringtokeniser.ads",
-            "line": 23
-          }
-        ]
-      },
-      "check_tree": [
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        }
-      ],
-      "check_file": "mystringtokeniser.ads",
-      "check_line": 33,
-      "check_col": 20,
-      "how_proved": "prover",
-      "stats": {
-        "CVC4": {
-          "count": 2,
-          "max_steps": 1,
-          "max_time": 0.00000000000000E+00
-        }
-      }
-    },
-    {
-      "file": "mystringtokeniser.ads",
-      "line": 33,
-      "col": 55,
-      "rule": "VC_INDEX_CHECK",
-      "severity": "info",
-      "entity": {
-        "name": "MyStringTokeniser.Tokenise",
-        "sloc": [
-          {
-            "file": "mystringtokeniser.ads",
-            "line": 23
-          }
-        ]
-      },
-      "check_tree": [
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 5,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        }
-      ],
-      "check_file": "mystringtokeniser.ads",
-      "check_line": 33,
-      "check_col": 55,
-      "how_proved": "prover",
-      "stats": {
-        "CVC4": {
-          "count": 2,
-          "max_steps": 1,
-          "max_time": 0.00000000000000E+00
-        }
-      }
-    },
-    {
-      "file": "mystringtokeniser.ads",
-      "line": 33,
-      "col": 46,
-      "rule": "VC_OVERFLOW_CHECK",
-      "severity": "info",
-      "entity": {
-        "name": "MyStringTokeniser.Tokenise",
-        "sloc": [
-          {
-            "file": "mystringtokeniser.ads",
-            "line": 23
-          }
-        ]
-      },
-      "check_tree": [
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 689,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        }
-      ],
-      "check_file": "mystringtokeniser.ads",
-      "check_line": 33,
-      "check_col": 46,
-      "how_proved": "prover",
-      "stats": {
-        "CVC4": {
-          "count": 1,
-          "max_steps": 1,
-          "max_time": 0.00000000000000E+00
-        }
-      }
-    },
-    {
-      "file": "mystringtokeniser.ads",
-      "line": 30,
-      "col": 6,
+      "line": 34,
+      "col": 14,
       "rule": "VC_POSTCONDITION",
       "severity": "info",
       "entity": {
@@ -1827,29 +1583,7 @@
           "proof_attempts": {
             "CVC4": {
               "result": "Valid",
-              "steps": 792,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 1044,
-              "time": 0
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Valid",
-              "steps": 777,
+              "steps": 214,
               "time": 0
             }
           },
@@ -1858,12 +1592,12 @@
         }
       ],
       "check_file": "mystringtokeniser.ads",
-      "check_line": 30,
-      "check_col": 6,
+      "check_line": 34,
+      "check_col": 14,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
-          "count": 3,
+          "count": 1,
           "max_steps": 1,
           "max_time": 0.00000000000000E+00
         }
@@ -2029,14 +1763,14 @@
     }
   ],
   "timings": {
-    "marking": 2.65299994498491E-03,
-    "globals (basic)": 9.14999982342124E-04,
-    "globals/properties (advanced)": 5.84999972488731E-04,
-    "flow analysis": 4.76199993863702E-03,
-    "codepeer results": 4.99999987368938E-06,
-    "init_why_sections": 2.99000006634742E-04,
-    "translation of standard": 2.91800010018051E-03,
-    "translation of compilation unit": 1.01309996098280E-02,
-    "proof": 4.33176010847092E-01
+    "marking": 2.52999993972480E-03,
+    "globals (basic)": 1.00299995392561E-03,
+    "globals/properties (advanced)": 5.68000017665327E-04,
+    "flow analysis": 2.25510001182556E-02,
+    "codepeer results": 3.99999998990097E-06,
+    "init_why_sections": 3.07999987853691E-04,
+    "translation of standard": 2.85600009374321E-03,
+    "translation of compilation unit": 8.64700041711330E-03,
+    "proof": 7.95333981513977E-01
   }
 }

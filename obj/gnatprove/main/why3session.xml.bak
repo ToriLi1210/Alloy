@@ -131,9 +131,11 @@
   </goal>
   <goal name="VC def.51" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" steps="744"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" steps="28076"/></proof>
   </goal>
   <goal name="VC def.52" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" steps="736"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" steps="30470"/></proof>
   </goal>
   <goal name="VC def.53" expl="assertion" proved="true">
   <proof prover="0"><result status="valid" steps="5"/></proof>
@@ -143,6 +145,7 @@
   </goal>
   <goal name="VC def.55" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" steps="733"/></proof>
+  <proof prover="1" obsolete="true"><result status="timeout" steps="36647"/></proof>
   </goal>
   <goal name="VC def.56" expl="precondition" proved="true">
   <proof prover="0"><result status="valid" steps="736"/></proof>
@@ -166,7 +169,7 @@
   <goal name="VC def.65" expl="precondition">
   </goal>
   <goal name="VC def.66" expl="precondition">
-  <proof prover="0"><result status="timeout" steps="528645"/></proof>
+  <proof prover="0"><result status="timeout" steps="632855"/></proof>
   </goal>
   <goal name="VC def.67" expl="precondition">
   </goal>

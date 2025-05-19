@@ -30,10 +30,18 @@ package body MyStringTokeniser with SPARK_Mode is
          -- Task1 Addcommentstomystringtokeniser.adb thatexplaintheloopinvariantfortheTokenise
          -- procedure and, in particular, why the following part of the loop invariant is necessary:
 
-         -- The loop ensures that the current available index in token array is equal to
-         -- the start index of token array plus the number of already taken token space
-         -- It is necessary to ensure that the token is not out bound of the token array
---           pragma Loop_Invariant (OutIndex = Tokens'First + Processed);
+         --   The current output index (`OutIndex`) in the Tokens array
+         --   is always equal to the first index of the Tokens array (`Tokens'First`)
+         --   plus the number of tokens already processed (`Processed`).
+         -- Why this is necessary:
+         --   It guarantees that we are filling the Tokens array sequentially,
+         --   from left to right, without skipping any positions or writing
+         --   outside the bounds of the array.
+         --
+         --   This invariant also allows SPARK to verify that every assignment:
+         --     Tokens(OutIndex) := Extent;
+         --   is within the legal range of the Tokens array.
+         pragma Loop_Invariant (OutIndex = Tokens'First + Processed);
 
          -- look for start of next token
          while (Index >= S'First and Index < S'Last) and then Is_Whitespace(S(Index)) loop

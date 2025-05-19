@@ -2148,7 +2148,7 @@ module Ada__characters__latin_1__lf
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant lf [#"a-chlat1.ads" 35 0 0][@model_trace:3095] [@name:LF] 
+ val constant lf [#"a-chlat1.ads" 35 0 0][@name:LF] [@model_trace:3045] 
    : int
 
  
@@ -2163,7 +2163,7 @@ module Ada__characters__latin_1__ht
  use        "_gnatprove_standard".Main
  use        "int".Int
 
- val constant ht [#"a-chlat1.ads" 34 0 0][@model_trace:3082] [@name:HT] 
+ val constant ht [#"a-chlat1.ads" 34 0 0][@name:HT] [@model_trace:3032] 
    : int
 
  
@@ -2207,48 +2207,6 @@ module Mystringtokeniser__tokenise__s___axiom
  use        "_gnatprove_standard".Main
  use        "int".Int
 
-
-end
-
-(* Module for axiomatizing type "T7s" defined at mystringtokeniser.ads:30, created in Gnat2Why.Types.Translate_Type *)
-module Mystringtokeniser__tokenise__L6s__T7s
- use        "_gnatprove_standard".Main
- use        "int".Int
- use        "int".Int
- use        Standard__integer as Standard__integer
- use        Standard__integer__rep as Standard__integer__rep
-
- type t7s =
-  Standard__integer.integer
- 
- predicate dynamic_property 
-   (first_int : int) (last_int : int) (x : int) =
-  ( (first_int <= x) /\ (x <= last_int) )
- val dynamic_property 
-   (first_int : int) (last_int : int) (x : int) : bool
-  ensures { result <-> dynamic_property (first_int : int) (last_int : int) (x : int) }
- 
- clone export "ada__model".Dynamic_Discrete with axiom .,
- type t = t7s, 
- type rep_type = int, 
- function base_to_rep = Standard__integer__rep.to_rep, 
- function base_of_rep = Standard__integer__rep.of_rep, 
- predicate dynamic_property = dynamic_property
- 
- type t7s__ref =
-  { mutable t7s__content : t7s }
- 
- function t7s__ref_t7s__content__projection 
-   (a : t7s__ref) : t7s =
-  a.t7s__content
- 
- meta "model_projection" function t7s__ref_t7s__content__projection
- 
- meta "inline:no" function t7s__ref_t7s__content__projection
- 
- val t7s__havoc 
-   (x : t7s__ref) : unit
-  writes {x}
 
 end
 
@@ -3217,14 +3175,6 @@ module Mystringtokeniser__tokenarray___axiom
 
 end
 
-(* Module giving axioms for type "T7s" defined at mystringtokeniser.ads:30, created in Gnat2Why.Types.Generate_Type_Completion *)
-module Mystringtokeniser__tokenise__L6s__T7s___axiom
- use        "_gnatprove_standard".Main
- use        "int".Int
-
-
-end
-
 (* Module giving axioms for type "TS2bP1" defined at mystringtokeniser.adb:6, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Mystringtokeniser__tokenise__TS2bP1___axiom
  use        "_gnatprove_standard".Main
@@ -3365,12 +3315,10 @@ module Mystringtokeniser__tokenise___axiom
  use        "_gnatprove_standard".Main
  use        "int".Int
  use        "int".Int
+ use        "_gnatprove_standard".Integer as Integer
  use        Standard__integer as Standard__integer
- use        Standard__natural as Standard__natural
  use        Standard__natural___axiom as Standard__natural___axiom
- use        Standard__natural__rep as Standard__natural__rep
  use        Standard__positive as Standard__positive
- use        Standard__positive__rep as Standard__positive__rep
  use        Standard__string as Standard__string
  use        Standard__integer__rep as Standard__integer__rep
  use        Mystringtokeniser__tokenextent as Mystringtokeniser__tokenextent
@@ -3383,9 +3331,8 @@ module Mystringtokeniser__tokenise___axiom
    (s : Standard__string.string) (tokens : Array__Int__Mystringtokeniser__tokenextent.map__ref) (tokens__first : Standard__integer.integer) (tokens__last : Standard__integer.integer) (count : int__ref) : unit
   requires {  ( (if (((Standard__string.length s) > (0 : int))) then (
    ( [@GP_Pretty_Ada:2830] ((Standard__string.first s) <= (Standard__string.last s)) )) else (
-   ( [@GP_Pretty_Ada:6221] true ))) /\ ( [@GP_Pretty_Ada:2839] ((Standard__integer__rep.to_rep tokens__first) <= (Standard__integer__rep.to_rep tokens__last)) ) ) }
-  ensures {  ( (forall index   [@name:Index] [@model_trace:2846]  : int.
-   ( ( ((Standard__integer__rep.to_rep tokens__first) <= index) /\ (index <= ((Standard__integer__rep.to_rep tokens__first) + (count.int__content - (1 : int)))) ) -> ( ( ( [@GP_Pretty_Ada:2871] ((Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start) >= (Standard__string.first s)) ) /\ ( [@GP_Pretty_Ada:2881] ((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) > (0 : int)) ) ) /\ ( [@GP_Pretty_Ada:2891] (((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) - (1 : int)) <= ((Standard__string.last s) - (Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start))) ) ) )) /\ ( ( (if (True) then (
+   ( [@GP_Pretty_Ada:6131] true ))) /\ ( [@GP_Pretty_Ada:2839] ((Standard__integer__rep.to_rep tokens__first) <= (Standard__integer__rep.to_rep tokens__last)) ) ) }
+  ensures {  ( ( [@GP_Pretty_Ada:6095] (count.int__content <= (Integer.length (Standard__integer__rep.to_rep tokens__first) (Standard__integer__rep.to_rep tokens__last))) ) /\ ( ( (if (True) then (
    true) else (
    (Mystringtokeniser__tokenarray.dynamic_property Standard__positive.first Standard__positive.last (Standard__integer__rep.to_rep tokens__first) (Standard__integer__rep.to_rep tokens__last)))) /\ (forall temp___172   : int.
    (if (( ((Standard__integer__rep.to_rep tokens__first) <= temp___172) /\ (temp___172 <= (Standard__integer__rep.to_rep tokens__last)) )) then (
@@ -3409,7 +3356,7 @@ module Mystringtokeniser__package_def
   ([#"mystringtokeniser.ads" 12 0 0] ());
   ([#"mystringtokeniser.ads" 16 0 0] ());
   ([#"mystringtokeniser.ads" 23 0 0] ());
-  ([#"mystringtokeniser.ads" 27 0 0] ());
+  ([#"mystringtokeniser.ads" 34 0 0] ());
   ([#"mystringtokeniser.ads" 24 0 0] ());
   ([#"mystringtokeniser.ads" 24 0 0] ());
   ([#"mystringtokeniser.ads" 24 0 0] ());
@@ -3536,8 +3483,7 @@ module Mystringtokeniser__tokenise__subprogram_def
  let def [#"mystringtokeniser.ads" 23 0 0][@GP_Subp:mystringtokeniser.ads:23] 
    (__void_param : unit)
   requires { [#"mystringtokeniser.ads" 23 0 0] true }
-  ensures { [#"mystringtokeniser.ads" 23 0 0] ([#"mystringtokeniser.ads" 30 0 0] ( [@GP_Shape:pragargs__forall] [@GP_Reason:VC_POSTCONDITION] [@comment:     (for all Index in Tokens'First..Tokens'First+(Count-1) =>      ^ mystringtokeniser.ads:30:6:VC_POSTCONDITION] [@GP_Sloc:mystringtokeniser.ads:30:6] [@GP_Id:31] [@model_vc_post] (forall index [#"mystringtokeniser.ads" 30 0 0]  [@name:Index] [@model_trace:2846]  : int.
-   ( ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) + (Mystringtokeniser__tokenise__count.count.int__content - (1 : int)))) ) -> ( ( ( [@GP_Pretty_Ada:2871] [@GP_Sloc:mystringtokeniser.ads:31:12] ((Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start) >= (Standard__string.first Mystringtokeniser__tokenise__s.s)) ) /\ ( [@GP_Sloc:mystringtokeniser.ads:32:11] [@GP_Pretty_Ada:2881] ((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) > (0 : int)) ) ) /\ ( [@GP_Pretty_Ada:2891] [@GP_Sloc:mystringtokeniser.ads:33:13] (((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) - (1 : int)) <= ((Standard__string.last Mystringtokeniser__tokenise__s.s) - (Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start))) ) ) )) )) }
+  ensures { [#"mystringtokeniser.ads" 23 0 0] ([#"mystringtokeniser.ads" 34 0 0] ( [@GP_Reason:VC_POSTCONDITION] [@GP_Shape:pragargs__cmp] [@comment:     Post => Count <= Tokens'Length;              ^ mystringtokeniser.ads:34:14:VC_POSTCONDITION] [@model_vc_post] [@GP_Id:26] [@GP_Sloc:mystringtokeniser.ads:34:14] ( [@GP_Pretty_Ada:6095] [@GP_Sloc:mystringtokeniser.ads:34:14] (Mystringtokeniser__tokenise__count.count.int__content <= (Integer.length (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last))) ) )) }
    = [@vc:divergent]
   ( () (* Assume dynamic invariants of inputs of the subprogram mystringtokeniser.ads:23 *)
   ;
@@ -3576,7 +3522,7 @@ module Mystringtokeniser__tokenise__subprogram_def
   ;
    assume {  ( (if (((Standard__string.length Mystringtokeniser__tokenise__s.s) > (0 : int))) then (
    ( [@GP_Pretty_Ada:2830] ((Standard__string.first Mystringtokeniser__tokenise__s.s) <= (Standard__string.last Mystringtokeniser__tokenise__s.s)) )) else (
-   ( [@GP_Pretty_Ada:6221] true ))) /\ ( [@GP_Pretty_Ada:2839] ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) ) };
+   ( [@GP_Pretty_Ada:6131] true ))) /\ ( [@GP_Pretty_Ada:2839] ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) ) };
    try
    ( ();
    ([#"mystringtokeniser.adb" 6 0 0] ());
@@ -3978,33 +3924,10 @@ module Mystringtokeniser__tokenise__subprogram_def
   with
    Return__exc -> ()
   end;
-   begin ensures {true} let _ = (let _ = ( (let index =  (val _f : int
-  in _f) in (
-   (if ((Boolean.andb(((Standard__integer__rep.to_rep((  begin ensures {true} let _ = (let _ = Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content in (
-    ()))
-    in () end ;
-   Mystringtokeniser__tokenise__tokens.tokens__first ))) <= index)) ((index <= ([#"mystringtokeniser.ads" 30 0 0] ( [@GP_Shape:pragargs__forall__range__add] [@GP_Sloc:mystringtokeniser.ads:30:50] [@vc:annotation] [@GP_Reason:VC_OVERFLOW_CHECK] [@comment:     (for all Index in Tokens'First..Tokens'First+(Count-1) =>                                                  ^ mystringtokeniser.ads:30:50:VC_OVERFLOW_CHECK] [@GP_Id:25] (Standard__integer.range_check_(((Standard__integer__rep.to_rep(( [#"mystringtokeniser.ads" 30 0 0] begin ensures {true} let _ = (let _ = Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content in (
-    ()))
-    in () end ;
-   Mystringtokeniser__tokenise__tokens.tokens__first ))) + (Mystringtokeniser__tokenise__count.count.int__content - (1 : int))))) )))))) then (
-     begin ensures {true} let _ = (let _ = ( (Boolean.andb(((Standard__positive__rep.to_rep((Array__Int__Mystringtokeniser__tokenextent.get(Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content) ((  assert {  ([#"mystringtokeniser.ads" 31 0 0] ( [@vc:annotation] [@comment:          (Tokens(Index).Start >= S'First and                   ^ mystringtokeniser.ads:31:19:VC_INDEX_CHECK] [@GP_Reason:VC_INDEX_CHECK] [@GP_Shape:pragargs__forall__andthen__and__cmp__selectcomp__ixdcomp] [@GP_Id:26] [@GP_Sloc:mystringtokeniser.ads:31:19] ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) )) };
-    index ))).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start)) >= (  begin ensures {true} let _ = (let _ = Mystringtokeniser__tokenise__s.s in (
-     ()))
-     in () end ;
-    (Standard__string.first(Mystringtokeniser__tokenise__s.s)) ))) (((Standard__natural__rep.to_rep((Array__Int__Mystringtokeniser__tokenextent.get(Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content) ((  assert {  ([#"mystringtokeniser.ads" 32 0 0] ( [@GP_Sloc:mystringtokeniser.ads:32:18] [@vc:annotation] [@GP_Reason:VC_INDEX_CHECK] [@GP_Shape:pragargs__forall__andthen__and__cmp__selectcomp__ixdcomp] [@comment:          Tokens(Index).Length > 0) and then                  ^ mystringtokeniser.ads:32:18:VC_INDEX_CHECK] [@GP_Id:27] ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) )) };
-    index ))).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length)) > (0 : int)))) && (((Standard__natural__rep.to_rep((Array__Int__Mystringtokeniser__tokenextent.get(Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content) ((  assert {  ([#"mystringtokeniser.ads" 33 0 0] ( [@comment:            Tokens(Index).Length-1 <= S'Last - Tokens(Index).Start);                    ^ mystringtokeniser.ads:33:20:VC_INDEX_CHECK] [@GP_Shape:pragargs__forall__andthen__cmp__sub__selectcomp__ixdcomp] [@GP_Sloc:mystringtokeniser.ads:33:20] [@vc:annotation] [@GP_Reason:VC_INDEX_CHECK] [@GP_Id:28] ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) )) };
-    index ))).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length)) - (1 : int)) <= ([#"mystringtokeniser.ads" 33 0 0] ( [@comment:            Tokens(Index).Length-1 <= S'Last - Tokens(Index).Start);                                              ^ mystringtokeniser.ads:33:46:VC_OVERFLOW_CHECK] [@vc:annotation] [@GP_Shape:pragargs__forall__andthen__cmp__sub] [@GP_Reason:VC_OVERFLOW_CHECK] [@GP_Id:30] [@GP_Sloc:mystringtokeniser.ads:33:46] (Standard__integer.range_check_((( [#"mystringtokeniser.ads" 33 0 0] begin ensures {true} let _ = (let _ = Mystringtokeniser__tokenise__s.s in (
-     ()))
-     in () end ;
-    (Standard__string.last(Mystringtokeniser__tokenise__s.s)) ) - (Standard__positive__rep.to_rep((Array__Int__Mystringtokeniser__tokenextent.get(Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content) (( [#"mystringtokeniser.ads" 33 0 0] assert { [#"mystringtokeniser.ads" 33 0 0] ([#"mystringtokeniser.ads" 33 0 0] ( [@GP_Shape:pragargs__forall__andthen__cmp__sub__selectcomp__ixdcomp] [@vc:annotation] [@GP_Sloc:mystringtokeniser.ads:33:55] [@GP_Reason:VC_INDEX_CHECK] [@comment:            Tokens(Index).Length-1 <= S'Last - Tokens(Index).Start);                                                       ^ mystringtokeniser.ads:33:55:VC_INDEX_CHECK] [@GP_Id:29] ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= (Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__last)) ) )) };
-    index ))).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start))))) ))) ) in (
-     ()))
-     in () end ))))
-  ;
-   (val _f : bool
-  ensures { ( (result = True) <-> (forall index   [@name:Index] [@model_trace:2846]  : int.
-   ( ( ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) <= index) /\ (index <= ((Standard__integer__rep.to_rep Mystringtokeniser__tokenise__tokens.tokens__first) + (Mystringtokeniser__tokenise__count.count.int__content - (1 : int)))) ) -> ( ( ( [@GP_Pretty_Ada:2871] ((Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start) >= (Standard__string.first Mystringtokeniser__tokenise__s.s)) ) /\ ( [@GP_Pretty_Ada:2881] ((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) > (0 : int)) ) ) /\ ( [@GP_Pretty_Ada:2891] (((Standard__natural__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__length) - (1 : int)) <= ((Standard__string.last Mystringtokeniser__tokenise__s.s) - (Standard__positive__rep.to_rep (Array__Int__Mystringtokeniser__tokenextent.get Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content index).Mystringtokeniser__tokenextent.__split_fields.Mystringtokeniser__tokenextent.rec__mystringtokeniser__tokenextent__start))) ) ) )) )} 
-  in _f) ) in (
+   begin ensures {true} let _ = (let _ = (Mystringtokeniser__tokenise__count.count.int__content <= ([#"mystringtokeniser.ads" 34 0 0] ( [@vc:annotation] [@GP_Shape:pragargs__cmp__typeconv__length_ref] [@GP_Reason:VC_RANGE_CHECK] [@comment:     Post => Count <= Tokens'Length;                             ^ mystringtokeniser.ads:34:29:VC_RANGE_CHECK] [@GP_Sloc:mystringtokeniser.ads:34:29] [@GP_Id:25] (Standard__integer.range_check_(( [#"mystringtokeniser.ads" 34 0 0] begin ensures {true} let _ = (let _ = Mystringtokeniser__tokenise__tokens.tokens.Array__Int__Mystringtokeniser__tokenextent.map__content in (
+   ()))
+   in () end ;
+  (Integer.length((Standard__integer__rep.to_rep(Mystringtokeniser__tokenise__tokens.tokens__first))) ((Standard__integer__rep.to_rep(Mystringtokeniser__tokenise__tokens.tokens__last)))) ))) ))) in (
    ()))
    in () end  )
 end
