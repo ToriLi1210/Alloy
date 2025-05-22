@@ -14,6 +14,8 @@
 --  Do not modify this file.
 
 with Ada.Text_IO;
+with MemoryStore;
+
 
 package body Calculator is
    ---------------------------------------------------------------------------
@@ -21,9 +23,11 @@ package body Calculator is
    ---------------------------------------------------------------------------
    procedure Init(C : out Calculator; Master_PIN: in PIN.PIN) is
    begin
-
+      -- The calculator begins in the locked state.
       C.Locked:=True;
+      -- User needs to supply master pin
       C.Masterpin:=Master_PIN;
+      -- The size of operand stack is 0
       C.Length:=0;
       C.Operand_stack:=(others=>0);
 
@@ -45,32 +49,45 @@ package body Calculator is
    -- "*"
    procedure Multiple(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
+      Result:= Number_1*Number_2;
    end Multiple;
 
    -- "/"
    procedure Divide(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
+      Result:= Number_1/Number_2;
    end Divide;
 
    -- push1 <NAME>
-   procedure Push_1(C:in out Calculator;Number_1:in Integer) is
-      begin
+   -- Push a number into the operand stack(Read and Modified) with a integer(Read only)
+   procedure Push_1(C:in out Calculator;Number_1:in Item) is
+   begin
+      C.Length:=C.Length+1;
+      -- since the index of operand stack starts with 1
+      C.Operand_stack(C.Length):=Number_1;
    end Push_1;
 
    -- push2 <NAME> <NAME>
-   procedure Push_2(C:in out Calculator;Number_1:in Integer;Number_2:in Integer) is
+   -- Push 2 numbers into the operand stack with sequence(Read and Modified) with a integer(Read only)
+   procedure Push_2(C:in out Calculator;Number_1:in Item;Number_2:in Item) is
    begin
+      Push_1(C,Number_1);
+      Push_1(C,Number_2);
    end Push_2;
 
    -- pop
-   procedure Pop(C:in out Calculator;Result:out Integer)is
+   -- remove 1 number from the top of operand stack and stored in Result
+   procedure Pop(C:in out Calculator;Result:out Item)is
    begin
+      Result:=C.Operand_stack(C.Length);
+      C.Length:=C.Length-1;
    end Pop;
 
 
    -- loadFrom <NAME>; loads the value stored at memory location loc and pushes it onto the operand stack
    procedure Load_From(C:in out Calculator;D : in out MemoryStore.Database; Loc: in MemoryStore.Location_Index) is
    begin
+      MemoryStore.Remove(D,Loc);
    end Load_From;
 
 
