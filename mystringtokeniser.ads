@@ -31,7 +31,7 @@ package MyStringTokeniser with SPARK_Mode is
    --    This ensures that accessing elements Tokens(1..Count) is safe and will not go out of bounds.
    --    Without this, SPARK cannot verify array accesses like T(I), and a proof failure like "array index check might fail" may occur.
 
-     Post => Count <= Tokens'Length;
+     Post => Count <= Tokens'Length
       and (for all Index in Tokens'First..Tokens'First+(Count-1) =>
       (Tokens(Index).Start >= S'First and
        Tokens(Index).Length > 0) and then

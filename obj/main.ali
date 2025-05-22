@@ -49,12 +49,12 @@ D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
 D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20190518041254 5ab55268 interfaces%s
 D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
-D main.adb		20250518134907 d1e93cc3 main%b
+D main.adb		20250521051158 d1e93cc3 main%b
 D memorystore.ads	20250518134714 44057d61 memorystore%s
 D mycommandline.ads	20250517060857 dbf720e9 mycommandline%s
 D mystring.ads		20250517060857 ce083c8f mystring%s
 D mystring.adb		20250517060857 8198c1c4 mystring%b
-D mystringtokeniser.ads	20250518134714 9bc8f6ad mystringtokeniser%s
+D mystringtokeniser.ads	20250521051312 9bc8f6ad mystringtokeniser%s
 D pin.ads		20250517060857 553c8633 pin%s
 D stringtointeger.ads	20250517060857 37c4f5b6 stringtointeger%s
 D system.ads		20190518041255 085b6ffb system%s
@@ -84,7 +84,7 @@ G r c none [main standard 15 11 none] [get memorystore 22 14 none]
 G r c none [main standard 15 11 none] [print memorystore 34 14 none]
 G r c none [main standard 15 11 none] [remove memorystore 29 14 none]
 G r c none [main standard 15 11 none] [has memorystore 20 14 none]
-G r c none [main standard 15 11 none] [tokenise mystringtokeniser 19 14 none]
+G r c none [main standard 15 11 none] [tokenise mystringtokeniser 23 14 none]
 G r c none [main standard 15 11 none] [from_string stringtointeger 6 13 none]
 X 1 ada.ads
 16K9*Ada 20e8 15|10r6 10r22 11r6 11r31 12r6 53r4
@@ -94,30 +94,30 @@ X 7 a-llitio.ads
 18K13*Long_Long_Integer_Text_IO[11|46] 15|12w10
 X 10 a-textio.ads
 57K13*Text_IO 727e16 15|10w10 10r26
-264U14*New_Line 15|56s4 118s30 128s52
-465U14*Put 15|30s4 31s4 34s7 34s37 35s7 52s4 88s7 93s13 93s36 94s13
-508U14*Put_Line 15|30s37 31s69 35s41 45s4 58s4 62s4 66s7 68s7 78s4 81s4 88s44
-. 94s26 98s10 106s7 117s7 122s10 126s4 127s4
+264U14*New_Line 15|56s4 129s30 139s52
+465U14*Put 15|30s4 31s4 34s7 34s37 35s7 52s4 99s7 104s13 104s36 105s13
+508U14*Put_Line 15|30s37 31s69 35s41 45s4 58s4 62s4 66s7 68s7 78s4 81s4 99s44
+. 105s26 109s10 117s7 128s7 133s10 137s4 138s4
 X 11 a-tiinio.ads
-80U14*Put 15|31s32[5|18] 34s25[5|18] 53s24[5|18] 88s28[5|18] 93s28[5|18]
-. 118s7[5|18] 128s4[5|18]
+80U14*Put 15|31s32[5|18] 34s25[5|18] 53s24[5|18] 99s28[5|18] 104s28[5|18]
+. 129s7[5|18] 139s4[5|18]
 X 13 interfac.ads
 52I9*Integer_32<integer>
 X 15 main.adb
-15U11*Main 15b11 131l5 131t9
-17K12 Lines[18|17] 18r11 80r4 87r34 91r32 91r48
-18r4 S{18|18R9[17]} 80m19 87r50 91r64
+15U11*Main 15b11 142l5 142t9
+17K12 Lines[18|17] 18r11 80r4 92r34 102r32 102r48
+18r4 S{18|18R9[17]} 80m19 92r50 102r64
 21r4 Mem{16|13R9} 43m22 46m21 46r21 53r55 59r23 63m24 63r24 65r24
 22i4 Loc1{16|8I12} 46r26 53r60 63r29 65r29
-24i4 PIN1{21|3I9} 105r15
-25i4 PIN2{21|3I9} 105r20
+24i4 PIN1{21|3I9} 116r15
+25i4 PIN2{21|3I9} 116r20
 33i8 Arg{integer} 34r29 35r34
-84a7 T{20|10A9} 87m53 87r53 91r66 91r77 91r88
-85i7 NumTokens{natural} 87m55 88r32 89r19 97r10
-89i11 I{integer} 91r68 91r79 91r90 93r32
-91a13 TokStr{string} 94r17
-113i7 Smallest_Integer{integer} 115r27 115r65 118r11
-114i7 R{long_long_integer} 120r10 121r10
+84a7 T{20|12A9} 92m53 92r53 102r66 102r77 102r88
+90i7 NumTokens{natural} 92m55 99r32 100r19 108r10
+100i11 I{integer} 102r68 102r79 102r90 104r32
+102a13 TokStr{string} 105r17
+124i7 Smallest_Integer{integer} 126r27 126r65 129r11
+125i7 R{long_long_integer} 131r10 132r10
 X 16 memorystore.ads
 3K9*MemoryStore 15|8w6 21r11 22r11 43r4 46r4 53r38 59r4 63r4 65r7 16|53e16
 8I12*Location_Index{positive} 15|22r23
@@ -138,20 +138,20 @@ X 18 mystring.ads
 14i4 Max_MyString_Length{positive} 15|17r35
 17k9*MyString 15|4w6 17r25 18|60e13
 18R9 MyString 15|18r17[17]
-20V13 To_String{string} 15|87s40[17] 91s38[17]
-38V13 Substring{18R9[15|17]} 15|91s54[17]
+20V13 To_String{string} 15|92s40[17] 102s38[17]
+38V13 Substring{18R9[15|17]} 15|102s54[17]
 45U14 Get_Line 15|80s10[17]
 X 20 mystringtokeniser.ads
-3K9*MyStringTokeniser 15|5w6 84r11 87r7 20|28e22
-6i7*Start{positive} 15|84m61 91r71 91r82
-7i7*Length{natural} 15|84m73 91r93
-10A9*TokenArray(5R9)<integer> 15|84r29
-19U14*Tokenise 15|87s25
+3K9*MyStringTokeniser 15|5w6 84r11 92r7 20|51e22
+6i7*Start{positive} 15|84m61 102r71 102r82
+7i7*Length{natural} 15|84m73 102r93
+12A9*TokenArray(5R9)<integer> 15|84r29
+23U14*Tokenise 15|92s25
 X 21 pin.ads
-1K9*PIN 15|7w6 24r11 24r22 25r11 25r22 105r7 21|13e8
+1K9*PIN 15|7w6 24r11 24r22 25r11 25r22 116r7 21|13e8
 3I9*PIN<integer> 15|24r15 25r15
 5V13*From_String{3I9} 15|24s26 25s26
 X 22 stringtointeger.ads
-3K9*StringToInteger 15|6w6 113r37 128r8 22|8e20
-6V13*From_String{integer} 15|113s53 128s24
+3K9*StringToInteger 15|6w6 124r37 139r8 22|8e20
+6V13*From_String{integer} 15|124s53 139s24
 

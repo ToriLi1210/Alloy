@@ -263,7 +263,7 @@ package ada_main is
    pragma Export (C, u00112, "mystringB");
    u00113 : constant Version_32 := 16#ce083c8f#;
    pragma Export (C, u00113, "mystringS");
-   u00114 : constant Version_32 := 16#048d9c15#;
+   u00114 : constant Version_32 := 16#9a2a6a62#;
    pragma Export (C, u00114, "mystringtokeniserB");
    u00115 : constant Version_32 := 16#fd8d8b9c#;
    pragma Export (C, u00115, "mystringtokeniserS");

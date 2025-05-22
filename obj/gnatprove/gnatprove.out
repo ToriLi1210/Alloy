@@ -8,19 +8,19 @@ Data Dependencies                 .          .          .          .            
 Flow Dependencies                 .          .          .          .            .           .          .
 Initialization                   10         10          .          .            .           .          .
 Non-Aliasing                      1          1          .          .            .           .          .
-Run-time Checks                  88          .          .          .    86 (CVC4)           .          2
-Assertions                       16          .          .          .    16 (CVC4)           .          .
+Run-time Checks                  93          .          .          .    90 (CVC4)           .          3
+Assertions                       14          .          .          .    14 (CVC4)           .          .
 Functional Contracts             14          .          .          .    12 (CVC4)           .          2
 LSP Verification                  .          .          .          .            .           .          .
 --------------------------------------------------------------------------------------------------------
-Total                           129    11 (9%)          .          .    114 (88%)           .     4 (3%)
+Total                           132    11 (8%)          .          .    116 (88%)           .     5 (4%)
 
 
-max steps used for successful proof: 80
+max steps used for successful proof: 1
 
 Analyzed 6 units
 in unit main, 11 subprograms and packages out of 11 analyzed
-  Main at main.adb:15 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 8 checks out of 12 proved
+  Main at main.adb:15 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 10 checks out of 12 proved
   Main.Lines at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
   Main.Lines.Equal at mystring.ads:30, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
   Main.Lines.From_String at mystring.ads:24, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
@@ -49,7 +49,7 @@ in unit mycommandline, 0 subprograms and packages out of 4 analyzed
 in unit mystringtokeniser, 3 subprograms and packages out of 3 analyzed
   MyStringTokeniser at mystringtokeniser.ads:3 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
   MyStringTokeniser.Is_Whitespace at mystringtokeniser.ads:16 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  MyStringTokeniser.Tokenise at mystringtokeniser.ads:23 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (29 checks)
+  MyStringTokeniser.Tokenise at mystringtokeniser.ads:23 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 29 checks out of 32 proved
 in unit pin, 3 subprograms and packages out of 3 analyzed
   PIN at pin.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
   PIN.From_String at pin.ads:5 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
