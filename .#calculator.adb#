@@ -172,10 +172,10 @@ package body Calculator is
                   Temp < Long_Long_Integer(Min_Integer) then
 
                    -- push back to operand stack
-                   Push_2(Val_1,Val_2);
+                   Push_2(C,Val_1,Val_2);
                 Put_Line("Invald operation: Addition overflow");
             else
-                Addition(Number_1,Number_2,Result);
+                Addition(Val_1,Val_2,Result);
                 Push_1(C,Result);
             end if;
 
@@ -189,10 +189,10 @@ package body Calculator is
                   Temp < Long_Long_Integer(Min_Integer) then
 
                    -- push back to operand stack
-                   Push_2(Val_1,Val_2);
+                   Push_2(C,Val_1,Val_2);
                 Put_Line("Invald operation: Subtraction overflow");
             else
-                Subtraction(Number_1,Number_2,Result);
+                Subtraction(Val_1,Val_2,Result);
                 Push_1(C,Result);
             end if;
 
@@ -206,10 +206,10 @@ package body Calculator is
                   Temp < Long_Long_Integer(Min_Integer) then
 
                    -- push back to operand stack
-                   Push_2(Val_1,Val_2);
+                   Push_2(C,Val_1,Val_2);
                 Put_Line("Invald operation: Multiplication overflow");
             else
-                Multiplication(Number_1,Number_2,Result);
+                Multiplication(Val_1,Val_2,Result);
                 Push_1(C,Result);
             end if;
 
@@ -223,10 +223,10 @@ package body Calculator is
                   Temp < Long_Long_Integer(Min_Integer) then
 
                    -- push back to operand stack
-                   Push_2(Val_1,Val_2);
+                   Push_2(C,Val_1,Val_2);
                 Put_Line("Invald operation: Multiplication overflow");
             else
-                Division(Number_1,Number_2,Result);
+                Division(Val_1,Val_2,Result);
                 Push_1(C,Result);
             end if;
          end if;

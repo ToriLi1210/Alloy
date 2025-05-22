@@ -6,6 +6,7 @@ with MyStringTokeniser;
 with StringToInteger;
 with PIN;
 with MemoryStore;
+with Calculator
 
 with Ada.Text_IO;use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
@@ -15,6 +16,9 @@ with Ada.Long_Long_Integer_Text_IO;
 procedure Main is
    --  Helper instantiation for bounded lines
    package Lines is new MyString (Max_MyString_Length => 2048);
+   package Cal is new Calculator(Calculator_Stack_Capacity => 512);
+   
+   C    :Cal.Calculator;
    S    : Lines.MyString;
 
    --  Memory database demo
