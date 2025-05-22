@@ -35,28 +35,29 @@ package body Calculator is
 
 
    -- "+"
-   procedure Add(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
+   procedure Addition(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
       Result:= Number_1+Number_2;
-   end Add;
+   end Addition;
 
    -- "-"
-   procedure Minus(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
+   procedure Subtraction(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
       Result:= Number_1-Number_2;
-   end Minus;
+
+   end Subtraction;
 
    -- "*"
-   procedure Multiple(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
+   procedure Multiplication(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
       Result:= Number_1*Number_2;
-   end Multiple;
+   end Multiplication;
 
    -- "/"
-   procedure Divide(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
+   procedure Division(Number_1: in Integer; Number_2: in Integer;Result: out Integer) is
    begin
       Result:= Number_1/Number_2;
-   end Divide;
+   end Division;
 
    -- push1 <NAME>
    -- Push a number into the operand stack(Read and Modified) with a integer(Read only)
@@ -87,29 +88,151 @@ package body Calculator is
    -- loadFrom <NAME>; loads the value stored at memory location loc and pushes it onto the operand stack
    procedure Load_From(C:in out Calculator;D : in out MemoryStore.Database; Loc: in MemoryStore.Location_Index) is
    begin
-      MemoryStore.Remove(D,Loc);
+      declare
+         -- local variable
+         Val:Item;
+      begin
+         -- the value exist at memory location
+         if MemoryStore.Has(D,Loc) then
+            Val := MemoryStore.Get(D,Loc);
+            Push_1(C,Val);
+         else
+            Put_Line("No value has been stored in memory location");
+         end if;
+      end;
    end Load_From;
 
 
    -- storeTo <NAME>; pop the value from the top of the operand stack and stores it into memory location loc
    procedure Store_To(C:in out Calculator;D: in out MemoryStore.Database; Loc: in MemoryStore.Location_Index) is
    begin
+      declare
+         Val:Item;
+      begin
+         -- no value exist at memory location
+         if not MemoryStore.Has(D,Loc) then
+            Pop(C,Val);
+            MemoryStore.Put(D,Loc,Val);
+         else
+            Put_Line("A value has already been stored in memory location");
+         end if;
+      end
+
    end Store_To;
 
 
    -- unlock <NAME>
    procedure Unlock(C:in out Calculator;P: in PIN.PIN) is
    begin
+      -- unlock if pin is correct
+      if Is_PIN(C,P) then
+         C.Locked := False;
+      else
+         Put_Line("Invalid Pin");
+      end if;
+
    end Unlock;
 
-   -- lock <NAME>
-   procedure Lock(C:in out Calculator;P: in out PIN.PIN) is
+   -- lock <NAME> The “lock” command allows updating the master PIN
+   procedure Lock(C:in out Calculator;P: in PIN.PIN) is
+      -- modify master pin if user locks with new Pin
+      C.Masterpin := P;
+      C.Locked := True;
+
    begin
    end Lock;
 
    -- identify the command and call corresponding operation method
    procedure Calculation(C: in out Calculator; Operation: String) is
    begin
+      declare
+         Val_1:Item;
+         Val_2:Item;
+         Result:Item;
+         Temp:Long_Long_Integer;
+         Max_Integer: constant Integer:=Integer'Last;
+         Min_Integer: constant Integer:=Integer'First;
+
+      begin
+
+         -- exit if locked
+         pragma Assert (not IsLocked(C));
+
+         -- pop the top two values from the operand stack
+         Pop(C,Val_1);
+         Pop(C,Val_2);
+
+         -- Addition
+         if MyString.Equal(Operation,"+")then
+            -- convert from Integer to Long Long Integer
+            Temp:=Long_Long_Integer(Val_1)+Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if (Temp > Long_Long_Integer(Max_Integer) or
+                  Temp < Long_Long_Integer(Min_Integer) then
+
+                   -- push back to operand stack
+                   Push_2(Val_1,Val_2);
+                Put_Line("Invald operation: Addition overflow");
+            else
+                Addition(Number_1,Number_2,Result);
+                Push_1(C,Result);
+            end if;
+
+         -- Subtraction
+         elsif MyString.Equal(Operation,"-")then
+            -- convert from Integer to Long Long Integer
+            Temp:=Long_Long_Integer(Val_1)-Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if (Temp > Long_Long_Integer(Max_Integer) or
+                  Temp < Long_Long_Integer(Min_Integer) then
+
+                   -- push back to operand stack
+                   Push_2(Val_1,Val_2);
+                Put_Line("Invald operation: Subtraction overflow");
+            else
+                Subtraction(Number_1,Number_2,Result);
+                Push_1(C,Result);
+            end if;
+
+         -- Multiplication
+         elsif MyString.Equal(Operation,"*")then
+            -- convert from Integer to Long Long Integer
+            Temp:=Long_Long_Integer(Val_1)*Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if (Temp > Long_Long_Integer(Max_Integer) or
+                  Temp < Long_Long_Integer(Min_Integer) then
+
+                   -- push back to operand stack
+                   Push_2(Val_1,Val_2);
+                Put_Line("Invald operation: Multiplication overflow");
+            else
+                Multiplication(Number_1,Number_2,Result);
+                Push_1(C,Result);
+            end if;
+
+         -- Division
+         elsif MyString.Equal(Operation,"/")then
+                   -- convert from Integer to Long Long Integer
+            Temp:=Long_Long_Integer(Val_1)/Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if (Temp > Long_Long_Integer(Max_Integer) or
+                  Temp < Long_Long_Integer(Min_Integer) then
+
+                   -- push back to operand stack
+                   Push_2(Val_1,Val_2);
+                Put_Line("Invald operation: Multiplication overflow");
+            else
+                Division(Number_1,Number_2,Result);
+                Push_1(C,Result);
+            end if;
+         end if;
+      end;
+
+
    end Calculation;
 
 
@@ -120,59 +243,15 @@ package body Calculator is
    -- the Pin
    function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean is
    begin
+      -- PIN equality
+      if PIN."="(P,C.Masterpin) then
+         return True;
+      else
+         return False;
+      end if;
+
    end Is_PIN;
 
-
---     function Has (D : Database; Loc : Location_Index) return Boolean is
---       (D.Mem (Loc).Valid);
---
---     function Get (D : Database; Loc : Location_Index) return Int32 is
---       (D.Mem (Loc).Val);
---
---     function Length (D : Database) return Natural is
---       (D.Cnt);
-
-   ---------------------------------------------------------------------------
-   --  Update operations
-   ---------------------------------------------------------------------------
---     procedure Put
---       (D   : in out Database;
---        Loc : in     Location_Index;
---        Val : in     Int32) is
---     begin
---        if not D.Mem (Loc).Valid then
---           -- inserting a brand-new entry
---           D.Cnt := D.Cnt + 1;
---        end if;
---        D.Mem (Loc).Valid := True;
---        D.Mem (Loc).Val   := Val;
---     end Put;
---
---     procedure Remove
---       (D   : in out Database;
---        Loc : in     Location_Index) is
---     begin
---        if D.Mem (Loc).Valid then
---           D.Mem (Loc).Valid := False;
---           D.Cnt             := D.Cnt - 1;
---        end if;
---     end Remove;
-
-   ---------------------------------------------------------------------------
-   --  Pretty-print for the "list" command
-   ---------------------------------------------------------------------------
---     procedure Print (D : Database) is
---     begin
---        for Loc in Location_Index loop
---           if D.Mem (Loc).Valid then
---              Ada.Text_IO.Put ("   ");
---              Ada.Integer_Text_IO.Put (Loc, Width => 0);
---              Ada.Text_IO.Put (" => ");
---              Ada.Integer_Text_IO.Put (Integer (D.Mem (Loc).Val), Width => 0);
---              Ada.Text_IO.New_Line;
---           end if;
---        end loop;
---     end Print;
 
 
 

@@ -16,16 +16,16 @@ package Calculator with SPARK_Mode is
    procedure Init   (C : out Calculator; Master_PIN: in PIN.PIN);
 
    -- "+"
-   procedure Add(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
+   procedure Addition(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
 
    -- "-"
-   procedure Minus(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
+   procedure Subtraction(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
 
    -- "*"
-   procedure Multiple(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
+   procedure Multiplication(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
 
    -- "/"
-   procedure Divide(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
+   procedure Division(Number_1: in Integer; Number_2: in Integer;Result: out Integer);
 
 
    -- push1 <NAME>
@@ -47,7 +47,7 @@ package Calculator with SPARK_Mode is
    procedure Unlock(C:in out Calculator;P: in PIN.PIN);
 
    -- lock <NAME>
-   procedure Lock(C:in out Calculator;P: in out PIN.PIN);
+   procedure Lock(C:in out Calculator;P: in PIN.PIN);
 
    -- identify the command and call corresponding operation method
    procedure Calculation(C: in out Calculator; Operation: String);
