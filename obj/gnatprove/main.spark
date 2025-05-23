@@ -5,7 +5,7 @@
       "sloc": [
         {
           "file": "main.adb",
-          "line": 15
+          "line": 16
         }
       ],
       "spark": "all"
@@ -15,7 +15,7 @@
       "sloc": [
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -29,7 +29,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -43,7 +43,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -57,7 +57,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -71,7 +71,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -85,7 +85,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -99,7 +99,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -113,7 +113,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -127,7 +127,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -141,7 +141,7 @@
         },
         {
           "file": "main.adb",
-          "line": 17
+          "line": 18
         }
       ],
       "spark": "all"
@@ -150,7 +150,7 @@
   "flow": [
     {
       "file": "main.adb",
-      "line": 18,
+      "line": 22,
       "col": 4,
       "rule": "UNINITIALIZED",
       "severity": "info",
@@ -159,7 +159,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -169,7 +169,7 @@
     },
     {
       "file": "main.adb",
-      "line": 21,
+      "line": 25,
       "col": 4,
       "rule": "UNINITIALIZED",
       "severity": "info",
@@ -178,7 +178,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -188,7 +188,7 @@
     },
     {
       "file": "main.adb",
-      "line": 90,
+      "line": 94,
       "col": 7,
       "rule": "UNINITIALIZED",
       "severity": "info",
@@ -197,7 +197,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -220,7 +220,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -243,7 +243,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -266,7 +266,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -278,7 +278,7 @@
   "proof": [
     {
       "file": "main.adb",
-      "line": 24,
+      "line": 28,
       "col": 25,
       "rule": "VC_PRECONDITION",
       "severity": "info",
@@ -287,7 +287,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -327,7 +327,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 24,
+      "check_line": 28,
       "check_col": 25,
       "how_proved": "prover",
       "stats": {
@@ -340,7 +340,7 @@
     },
     {
       "file": "main.adb",
-      "line": 25,
+      "line": 29,
       "col": 25,
       "rule": "VC_PRECONDITION",
       "severity": "info",
@@ -349,7 +349,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -389,7 +389,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 25,
+      "check_line": 29,
       "check_col": 25,
       "how_proved": "prover",
       "stats": {
@@ -402,7 +402,7 @@
     },
     {
       "file": "main.adb",
-      "line": 35,
+      "line": 39,
       "col": 24,
       "rule": "VC_PRECONDITION",
       "severity": "info",
@@ -411,7 +411,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -429,7 +429,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 35,
+      "check_line": 39,
       "check_col": 24,
       "how_proved": "prover",
       "stats": {
@@ -442,7 +442,7 @@
     },
     {
       "file": "main.adb",
-      "line": 53,
+      "line": 57,
       "col": 49,
       "rule": "VC_PRECONDITION",
       "severity": "medium",
@@ -451,7 +451,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -466,7 +466,7 @@
             "CVC4_CE": {
               "result": "Unknown (unknown)",
               "steps": 1509,
-              "time": 1.50000000000000E-01
+              "time": 1.30000000000000E-01
             }
           },
           "transformations": {
@@ -474,7 +474,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 53,
+      "check_line": 57,
       "check_col": 49,
       "cntexmp": {
         "a-tiinio.ads": {
@@ -494,42 +494,42 @@
           ]
         },
         "main.adb": {
-          "22": [
+          "26": [
             {
               "name": "Loc1",
               "value": "10",
               "kind": "variable"
             }
           ],
-          "24": [
+          "28": [
             {
               "name": "PIN1",
               "value": "0",
               "kind": "variable"
             }
           ],
-          "25": [
+          "29": [
             {
               "name": "PIN2",
               "value": "0",
               "kind": "variable"
             }
           ],
-          "33": [
+          "37": [
             {
               "name": "Arg",
               "value": "1",
               "kind": "variable"
             }
           ],
-          "46": [
+          "50": [
             {
               "name": "Mem",
               "value": "(Mem => (others => (Valid => False, Val => 0)), Cnt => 0)",
               "kind": "variable"
             }
           ],
-          "53": [
+          "57": [
             {
               "name": "Loc1",
               "value": "10",
@@ -541,7 +541,7 @@
               "kind": "variable"
             }
           ],
-          "102": [
+          "106": [
             {
               "name": "TokStr'First",
               "value": "0",
@@ -560,7 +560,7 @@
     },
     {
       "file": "main.adb",
-      "line": 92,
+      "line": 96,
       "col": 24,
       "rule": "VC_PRECONDITION",
       "severity": "info",
@@ -569,7 +569,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -609,7 +609,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 92,
+      "check_line": 96,
       "check_col": 24,
       "how_proved": "prover",
       "stats": {
@@ -622,7 +622,7 @@
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 68,
       "rule": "VC_INDEX_CHECK",
       "severity": "info",
@@ -631,7 +631,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -660,7 +660,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 68,
       "how_proved": "prover",
       "stats": {
@@ -673,7 +673,7 @@
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 79,
       "rule": "VC_INDEX_CHECK",
       "severity": "info",
@@ -682,7 +682,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -711,7 +711,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 79,
       "how_proved": "prover",
       "stats": {
@@ -724,7 +724,7 @@
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 90,
       "rule": "VC_INDEX_CHECK",
       "severity": "info",
@@ -733,7 +733,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -743,7 +743,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 27,
-              "time": 1.10000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -762,20 +762,20 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 90,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
           "count": 2,
           "max_steps": 1,
-          "max_time": 1.09999999403954E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 87,
       "rule": "VC_OVERFLOW_CHECK",
       "severity": "info",
@@ -784,7 +784,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -794,7 +794,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 744,
-              "time": 1.40000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -802,20 +802,20 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 87,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
           "count": 1,
           "max_steps": 1,
-          "max_time": 1.40000000596046E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 99,
       "rule": "VC_RANGE_CHECK",
       "severity": "info",
@@ -824,7 +824,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -834,7 +834,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 736,
-              "time": 1.40000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -842,20 +842,20 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 99,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
           "count": 1,
           "max_steps": 1,
-          "max_time": 1.40000000596046E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
     {
       "file": "main.adb",
-      "line": 102,
+      "line": 106,
       "col": 53,
       "rule": "VC_PRECONDITION",
       "severity": "info",
@@ -864,7 +864,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -874,7 +874,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 736,
-              "time": 1.30000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -885,7 +885,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 733,
-              "time": 1.40000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -893,20 +893,20 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 102,
+      "check_line": 106,
       "check_col": 53,
       "how_proved": "prover",
       "stats": {
         "CVC4": {
           "count": 2,
           "max_steps": 1,
-          "max_time": 1.40000000596046E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
     {
       "file": "main.adb",
-      "line": 126,
+      "line": 130,
       "col": 45,
       "rule": "VC_OVERFLOW_CHECK",
       "severity": "medium",
@@ -915,7 +915,7 @@
         "sloc": [
           {
             "file": "main.adb",
-            "line": 15
+            "line": 16
           }
         ]
       },
@@ -925,7 +925,7 @@
             "CVC4": {
               "result": "Timeout",
               "steps": 775351,
-              "time": 1
+              "time": 0
             }
           },
           "transformations": {
@@ -933,7 +933,7 @@
         }
       ],
       "check_file": "main.adb",
-      "check_line": 126,
+      "check_line": 130,
       "check_col": 45,
       "msg_id": 1,
       "how_proved": "prover"
@@ -953,7 +953,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -997,7 +997,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1052,7 +1052,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1129,7 +1129,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1173,7 +1173,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1250,7 +1250,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1327,7 +1327,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1371,7 +1371,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1437,7 +1437,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1481,7 +1481,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1525,7 +1525,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1569,7 +1569,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1624,7 +1624,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1668,7 +1668,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1723,7 +1723,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1778,7 +1778,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1822,7 +1822,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1866,7 +1866,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1910,7 +1910,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1954,7 +1954,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -1998,7 +1998,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2042,7 +2042,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2097,7 +2097,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2152,7 +2152,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2207,7 +2207,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2262,7 +2262,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2306,7 +2306,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2350,7 +2350,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2405,7 +2405,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2449,7 +2449,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2504,7 +2504,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2559,7 +2559,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2614,7 +2614,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2691,7 +2691,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2768,7 +2768,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2823,7 +2823,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2878,7 +2878,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2922,7 +2922,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -2966,7 +2966,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3032,7 +3032,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3076,7 +3076,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3120,7 +3120,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3175,7 +3175,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3230,7 +3230,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3274,7 +3274,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3329,7 +3329,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3384,7 +3384,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3428,7 +3428,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3472,7 +3472,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3516,7 +3516,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3560,7 +3560,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3604,7 +3604,7 @@
           },
           {
             "file": "main.adb",
-            "line": 17
+            "line": 18
           }
         ]
       },
@@ -3648,7 +3648,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3664,7 +3664,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3680,7 +3680,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3696,7 +3696,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3712,7 +3712,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3729,7 +3729,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -3748,7 +3748,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3764,7 +3764,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3781,7 +3781,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -3800,7 +3800,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3816,7 +3816,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3832,7 +3832,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3848,7 +3848,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3864,7 +3864,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3881,7 +3881,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -3900,7 +3900,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3917,7 +3917,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -3936,7 +3936,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3952,7 +3952,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3968,7 +3968,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -3985,7 +3985,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4004,7 +4004,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4020,7 +4020,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4036,7 +4036,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4053,7 +4053,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4072,7 +4072,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4089,7 +4089,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4109,7 +4109,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4141,7 +4141,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4208,7 +4208,7 @@
             "sloc": [
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4224,7 +4224,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4240,7 +4240,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4256,7 +4256,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4413,7 +4413,7 @@
           "sloc": [
             {
               "file": "main.adb",
-              "line": 15
+              "line": 16
             }
           ]
         }
@@ -4469,7 +4469,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4489,7 +4489,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4508,7 +4508,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4524,7 +4524,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4540,7 +4540,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4557,7 +4557,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4577,7 +4577,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4597,7 +4597,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4617,7 +4617,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4633,7 +4633,7 @@
           "sloc": [
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4652,7 +4652,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4668,7 +4668,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4684,7 +4684,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4701,7 +4701,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4720,7 +4720,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4736,7 +4736,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4752,7 +4752,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4769,7 +4769,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4788,7 +4788,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4805,7 +4805,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4824,7 +4824,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4841,7 +4841,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4860,7 +4860,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4876,7 +4876,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4892,7 +4892,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4909,7 +4909,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4928,7 +4928,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4944,7 +4944,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4960,7 +4960,7 @@
               },
               {
                 "file": "main.adb",
-                "line": 17
+                "line": 18
               }
             ]
           }
@@ -4977,7 +4977,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -4997,7 +4997,7 @@
             },
             {
               "file": "main.adb",
-              "line": 17
+              "line": 18
             }
           ]
         }
@@ -5005,14 +5005,14 @@
     }
   ],
   "timings": {
-    "marking": 4.34100022539496E-03,
-    "globals (basic)": 1.25449998304248E-02,
-    "globals/properties (advanced)": 5.28499996289611E-03,
-    "flow analysis": 4.98280003666878E-02,
-    "codepeer results": 6.00000021222513E-06,
-    "init_why_sections": 6.00000028498471E-04,
-    "translation of standard": 4.84099984169006E-03,
-    "translation of compilation unit": 7.48720020055771E-02,
-    "proof": 2.23677110671997E+00
+    "marking": 4.66099986806512E-03,
+    "globals (basic)": 3.25799989514053E-03,
+    "globals/properties (advanced)": 4.45100013166666E-03,
+    "flow analysis": 4.99279983341694E-02,
+    "codepeer results": 4.99999987368938E-06,
+    "init_why_sections": 2.65999988187104E-04,
+    "translation of standard": 3.44299990683794E-03,
+    "translation of compilation unit": 7.46890008449554E-02,
+    "proof": 1.09214103221893E+00
   }
 }

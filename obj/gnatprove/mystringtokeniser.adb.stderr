@@ -1,3 +1,3 @@
 mystringtokeniser.adb:25:48: medium: overflow check might fail (e.g. when OutIndex = Integer'First)[#1]
 mystringtokeniser.adb:54:20: medium: array index check might fail (e.g. when OutIndex = 0 and Tokens'First = 1)[#0]
-mystringtokeniser.ads:37:08: medium: postcondition might fail, cannot prove Tokens(Index).Length > 0 (e.g. when Index = 2147483646 and Tokens = (Positive'Last-1 => (Start => 1, Length => 0), others => (Start => Positive'Last-1, Length => 2)))[#2]
+mystringtokeniser.ads:37:08: medium: postcondition might fail, cannot prove Tokens(Index).Length > 0[#2]

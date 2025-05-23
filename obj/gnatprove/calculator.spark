@@ -1,0 +1,259 @@
+{
+  "spark": [
+    {
+      "name": "Calculator",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 7
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Calculator",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 9
+        }
+      ],
+      "spark": "all"
+    },
+    {
+      "name": "Calculator.Init",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 21
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Addition",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 24
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Subtraction",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 27
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Multiplication",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 30
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Division",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 33
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Push_1",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 37
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Push_2",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 40
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Pop",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 43
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Load_From",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 46
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Store_To",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 49
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Unlock",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 52
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Lock",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 55
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Calculation",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 58
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Is_PIN",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 61
+        }
+      ],
+      "spark": "spec"
+    },
+    {
+      "name": "Calculator.Length",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 67
+        }
+      ],
+      "spark": "all"
+    },
+    {
+      "name": "Calculator.Is_Locked",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 70
+        }
+      ],
+      "spark": "all"
+    },
+    {
+      "name": "Calculator.Get_Pin",
+      "sloc": [
+        {
+          "file": "calculator.ads",
+          "line": 73
+        }
+      ],
+      "spark": "all"
+    }
+  ],
+  "flow": [
+  ],
+  "proof": [
+  ],
+  "assumptions": [
+    {
+      "assumptions": [
+      ],
+      "claim": {
+        "predicate": "CLAIM_EFFECTS",
+        "arg": {
+          "name": "Calculator.Is_Locked",
+          "sloc": [
+            {
+              "file": "calculator.ads",
+              "line": 70
+            }
+          ]
+        }
+      }
+    },
+    {
+      "assumptions": [
+      ],
+      "claim": {
+        "predicate": "CLAIM_EFFECTS",
+        "arg": {
+          "name": "Calculator.Get_Pin",
+          "sloc": [
+            {
+              "file": "calculator.ads",
+              "line": 73
+            }
+          ]
+        }
+      }
+    },
+    {
+      "assumptions": [
+      ],
+      "claim": {
+        "predicate": "CLAIM_EFFECTS",
+        "arg": {
+          "name": "Calculator.Length",
+          "sloc": [
+            {
+              "file": "calculator.ads",
+              "line": 67
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "timings": {
+    "marking": 4.42699994891882E-03,
+    "globals (basic)": 8.78799986094236E-03,
+    "globals/properties (advanced)": 5.68199995905161E-03,
+    "flow analysis": 8.21600016206503E-03,
+    "codepeer results": 6.00000021222513E-06,
+    "init_why_sections": 4.64000011561438E-04,
+    "translation of standard": 5.16999978572130E-03,
+    "translation of compilation unit": 2.68779993057251E-02,
+    "proof": 9.99999997475243E-07
+  }
+}

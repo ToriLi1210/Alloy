@@ -356,6 +356,7 @@
   </goal>
   <goal name="VC def.131" expl="postcondition">
   <proof prover="0"><result status="unknown" steps="1811"/></proof>
+  <proof prover="1"><result status="unknown" steps="1163"/></proof>
   </goal>
   <goal name="VC def.111" expl="precondition">
   <proof prover="0"><result status="valid" steps="93"/></proof>
@@ -367,9 +368,9 @@
   </goal>
   <goal name="VC def.112" expl="postcondition">
   </goal>
-  <goal name="VC def.39" expl="postcondition">
-  </goal>
   <goal name="VC def.38" expl="postcondition">
+  </goal>
+  <goal name="VC def.39" expl="postcondition">
   </goal>
   <goal name="VC def.117" expl="loop invariant preservation">
   <proof prover="0"><result status="valid" steps="169"/></proof>

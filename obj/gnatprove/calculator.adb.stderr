@@ -1,0 +1,2 @@
+calculator.adb:7:14: warning: SPARK_Mode not applied to this compilation unit
+calculator.adb:7:14: warning: only enclosed declarations with SPARK_Mode will be analyzed

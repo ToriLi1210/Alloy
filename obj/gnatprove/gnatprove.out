@@ -18,19 +18,39 @@ Total                           132    11 (8%)          .          .    116 (88%
 
 max steps used for successful proof: 1
 
-Analyzed 6 units
+Analyzed 7 units
+in unit calculator, 4 subprograms and packages out of 19 analyzed
+  Calculator at calculator.ads:7 skipped
+  Calculator.Addition at calculator.ads:24 skipped
+  Calculator.Calculation at calculator.ads:58 skipped
+  Calculator.Calculator at calculator.ads:9 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Calculator.Division at calculator.ads:33 skipped
+  Calculator.Get_Pin at calculator.ads:73 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Calculator.Init at calculator.ads:21 skipped
+  Calculator.Is_Locked at calculator.ads:70 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Calculator.Is_PIN at calculator.ads:61 skipped
+  Calculator.Length at calculator.ads:67 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Calculator.Load_From at calculator.ads:46 skipped
+  Calculator.Lock at calculator.ads:55 skipped
+  Calculator.Multiplication at calculator.ads:30 skipped
+  Calculator.Pop at calculator.ads:43 skipped
+  Calculator.Push_1 at calculator.ads:37 skipped
+  Calculator.Push_2 at calculator.ads:40 skipped
+  Calculator.Store_To at calculator.ads:49 skipped
+  Calculator.Subtraction at calculator.ads:27 skipped
+  Calculator.Unlock at calculator.ads:52 skipped
 in unit main, 11 subprograms and packages out of 11 analyzed
-  Main at main.adb:15 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 10 checks out of 12 proved
-  Main.Lines at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  Main.Lines.Equal at mystring.ads:30, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
-  Main.Lines.From_String at mystring.ads:24, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
-  Main.Lines.Get at mystring.ads:42, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  Main.Lines.Get_Line at mystring.ads:45, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  Main.Lines.Length at mystring.ads:35, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  Main.Lines.Less at mystring.ads:28, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
-  Main.Lines.MyString at mystring.ads:18, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  Main.Lines.Substring at mystring.ads:38, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
-  Main.Lines.To_String at mystring.ads:20, instantiated at main.adb:17 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
+  Main at main.adb:16 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 10 checks out of 12 proved
+  Main.Lines at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Main.Lines.Equal at mystring.ads:30, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
+  Main.Lines.From_String at mystring.ads:24, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (12 checks)
+  Main.Lines.Get at mystring.ads:42, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  Main.Lines.Get_Line at mystring.ads:45, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  Main.Lines.Length at mystring.ads:35, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  Main.Lines.Less at mystring.ads:28, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
+  Main.Lines.MyString at mystring.ads:18, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  Main.Lines.Substring at mystring.ads:38, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (11 checks)
+  Main.Lines.To_String at mystring.ads:20, instantiated at main.adb:18 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (7 checks)
 in unit memorystore, 1 subprograms and packages out of 9 analyzed
   MemoryStore at memorystore.ads:3 skipped
   MemoryStore.Database at memorystore.ads:13 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)

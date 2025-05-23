@@ -591,14 +591,14 @@
         {
           "proof_attempts": {
             "CVC4": {
-              "result": "Unknown (unknown)",
+              "result": "Unknown ()",
               "steps": 439,
-              "time": 5.00000000000000E-02
+              "time": 0
             },
             "CVC4_CE": {
               "result": "Unknown (unknown)",
               "steps": 865,
-              "time": 5.00000000000000E-02
+              "time": 0
             }
           },
           "transformations": {
@@ -993,14 +993,14 @@
         {
           "proof_attempts": {
             "CVC4": {
-              "result": "Unknown (unknown)",
+              "result": "Unknown ()",
               "steps": 642,
-              "time": 6.00000000000000E-02
+              "time": 0
             },
             "CVC4_CE": {
               "result": "Unknown (unknown)",
               "steps": 1251,
-              "time": 5.00000000000000E-02
+              "time": 0
             }
           },
           "transformations": {
@@ -1682,7 +1682,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 14,
-              "time": 1.20000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -1697,7 +1697,7 @@
         "CVC4": {
           "count": 1,
           "max_steps": 1,
-          "max_time": 1.19999997317791E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
@@ -1722,7 +1722,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 267,
-              "time": 1.20000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -1737,7 +1737,7 @@
         "CVC4": {
           "count": 1,
           "max_steps": 1,
-          "max_time": 1.19999997317791E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
@@ -1813,7 +1813,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 224,
-              "time": 1.10000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -1839,7 +1839,7 @@
         "CVC4": {
           "count": 2,
           "max_steps": 1,
-          "max_time": 1.09999999403954E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
@@ -1875,7 +1875,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 5,
-              "time": 1.10000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -1890,7 +1890,7 @@
         "CVC4": {
           "count": 2,
           "max_steps": 1,
-          "max_time": 1.09999999403954E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
@@ -1966,7 +1966,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 543,
-              "time": 1.30000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -1981,7 +1981,7 @@
         "CVC4": {
           "count": 1,
           "max_steps": 1,
-          "max_time": 1.29999995231628E-01
+          "max_time": 0.00000000000000E+00
         }
       }
     },
@@ -2004,24 +2004,13 @@
         {
           "proof_attempts": {
             "CVC4": {
-              "result": "Unknown (unknown)",
+              "result": "Unknown ()",
               "steps": 1811,
-              "time": 1.40000000000000E-01
-            }
-          },
-          "transformations": {
-          }
-        },
-        {
-          "proof_attempts": {
-            "CVC4": {
-              "result": "Unknown (unknown)",
-              "steps": 2289,
-              "time": 1.40000000000000E-01
+              "time": 0
             },
             "CVC4_CE": {
               "result": "Unknown (unknown)",
-              "steps": 2859,
+              "steps": 1163,
               "time": 8.00000000000000E-02
             }
           },
@@ -2031,9 +2020,25 @@
         {
           "proof_attempts": {
             "CVC4": {
-              "result": "Unknown (unknown)",
+              "result": "Unknown ()",
+              "steps": 2289,
+              "time": 0
+            },
+            "CVC4_CE": {
+              "result": "Unknown ()",
+              "steps": 2859,
+              "time": 0
+            }
+          },
+          "transformations": {
+          }
+        },
+        {
+          "proof_attempts": {
+            "CVC4": {
+              "result": "Unknown ()",
               "steps": 1394,
-              "time": 1.30000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -2044,7 +2049,7 @@
             "CVC4": {
               "result": "Valid",
               "steps": 219,
-              "time": 1.10000000000000E-01
+              "time": 0
             }
           },
           "transformations": {
@@ -2054,103 +2059,6 @@
       "check_file": "mystringtokeniser.ads",
       "check_line": 34,
       "check_col": 14,
-      "cntexmp": {
-        "mystringtokeniser.adb": {
-          "9": [
-            {
-              "name": "Processed",
-              "value": "0",
-              "kind": "variable"
-            }
-          ],
-          "10": [
-            {
-              "name": "OutIndex",
-              "value": "Integer'Last-2",
-              "kind": "variable"
-            },
-            {
-              "name": "Tokens'First",
-              "value": "2147483645",
-              "kind": "variable"
-            }
-          ],
-          "13": [
-            {
-              "name": "S",
-              "value": "(Positive'Last-1 => 'BS', Positive'Last => 'BS', others => 'HT')",
-              "kind": "variable"
-            }
-          ],
-          "17": [
-            {
-              "name": "Index",
-              "value": "Positive'Last-2",
-              "kind": "variable"
-            }
-          ],
-          "54": [
-            {
-              "name": "Tokens",
-              "value": "(Positive'Last-1 => (Start => 1, Length => 0), others => (Start => Positive'Last-1, Length => 2))",
-              "kind": "variable"
-            }
-          ],
-          "74": [
-            {
-              "name": "Count",
-              "value": "2",
-              "kind": "variable"
-            }
-          ]
-        },
-        "mystringtokeniser.ads": {
-          "23": [
-            {
-              "name": "S",
-              "value": "(Positive'Last-1 => 'BS', Positive'Last => 'BS', others => 'HT')",
-              "kind": "variable"
-            },
-            {
-              "name": "S'First",
-              "value": "2147483645",
-              "kind": "variable"
-            },
-            {
-              "name": "S'Last",
-              "value": "2147483647",
-              "kind": "variable"
-            },
-            {
-              "name": "Tokens",
-              "value": "(others => (Start => Positive'Last-1, Length => 2))",
-              "kind": "variable"
-            },
-            {
-              "name": "Tokens'First",
-              "value": "2147483645",
-              "kind": "variable"
-            },
-            {
-              "name": "Tokens'Last",
-              "value": "2147483646",
-              "kind": "variable"
-            }
-          ],
-          "37": [
-            {
-              "name": "Index",
-              "value": "2147483646",
-              "kind": "variable"
-            },
-            {
-              "name": "Tokens",
-              "value": "(Positive'Last-1 => (Start => 1, Length => 0), others => (Start => Positive'Last-1, Length => 2))",
-              "kind": "variable"
-            }
-          ]
-        }
-      },
       "msg_id": 2,
       "how_proved": "prover"
     }
@@ -2234,14 +2142,14 @@
     }
   ],
   "timings": {
-    "marking": 2.52899993211031E-03,
-    "globals (basic)": 9.22999985050410E-04,
-    "globals/properties (advanced)": 6.10999995842576E-04,
-    "flow analysis": 4.96000004932284E-03,
-    "codepeer results": 4.99999987368938E-06,
-    "init_why_sections": 2.89999996311963E-04,
-    "translation of standard": 3.26899997889996E-03,
-    "translation of compilation unit": 1.03829996660352E-02,
-    "proof": 1.88550794124603E+00
+    "marking": 2.73400009609759E-03,
+    "globals (basic)": 1.06999999843538E-03,
+    "globals/properties (advanced)": 6.84999977238476E-04,
+    "flow analysis": 6.60800002515316E-03,
+    "codepeer results": 3.00000010611257E-06,
+    "init_why_sections": 2.80999985989183E-04,
+    "translation of standard": 3.14199994318187E-03,
+    "translation of compilation unit": 1.09769999980927E-02,
+    "proof": 7.53229975700378E-01
   }
 }
