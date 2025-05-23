@@ -237,6 +237,17 @@ package body Calculator is
 
    end Is_PIN;
 
+   function Is_Valid_Pin (S : in String) return Boolean is
+   begin
+
+      return (S'Length = 4 and then
+      (for all I in S'Range => S(I) in '0' .. '9'));
+   end Is_Valid_Pin;
+
+   function Is_Operator_Command(S: in String) return Boolean is
+   begin
+      return (S = "+" or S = "-" or S = "*" or S = "/");
+   end Is_Operator_Command;
 
 
 

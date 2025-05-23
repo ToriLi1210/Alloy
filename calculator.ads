@@ -72,6 +72,11 @@ package Calculator with SPARK_Mode is
    -- get the master pin
    function Get_Pin(C : in Calculator) return PIN.PIN;
 
+    -- check the pin is valid, later convert to PIN.PIN
+   function Is_Valid_Pin(S : in String) return Boolean;
+
+   function Is_Operator_Command(S: in String) return Boolean;
+
 
 
 
@@ -95,6 +100,6 @@ private
      (C.Length);
    function Is_Locked(C : in Calculator) return Boolean is (C.Locked);
    function Get_Pin(C : in Calculator) return PIN.PIN is
-        (C.Masterpin);
+     (C.Masterpin);
 
 end Calculator;
