@@ -1,2 +1,0 @@
-memorystore.adb:4:14: warning: SPARK_Mode not applied to this compilation unit
-memorystore.adb:4:14: warning: only enclosed declarations with SPARK_Mode will be analyzed
