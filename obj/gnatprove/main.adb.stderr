@@ -1,2 +1,0 @@
-main.adb:57:49: medium: precondition might fail, cannot prove Has (D, Loc) (e.g. when Loc1 = 10 and Mem = (Mem => (others => (Valid => False, Val => 0)), Cnt => 0)) [possible explanation: call at line 50 should mention D (for argument Mem) in a postcondition][#0]
-main.adb:130:45: medium: overflow check might fail[#1]
