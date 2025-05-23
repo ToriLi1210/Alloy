@@ -1,0 +1,1 @@
+main.adb:21:04: warning: variable "C" is never read and never assigned

@@ -29,15 +29,17 @@ procedure Main is
    PIN2 : PIN.PIN := PIN.From_String ("1234");
 begin
    ------------------------------------------------------------------
-   --  Command-line echo
+   --  Command-line 
    ------------------------------------------------------------------
    Put(MyCommandLine.Command_Name); Put_Line(" is running!");
    Put("I was invoked with "); Put(MyCommandLine.Argument_Count,0); Put_Line(" arguments.");
+   if(M
    -- No arguement 
    for Arg in 1..MyCommandLine.Argument_Count loop
       Put("Argument "); Put(Arg,0); Put(": """);
       Put(MyCommandLine.Argument(Arg)); Put_Line("""");
    end loop;
+   
    
    ------------------------------------------------------------------
    --  MemoryStore CRUD(Create, Read, Update, Delete) demo
@@ -75,6 +77,20 @@ begin
    --   Mem: Mem_Array []
    --   Cnt: 0
    -- }
+   
+    ------------------------------------------------------------------
+   --  Calculator demo
+    ------------------------------------------------------------------
+   -- Init Calculator stack with 
+   MemoryStore.Init (Mem);
+
+   Put_Line ("Storing 50 at location 10 ...");
+   MemoryStore.Put (Mem, Loc1, 50); 
+   -- Mem :MemoryStore.Database {
+   --   Mem: Mem_Array [{10,50}]
+   --   Cnt: 1
+   -- }
+   
    
    ------------------------------------------------------------------
    --  Tokeniser demo

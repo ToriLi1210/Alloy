@@ -1,0 +1,184 @@
+V "GNAT Lib v2019"
+A -gnatA
+A -mtune=core2
+A -mmacosx-version-min=10.20.0
+A -fPIC
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV NO_LONG_LONG_INTEGERS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U calculator%b		calculator.adb		9e94fcee NE OO PK
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
+W memorystore%s		memorystore.adb		memorystore.ali
+
+U calculator%s		calculator.ads		c0582cf5 EE NE OO PK
+W interfaces%s		interfac.ads		interfac.ali
+W memorystore%s		memorystore.adb		memorystore.ali
+W pin%s			pin.adb			pin.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D calculator.ads	20250523133854 8bd485cf calculator%s
+D calculator.adb	20250523133908 a5048345 calculator%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D memorystore.ads	20250518134714 44057d61 memorystore%s
+D pin.ads		20250517060857 553c8633 pin%s
+D system.ads		20190518041255 085b6ffb system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [init calculator 21 14 none]
+G c Z s b [addition calculator 24 14 none]
+G c Z s b [subtraction calculator 27 14 none]
+G c Z s b [multiplication calculator 30 14 none]
+G c Z s b [division calculator 33 14 none]
+G c Z s b [push_1 calculator 37 14 none]
+G c Z s b [push_2 calculator 40 14 none]
+G c Z s b [pop calculator 43 14 none]
+G c Z s b [load_from calculator 46 14 none]
+G c Z s b [store_to calculator 49 14 none]
+G c Z s b [unlock calculator 52 14 none]
+G c Z s b [lock calculator 55 14 none]
+G c Z s b [calculation calculator 58 14 none]
+G c Z s b [is_pin calculator 61 13 none]
+G c Z s s [length calculator 67 13 none]
+G c Z s s [is_locked calculator 70 13 none]
+G c Z s s [get_pin calculator 73 13 none]
+G c Z s s [Toperand_stack_arrayBIP calculator 84 4 none]
+G c Z s s [calculatorIP calculator 86 9 none]
+G r c none [load_from calculator 46 14 none] [has memorystore 20 14 none]
+G r c none [load_from calculator 46 14 none] [get memorystore 22 14 none]
+G r c none [store_to calculator 49 14 none] [has memorystore 20 14 none]
+G r c none [store_to calculator 49 14 none] [put memorystore 25 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 9|1r6 2r5
+X 6 a-textio.ads
+57K13*Text_IO 727e16 9|1w10 2r9
+508U14*Put_Line 9|86s13 103s13 117s10 161s17 178s17 195s17 212s17
+X 8 calculator.ads
+7K9*Calculator 84E9 100l5 100e15 9|7b14 246l5 246t15
+9R9*Calculator 21r30 37r30 40r30 43r27 46r33 49r32 52r30 55r28 58r36 61r27
+. 67r26 70r30 73r28 86c9 91e14 94r27 96r30 97r28 9|11r27 50r30 59r30 67r27
+. 75r33 93r32 111r30 123r28 131r36 229r27
+14i4*Calculator_Stack_Capacity{positive} 84r56 87r33
+17I12*Int32{10|52I9} 24r36 24r56 24r74 27r39 27r59 27r77 30r42 30r62 30r80
+. 33r36 33r56 33r74 37r53 40r53 40r71 43r49 84r86 9|24r36 24r56 24r74 30r39
+. 30r59 30r77 37r42 37r62 37r80 43r36 43r56 43r74 50r53 59r53 59r71 67r49
+. 79r14 96r14 134r16 135r16 136r17 138r30 138r37 139r30 139r37
+21U14*Init 21<22 21>42 9|11b14 21l8 21t12
+21r22 C{9R9} 9|11b19 14m7 16m7 18m7 19m7
+21i42 Master_PIN{13|3I9} 9|11b39 16r20
+24U14*Addition 24>23 24>43 24<62 9|24b14 27l8 27t16 163s17
+24i23 Number_1{17I12} 9|24b23 26r16
+24i43 Number_2{17I12} 9|24b43 26r25
+24i62 Result{17I12} 9|24b62 26m7
+27U14*Subtraction 27>26 27>46 27<65 9|30b14 34l8 34t19 180s17
+27i26 Number_1{17I12} 9|30b26 32r16
+27i46 Number_2{17I12} 9|30b46 32r25
+27i65 Result{17I12} 9|30b65 32m7
+30U14*Multiplication 30>29 30>49 30<68 9|37b14 40l8 40t22 197s17
+30i29 Number_1{17I12} 9|37b29 39r16
+30i49 Number_2{17I12} 9|37b49 39r25
+30i68 Result{17I12} 9|37b68 39m7
+33U14*Division 33>23 33>43 33<62 9|43b14 46l8 46t16 214s17
+33i23 Number_1{17I12} 9|43b23 45r16
+33i43 Number_2{17I12} 9|43b43 45r25
+33i62 Result{17I12} 9|43b62 45m7
+37U14*Push_1 37=21 37>41 9|50b14 55l8 55t14 61s7 62s7 84s13 164s17 181s17
+. 198s17 215s17
+37r21 C{9R9} 9|50b21 52m7 52r17 54m7 54r23
+37i41 Number_1{17I12} 9|50b41 54r34
+40U14*Push_2 40=21 40>41 40>59 9|59b14 63l8 63t14 160s20 177s20 194s20 211s20
+40r21 C{9R9} 9|59b21 61m14 62m14
+40i41 Number_1{17I12} 9|59b41 61r16
+40i59 Number_2{17I12} 9|59b59 62r16
+43U14*Pop 43=18 43<38 9|67b14 71l8 71t11 100s13 147s10 148s10
+43r18 C{9R9} 9|67b18 69r15 69r31 70m7 70r17
+43i38 Result{17I12} 9|67b38 69m7
+46U14*Load_From 46=24 46=44 46>77 9|75b14 89l8 89t17
+46r24 C{9R9} 9|75b24 84m20
+46r44 D{12|13R9} 9|75b44 82r29 83r36
+46i77 Loc{12|8I12} 9|75b77 82r31 83r38
+49U14*Store_To 49=23 49=43 49>75 9|93b14 107l8 107t16
+49r23 C{9R9} 9|93b23 100m17
+49r43 D{12|13R9} 9|93b43 99r33 101m29
+49i75 Loc{12|8I12} 9|93b75 99r35 101r31
+52U14*Unlock 52=21 52>41 9|111b14 120l8 120t14
+52r21 C{9R9} 9|111b21 114r17 115m10
+52i41 P{13|3I9} 9|111b41 114r19
+55U14*Lock 55=19 55>39 9|123b14 128l8 128t12
+55r19 C{9R9} 9|123b19 126m7 127m7
+55i39 P{13|3I9} 9|123b39 126r22
+58U14*Calculation 58=26 58>48 9|131b14 221l8 221t19
+58r26 C{9R9} 9|131b26 144r39 147m14 148m14 160m27 164m24 177m27 181m24 194m27
+. 198m24 211m27 215m24
+58a48 Operation{string} 9|131b48 151r13 168r16 185r16 202r16
+61V13*Is_PIN{boolean} 61>20 61>38 9|114s10 229b13 238l8 238t14
+61r20 C{9R9} 9|229b20 232r20
+61i38 P{13|3I9} 9|229b38 232r18
+67V13*Length{natural} 67>20 94b13
+67r20 C{9R9} 95r7
+70V13*Is_Locked{boolean} 70>23 96b13 9|144s29
+70r23 C{9R9} 96r61
+73V13*Get_Pin{13|3I9} 73>21 97b13
+73r21 C{9R9} 98r10
+84A9 Operand_Stack_Array(17I12)<integer> 89r22
+87i7*Length{integer} 95r9 9|18m9 52m9 52r19 54r25 69r33 70m9 70r19
+88b7*Locked{boolean} 96r63 9|14m9 115m12 127m9
+89a7*Operand_stack{84A9} 9|19m9 54m9 69r17
+90i7*Masterpin{13|3I9} 98r12 9|16m9 126m9 232r22
+X 9 calculator.adb
+79i10 Val{8|17I12} 83m13 84r22
+96i10 Val{8|17I12} 100m19 101r35
+134i10 Val_1{8|17I12} 147m16 153r37 160r29 163r26 170r37 177r29 180r29 187r37
+. 194r29 197r32 204r37 211r29 214r26
+135i10 Val_2{8|17I12} 148m16 153r62 160r35 163r32 170r62 177r35 180r35 187r62
+. 194r35 197r38 204r62 211r35 214r32
+136i10 Result{8|17I12} 163m38 164r26 180m41 181r26 197m44 198r26 214m38 215r26
+137i10 Temp{long_long_integer} 153m13 156r16 157r19 170m13 173r16 174r19
+. 187m13 190r16 191r19 204m13 207r16 208r19
+138i10 Max_Int32{8|17I12} 156r41 173r41 190r41 207r41
+139i10 Min_Int32{8|17I12} 157r44 174r44 191r44 208r44
+X 10 interfac.ads
+38K9*Interfaces 8|3w6 17r21 9|4w6 5r5 10|184e15
+52I9*Integer_32<integer> 8|17r32
+X 12 memorystore.ads
+3K9*MemoryStore 8|2w6 46r55 46r85 49r53 49r83 9|3w6 75r55 75r85 82r13 83r20
+. 93r53 93r83 99r17 101r13 12|53e16
+8I12*Location_Index{positive} 8|46r97 49r95 9|75r97 93r95
+11I12*Int32{10|52I9}
+13R9*Database 8|46r67 49r65 9|75r67 93r65 12|51e14
+20V14*Has{boolean} 9|82s25 99s29
+22V14*Get{11I12} 9|83s32
+25U14*Put 9|101s25
+X 13 pin.ads
+1K9*PIN 8|1w6 21r57 52r47 55r45 61r44 73r47 90r18 97r47 9|11r54 111r47 123r45
+. 229r44 232r10 13|13e8
+3I9*PIN<integer> 8|21r61 52r51 55r49 61r48 73r51 90r22 97r51 9|11r58 111r51
+. 123r49 229r48
+

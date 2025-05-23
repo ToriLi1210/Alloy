@@ -1,0 +1,98 @@
+V "GNAT Lib v2019"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U mystring%b		mystring.adb		e1642826 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U mystring%s		mystring.ads		ce083c8f BN EE NE OO PK GE
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D mystring.ads		20250517060857 ce083c8f mystring%s
+D mystring.adb		20250517060857 8198c1c4 mystring%b
+D system.ads		20190518041255 085b6ffb system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [mystring standard 17 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 11|16r6 100r7
+X 6 a-textio.ads
+57K13*Text_IO 727e16 11|16w10 100r11
+481U14*Get_Line 11|100s19
+482a7 Item{string} 11|100r28
+483i7 Last{natural} 11|100r51
+X 10 mystring.ads
+14i4 Max_MyString_Length{positive} 25r26 36r31 48r48 50r33 11|31r21
+17k9*MyString 14z4 48E9 60l5 60e13 11|18b14 104l5 104t13
+18R9*MyString 20r27 24r44 28r23 28r38 30r24 30r39 35r24 38r27 38r76 42r21
+. 45r31 49c9 52e14 54r24 57r21 11|20r27 27r44 28r11 43r23 43r38 67r24 67r39
+. 86r27 86r76 87r11 98r31
+20V13*To_String{string} 20>23 21r14 22r14 22r45 11|20b13 25l8 25t17
+20r23 M{18R9} 21r47 22r76 11|20b23 21r26 23r24 23r30 23r43
+24V13*From_String{18R9} 24>25 26r22 11|27b13 41l8 41t19
+24a25 S{string} 25r14 26r44 11|27b25 31r10 34r19 35r16 36r41 37r22
+28V13*Less{boolean} 28>18 28>33 11|43b13 64l8 64t12
+28r18 M1{18R9} 11|43b18 44r22 46r10 48r13 51r22 52r41 53r16 55r19
+28r33 M2{18R9} 11|43b33 46r22 48r25 53r28 55r31
+30V13*Equal{boolean} 30>19 30>34 31r18 11|67b13 84l8 84t13
+30r19 M1{18R9} 32r18 33r33 33r44 11|67b19 68r22 70r10 73r22 74r41 75r60 76r16
+30r34 M2{18R9} 32r31 33r56 11|67b34 70r23 75r72 76r29
+33i18 I{integer} 33r47 33r59
+35V13*Length{natural} 21s40 22s69 26s15 32s11 32s24 33s26 35>20 36r14 39s34
+. 40s14 43s22 54b13
+35r20 M{18R9} 55r7
+38V13*Substring{18R9} 38>23 38>37 38>54 40r21 11|86b13 96l8 96t17
+38r23 M{18R9} 39r41 11|86b23 92r22
+38i37 From{positive} 39r13 40r46 11|86b37 87r39 90r16 91r41
+38i54 To{positive} 39r21 39r28 40r41 11|86b54 87r34 90r22
+42V13*Get{character} 33s40 33s52 42>17 42>31 57b13
+42r17 M{18R9} 43r29 58r7
+42i31 Index{positive} 43r13 58r13
+45U14*Get_Line 45<23 11|98b14 101l8 101t16
+45r23 M{18R9} 11|98b23 100m43 100r43 100m59 100r59
+48A9 MyStringStr(character)<integer> 51r16
+50i7 Length{integer} 55r9 11|21r28 23r45 28m24 34m9 46r13 46r25 48r16 48r28
+. 70r13 70r26 87m24 100m61
+51a7 Str{48A9} 58r9 11|23r26 23r32 28m37 29r24 37m12 44r25 51r25 52r44 53r19
+. 53r31 55r22 55r34 68r25 73r25 74r44 75r63 75r75 76r19 76r32 87m49 88r25
+. 92m12 92r24 100m45
+X 11 mystring.adb
+21a7 Result{string} 23m7 24r14
+28r7 M{10|18R9} 29r22 34m7 37m10 40r14
+29i7 J{integer} 36r33 37r16 38m10 38r15
+35i11 I{integer} 36r37 37r24
+44i7 I{integer} 51r17 52r36 53r23 53r35 55r26 55r38 58m16 58r21
+68i7 I{integer} 73r17 74r36 75r53 76r23 76r36 79m16 79r21
+75i45 J{integer} 75r67 75r79
+87r7 R{10|18R9} 88r23 92m10 95r14
+88i7 J{positive} 91r33 92r16 93m10 93r15
+90i11 I{integer} 91r37 92r28
+

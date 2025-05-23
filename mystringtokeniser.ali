@@ -1,0 +1,61 @@
+V "GNAT Lib v2019"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U mystringtokeniser%b	mystringtokeniser.adb	9a2a6a62 NE OO PK
+
+U mystringtokeniser%s	mystringtokeniser.ads	fd8d8b9c EE NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.latin_1%s  a-chlat1.ads	a-chlat1.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-charac.ads		20190518041255 2d3ec45b ada.characters%s
+D a-chlat1.ads		20190518041255 66457d31 ada.characters.latin_1%s
+D mystringtokeniser.ads	20250521051312 9bc8f6ad mystringtokeniser%s
+D mystringtokeniser.adb	20250521051158 01e29ccf mystringtokeniser%b
+D system.ads		20190518041255 085b6ffb system%s
+G a e
+G c Z s s [is_whitespace mystringtokeniser 16 13 none]
+G c Z s b [tokenise mystringtokeniser 23 14 none]
+G c Z s s [tokenextentIP mystringtokeniser 5 9 none]
+G c Z s s [tokenarrayIP mystringtokeniser 12 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 4|1r6 17r24 18r14
+X 2 a-charac.ads
+16K13*Characters 18e19 4|1r10 17r28 18r18
+X 3 a-chlat1.ads
+18K24*Latin_1 296e27 4|1w21 17r39 18r29
+34e4*HT{character} 4|18r37
+35e4*LF{character} 4|17r47
+X 4 mystringtokeniser.ads
+3K9*MyStringTokeniser 51l5 51e22 5|2b14 77l5 77t22
+5R9*TokenExtent 8e14 12r51 5|8r16
+6i7*Start{positive} 36r22 38r61 5|26r26 28r54 44m20
+7i7*Length{natural} 37r22 38r26 5|27r30 28r23 45m20 48r42 49r38 49r73 50r57
+. 51m23 51r40 66r32 70r40
+12A9*TokenArray(5R9)<integer> 23r54 5|6r54
+16V13*Is_Whitespace{boolean} 16>27 5|39s63 42s65 50s28
+16e27 Ch{character} 17r7 17r19 18r9
+23U14*Tokenise 23>23 23=38 23<66 5|6b14 75l8 75t16
+23a23 S{string} 24r17 24r35 24r46 36r31 38r38 5|6b23 13r11 13r21 17r16 22r50
+. 26r35 28r35 39r26 39r46 39r77 42r23 42r44 42r79 49r48 49r83 50r42 66r16
+23a38 Tokens{12A9} 24r58 24r74 34r23 35r29 35r43 36r8 37r8 38r12 38r47 5|6b38
+. 10r29 22r25 22r73 25r26 26r16 27r20 28r13 28r44 54m13 58r28
+23i66 Count{natural} 34r14 35r57 5|6b66 14m10 59m16 67m16 74m7
+35i20 Index{integer} 36r15 37r15 38r19 38r54
+X 5 mystringtokeniser.adb
+7i7 Index{positive} 17m7 22r41 39r17 39r38 39r79 40m13 40r22 42r14 42r35
+. 42r81 44r29 48r52 49r25 49r60 50r44 66r41 70m16 70r25
+8r7 Extent{4|5R9} 44m13 45m13 48r35 49r31 49r66 50r50 51m16 51r33 54r33 66r25
+. 70r33
+9i7 Processed{natural} 14r19 22r61 55m13 55r26 59r25 67r25 74r16
+10i7 OutIndex{integer} 22r13 25r40 54r20 58r17 62m16 62r28
+25i21 J{integer} 26r23 27r27 28r20 28r51
+
