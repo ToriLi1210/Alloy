@@ -78,13 +78,8 @@ package body Calculator is
          -- local variable
          Val:Int32;
       begin
-         -- the value exist at memory location
-         if MemoryStore.Has(D,Loc) then
-            Val := MemoryStore.Get(D,Loc);
-            Push_1(C,Val);
-         else
-            Put_Line("No value has been stored in memory location");
-         end if;
+         Val := MemoryStore.Get(D,Loc);
+         Push_1(C,Val);
       end;
    end Load_From;
 
@@ -95,28 +90,18 @@ package body Calculator is
       declare
          Val:Int32;
       begin
-         -- no value exist at memory location
-         if not MemoryStore.Has(D,Loc) then
-            Pop(C,Val);
-            MemoryStore.Put(D,Loc,Val);
-         else
-            Put_Line("A value has already been stored in memory location");
-         end if;
+         Pop(C,Val);
+         MemoryStore.Put(D,Loc,Val);
       end;
 
    end Store_To;
 
-
    -- unlock <NAME>
    procedure Unlock(C:in out Calculator;P: in PIN.PIN) is
    begin
-      -- unlock if pin is correct
       if Is_PIN(C,P) then
          C.Locked := False;
-      else
-         Put_Line("Invalid Pin");
       end if;
-
    end Unlock;
 
    -- lock <NAME> The “lock” command allows updating the master PIN
@@ -134,90 +119,40 @@ package body Calculator is
          Val_1:Int32;
          Val_2:Int32;
          Result:Int32;
-         Temp:Long_Long_Integer;
-         Max_Int32: constant Int32:=Int32'Last;
-         Min_Int32: constant Int32:=Int32'First;
 
       begin
 
          -- exit if locked
          pragma Assert (not Is_Locked(C));
 
+
          -- pop the top two values from the operand stack
+
          Pop(C,Val_1);
          Pop(C,Val_2);
 
          -- Addition
          if Operation = "+" then
-            -- convert from Int32 to Long Long Int32
-            Temp:=Long_Long_Integer(Val_1)+Long_Long_Integer(Val_2);
-
-            -- ensure the result not overflow
-            if Temp > Long_Long_Integer(Max_Int32) or
-                  Temp < Long_Long_Integer(Min_Int32) then
-
-                   -- push back to operand stack
-                   Push_2(C,Val_1,Val_2);
-                Put_Line("Invald operation: Addition overflow");
-            else
-                Addition(Val_1,Val_2,Result);
-                Push_1(C,Result);
-            end if;
+            Addition(Val_1,Val_2,Result);
+            Push_1(C,Result);
 
          -- Subtraction
          elsif Operation = "-" then
-            -- convert from Int32 to Long Long Int32
-            Temp:=Long_Long_Integer(Val_1)-Long_Long_Integer(Val_2);
-
-            -- ensure the result not overflow
-            if Temp > Long_Long_Integer(Max_Int32) or
-                  Temp < Long_Long_Integer(Min_Int32) then
-
-                   -- push back to operand stack
-                   Push_2(C,Val_1,Val_2);
-                Put_Line("Invald operation: Subtraction overflow");
-            else
-                Subtraction(Val_1,Val_2,Result);
-                Push_1(C,Result);
-            end if;
+            Subtraction(Val_1,Val_2,Result);
+            Push_1(C,Result);
 
          -- Multiplication
          elsif Operation = "*" then
-            -- convert from Int32 to Long Long Int32
-            Temp:=Long_Long_Integer(Val_1)*Long_Long_Integer(Val_2);
-
-            -- ensure the result not overflow
-            if Temp > Long_Long_Integer(Max_Int32) or
-                  Temp < Long_Long_Integer(Min_Int32) then
-
-                   -- push back to operand stack
-                   Push_2(C,Val_1,Val_2);
-                Put_Line("Invald operation: Multiplication overflow");
-            else
-                Multiplication(Val_1,Val_2,Result);
-                Push_1(C,Result);
-            end if;
+            Multiplication(Val_1,Val_2,Result);
+            Push_1(C,Result);
 
          -- Division
          elsif Operation = "/" then
-                   -- convert from Int32 to Long Long Int32
-            Temp:=Long_Long_Integer(Val_1)/Long_Long_Integer(Val_2);
+            Division(Val_1,Val_2,Result);
+            Push_1(C,Result);
 
-            -- ensure the result not overflow
-            if Temp > Long_Long_Integer(Max_Int32) or
-                  Temp < Long_Long_Integer(Min_Int32) then
-
-                   -- push back to operand stack
-                   Push_2(C,Val_1,Val_2);
-                Put_Line("Invald operation: Multiplication overflow");
-            else
-                Division(Val_1,Val_2,Result);
-                Push_1(C,Result);
-            end if;
          end if;
       end;
-
-
    end Calculation;
 
 

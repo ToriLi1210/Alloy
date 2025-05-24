@@ -22,3 +22,8 @@ gnatprove/
 
 .DS_Store
 Thumbs.db
+
+# Emacs backup files
+*~
+#*#
+.#*
