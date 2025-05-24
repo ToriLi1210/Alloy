@@ -226,8 +226,9 @@ begin
                   declare
                      Location : Integer := StringToInteger.From_String(ArgumentString);
                   begin
-
-                     if Calculator.Length(C) >= 512 then
+                     if Location < 1 or Location > 256 then
+                        Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                     elsif Calculator.Length(C) >= 512 then
                         Put_Line("STACK_ERROR: Stack is full");
                      elsif not MemoryStore.Has(Mem, Location) then
                         Put_Line("MEMORY_ERROR: No value at location");
@@ -238,16 +239,30 @@ begin
                
                -- storeTo
                elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
-                  if Calculator.Length(C) = 0 then
-                     Put_Line("STACK_ERROR: Cannot store from empty stack");
-                  else
-                     Calculator.Store_To(C,Mem,StringToInteger.From_String(ArgumentString)); 
-                  end if;
+                  declare
+                     Location : Integer := StringToInteger.From_String(ArgumentString);
+                  begin
+                     if Location < 1 or Location > 256 then
+                        Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                     elsif Calculator.Length(C) = 0 then
+                        Put_Line("STACK_ERROR: Cannot store from empty stack");
+                     else
+                        Calculator.Store_To(C,Mem,Location);
+                     end if;
+                  end;
 
                -- remove
-               elsif Lines.Equal(Command, Lines.From_String("remove")) then 
-                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
-               
+               elsif Lines.Equal(Command, Lines.From_String("remove")) then
+                  declare
+                     Location : Integer := StringToInteger.From_String(ArgumentString);
+                  begin
+                     if Location < 1 or Location > 256 then
+                        Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                     else
+                        MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
+                     end if;
+                  end;
+
                -- unknown command
                else
                   Put_Line("SYNTAX_ERROR: Unknown command");
