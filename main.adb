@@ -12,6 +12,7 @@ with Ada.Text_IO;use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Long_Long_Integer_Text_IO;
 with Interfaces;
+with Ada.Characters.Latin_1;
 
 procedure Main is
    --  Helper instantiation for bounded lines
@@ -34,7 +35,7 @@ procedure Main is
    
 begin
    ------------------------------------------------------------------
-   --  Command-line 
+   --  FATAL ERROR: Command-line argument validation (exit immeadiately)
    ------------------------------------------------------------------
 --     Put(MyCommandLine.Command_Name); Put_Line(" is running!");
 --     Put("I was invoked with "); Put(MyCommandLine.Argument_Count,0); Put_Line(" arguments.");
@@ -46,9 +47,11 @@ begin
 
    -- check command
    if ( MyCommandLine.Argument_Count /= 1 ) then
-      Put_Line("Wrong Command: Expected 1 argument");
+      Put_Line("SYSTEM_ERROR: Expected 1 argument (master PIN)");
+      return;
    elsif not Calculator.Is_Valid_Pin(MyCommandLine.Argument(1)) then
-      Put_Line("Wrong Command: PIN must be 4 digits"); 
+      Put_Line("INPUT_ERROR: PIN must be 4 digits (0000-9999)");
+      return;
    end if;
    
    
@@ -71,23 +74,66 @@ begin
 
       -- Read and tokenize
       Lines.Get_Line(S);
-      MyStringTokeniser.Tokenise(Lines.To_String(S), T, NumTokens);
 
+
+         
+      ------------------------------------------------------------------
+      --  FATAL ERROR: Input validation (exit immeadiately)
+      ------------------------------------------------------------------
+      
+      -- check input length
+      if Lines.Length(S) > 2048 then
+         Put_Line("INPUT_ERROR: Input too long (max 2048 characters)");
+         return;
+      end if;
+      
+      
+      -- check empty input
+      if Lines.Length(S) = 0 then
+         Put_Line("INPUT_ERROR: Empty input not allowed");
+         return;
+      end if;
+         
+        
+      -- check nul character
+      for I in 1..Lines.Length(S) loop
+         if Lines.To_String(S)(I) = Ada.Characters.Latin_1.NUL then
+            Put_Line("INPUT_ERROR: NUL characters not allowed");
+            return;
+         end if;
+      end loop; 
+          
+         
+         
+      ------------------------------------------------------------------
+      --  FATAL ERROR: Syntax validation (exit immeadiately)
+      ------------------------------------------------------------------
+         
+      MyStringTokeniser.Tokenise(Lines.To_String(S), T, NumTokens);
+      
+      -- Empty command   
       if NumTokens < 1 then
-         Put_Line("Empty entry!");
+         Put_Line("SYNTAX_ERROR: Empty command");
          return;
       elsif NumTokens > 3 then
-         Put_Line("Too many arguments!");
+         Put_Line("SYNTAX_ERROR: Too many arguments");
          return;
       end if;
 
+
+      ------------------------------------------------------------------
+      --  NumTokens = 1
+      ------------------------------------------------------------------
+         
+         
       -- Get command
       Command := Lines.Substring(S, T(1).Start, T(1).Start + T(1).Length - 1);
-
+         
+         
       if NumTokens = 1 then
+         -- Check Lock status
          if Calculator.Is_Locked(C) then
-            Put_Line("Invalid operation: Calculator is locked!");
-            return;
+            Put_Line("LOCK_ERROR: Calculator is locked");
          else
             declare
                Op : String := Lines.To_String(Command);
@@ -96,83 +142,158 @@ begin
                   Lines.Equal(Command, Lines.From_String("-")) or else
                   Lines.Equal(Command, Lines.From_String("*")) or else
                   Lines.Equal(Command, Lines.From_String("/")) then
-                  Calculator.Calculation(C, Op);
-
+                  
+                  -- Check #operands
+                  if Calculator.Length(C) < 2 then  
+                     Put_Line("STACK_ERROR: Need at least 2 operands");
+                  else
+                     Calculator.Calculation(C, Op);
+                  end if;
+               
+               -- pop
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
-                  declare
-                     Pop_num : Int32;
-                  begin
-                     Calculator.Pop(C, Pop_num);
-                     Put_Line("Popped: " & Int32'Image(Pop_num));
-                  end;
-
+                  if Calculator.Length(C) = 0 then
+                     Put_Line("STACK_ERROR: Cannot pop from empty stack");
+                  else
+                     declare
+                        Pop_num : Int32;
+                     begin
+                        Calculator.Pop(C, Pop_num);
+                        Put_Line("Popped: " & Int32'Image(Pop_num));
+                     end;
+                     end if;
+                     
+               -- list
                elsif Lines.Equal(Command, Lines.From_String("list")) then
                   MemoryStore.Print(Mem);
-
+               
+               -- Unknown command
                else
-                  Put_Line("Syntax_Exception: Unrecognized command!");
-               end if;
+                  Put_Line("SYNTAX_ERROR: Unknown command!");
+                  return;
+                  end if;
             end;
          end if;
-         elsif NumTokens = 2 then
-            Argument := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
-            declare
-               ArgumentString: String := Lines.To_String(Argument);
-            begin
-            if Calculator.Is_Locked(C) then
-               -- unlock
-               if Lines.Equal(Command, Lines.From_String("unlock")) then
-                  Calculator.Unlock(C,PIN.From_String(ArgumentString));
-               else
-                  Put_Line("Invalid operation: Calculator is locked!");
+            
+      ------------------------------------------------------------------
+      --  NumTokens = 2
+      ------------------------------------------------------------------
+            
+      elsif NumTokens = 2 then
+         Argument := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
+         declare
+            ArgumentString: String := Lines.To_String(Argument);
+         begin
+            -- unlock
+            if Lines.Equal(Command, Lines.From_String("unlock")) then
+               -- already unlocked
+               if not Calculator.Is_Locked(C) then
+                  Put_Line("LOCK_ERROR: Calculator already unlocked");
+               -- invalid pin format
+               elsif not Calculator.Is_Valid_Pin(ArgumentString) then
+                  Put_Line("INPUT_ERROR: Invalid PIN format");
                   return;
+               else
+                  Calculator.Unlock(C, PIN.From_String(ArgumentString));
                end if;
-               
+
+            elsif Calculator.Is_Locked(C) then
+               Put_Line("LOCK_ERROR: Calculator is locked");
+
+
+
             else
                -- lock
                if Lines.Equal(Command, Lines.From_String("lock")) then
-                  Calculator.Lock(C,PIN.From_String(ArgumentString));
+                  -- invalid pin format
+                  if not Calculator.Is_Valid_Pin(ArgumentString) then
+                     Put_Line("INPUT_ERROR: Invalid PIN format");
+                     return;
+                  else
+                     Calculator.Lock(C, PIN.From_String(ArgumentString));
+                  end if;
+		
                -- push1
                elsif Lines.Equal(Command, Lines.From_String("push1")) then
-                  Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
+                  if Calculator.Length(C) >= 512 then
+                     Put_Line("STACK_ERROR: Stack is full");
+                  else
+                     Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
+                  end if;
+
+               -- loadFrom
                elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
-                  Calculator.Load_From(C,Mem,StringToInteger.From_String(ArgumentString));
-               elsif Lines.Equal(Command, Lines.From_String("storeTo")) then                       
-                  Calculator.Store_To(C,Mem,StringToInteger.From_String(ArgumentString)); 
+                  declare
+                     Location : Integer := StringToInteger.From_String(ArgumentString);
+                  begin
+
+                     if Calculator.Length(C) >= 512 then
+                        Put_Line("STACK_ERROR: Stack is full");
+                     elsif not MemoryStore.Has(Mem, Location) then
+                        Put_Line("MEMORY_ERROR: No value at location");
+                     else
+                        Calculator.Load_From(C,Mem,StringToInteger.From_String(ArgumentString));
+                     end if;
+                  end;
+               
+               -- storeTo
+               elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
+                  if Calculator.Length(C) = 0 then
+                     Put_Line("STACK_ERROR: Cannot store from empty stack");
+                  else
+                     Calculator.Store_To(C,Mem,StringToInteger.From_String(ArgumentString)); 
+                  end if;
+
+               -- remove
                elsif Lines.Equal(Command, Lines.From_String("remove")) then 
                   MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
+               
+               -- unknown command
+               else
+                  Put_Line("SYNTAX_ERROR: Unknown command");
+                  return;
                end if; 
             end if;
-            end;
+         end;
             
-         elsif NumTokens = 3 then
-            if Calculator.Is_Locked(C) then
-               Put_Line("Invalid operation: Calculator is locked!");
-            return;
-            else
-               declare
-                  Op : String := Lines.To_String(Command);
-                  Argument_1:Lines.MyString := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
-                  Argument_2:Lines.MyString := Lines.Substring(S,T(3).Start,T(3).Start+T(3).Length-1);
-                  Argument1_String: String := Lines.To_String(Argument_1);
-                  Argument2_String: String := Lines.To_String(Argument_2);
-               begin
-                  if Lines.Equal(Command, Lines.From_String("push2")) then
-                     Calculator.Push_2(C,Int32(StringToInteger.From_String(Argument1_String))
-                                       ,Int32(StringToInteger.From_String(Argument2_String)));
+      ------------------------------------------------------------------
+      --  NumTokens = 3
+      ------------------------------------------------------------------
+      elsif NumTokens = 3 then
+         -- is locked
+         if Calculator.Is_Locked(C) then
+            Put_Line("LOCK_ERROR: Calculator is locked");
+         else
+            declare
+               Argument_1:Lines.MyString := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
+               Argument_2:Lines.MyString := Lines.Substring(S,T(3).Start,T(3).Start+T(3).Length-1);
+               Argument1_String: String := Lines.To_String(Argument_1);
+               Argument2_String: String := Lines.To_String(Argument_2);
+            begin
+               -- push2
+               if Lines.Equal(Command, Lines.From_String("push2")) then
+                  if Calculator.Length(C) >= 510 then
+                     Put_Line("STACK_ERROR: Stack full, cannot push 2 values");
                   else
-                     Put_Line("Invalid operation: Calculator is locked!");
-                     return;
+                     Calculator.Push_2(C,
+                                       Int32(StringToInteger.From_String(Argument1_String)),
+                                       Int32(StringToInteger.From_String(Argument2_String)));
                   end if;
-               end;
-            end if;
+               -- unknwon command
+               else
+                  Put_Line("SYNTAX_ERROR: Unknown command");
+                  return;
+               end if;
+            end;
+         end if;
             
                   
                   
                   
                
       else
-         Put_Line("Syntax_Exception: Only one-word commands allowed here.");
+         Put_Line("SYNTAX_ERROR: Invalid number of arguments");
+         return;
       end if;
    end;
 end loop;
