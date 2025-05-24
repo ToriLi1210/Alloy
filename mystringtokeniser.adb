@@ -33,7 +33,7 @@ package body MyStringTokeniser with SPARK_Mode is
          -- The loop ensures that the current available index in token array is equal to
          -- the start index of token array plus the number of already taken token space
          -- It is necessary to ensure that the token is not out bound of the token array
---           pragma Loop_Invariant (OutIndex = Tokens'First + Processed);
+           pragma Loop_Invariant (OutIndex = Tokens'First + Processed);
 
          -- look for start of next token
          while (Index >= S'First and Index < S'Last) and then Is_Whitespace(S(Index)) loop
