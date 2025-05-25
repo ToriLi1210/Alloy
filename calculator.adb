@@ -184,6 +184,13 @@ package body Calculator is
       return (S = "+" or S = "-" or S = "*" or S = "/");
    end Is_Operator_Command;
 
+   function Can_Push_N(C : in Calculator; N : Natural) return Boolean is
+   begin
+      return (Length(C) + N <= Calculator_Stack_Capacity);
+   end Can_Push_N;
+
+
+
 
 
 

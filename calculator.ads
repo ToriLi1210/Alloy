@@ -77,6 +77,8 @@ package Calculator with SPARK_Mode is
 
    function Is_Operator_Command(S: in String) return Boolean;
 
+   function Can_Push_N(C : in Calculator; N : Natural) return Boolean;
+
 
 
 
