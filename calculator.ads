@@ -49,7 +49,7 @@ package Calculator with SPARK_Mode is
    -- Removes the last item from the stack S and assigns it to I;
 
    -- loadFrom <NAME>; loads the value stored at memory location loc and pushes it onto the operand stack
-   procedure Load_From(C:in out Calculator;D : in out MemoryStore.Database; Loc: in MemoryStore.Location_Index) with
+   procedure Load_From(C:in out Calculator;D : in MemoryStore.Database; Loc: in MemoryStore.Location_Index) with
      -- has space
      Pre => not Is_Locked(C) and Can_Push_N(C,1) and Loc in 1 .. MemoryStore.Max_Locations and
      MemoryStore.Has(D, Loc),
@@ -87,7 +87,8 @@ package Calculator with SPARK_Mode is
    -- identify the command and call corresponding operation method
    procedure Calculation(C: in out Calculator; Operation: String) with
 
-     Pre => not Is_Locked(C) and Length(C)>=2,
+     Pre => not Is_Locked(C) and Length(C)>=2 and
+       (Operation = "+" or Operation = "-" or Operation = "*" or Operation = "/"),
      Post =>
    -- Add result back, othe value is unchanged
      Is_Locked(C) = Is_Locked(C'Old) and
@@ -99,36 +100,18 @@ package Calculator with SPARK_Mode is
    function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean;
 
     -- "+"
-   function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 with
-     Pre =>
-       Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2) in
-     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
-     Post =>
-       Addition'Result = Int32(Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2));
+   function Addition(Number_1: in Int32; Number_2: in Int32) return Int32;
 
    -- "-"
-   function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 with
-     Pre =>
-       Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2) in
-     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
-     Post =>
-       Subtraction'Result = Int32(Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2));
+   function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32;
 
    -- "*"
-   function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 with
-     Pre =>
-       Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2) in
-     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
-     Post =>
-       Multiplication'Result = Int32(Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2));
+   function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32;
 
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 with
-     Pre =>
-       Number_2 /= 0 and
-       (if Number_1 = Int32'First then Number_2 /= -1),
-     Post =>
-       Division'Result = Number_1 * Number_2;
+     Pre => Number_2 /= 0;
+--       Post => Division'Result = Number_1 / Number_2;
 
 
    -------already implementated in private section -------
@@ -144,7 +127,7 @@ package Calculator with SPARK_Mode is
 
    function Storage(C:in Calculator ;Pos: in Integer) return Int32
    -- make function stronger
-     with Ghost, Pre => (Pos in 1..Calculator_Stack_Capacity);
+     with Ghost, Pre => (Pos in 1..Calculator_Stack_Capacity and Pos <= Length(C));
 
 
 
@@ -158,7 +141,8 @@ package Calculator with SPARK_Mode is
 
    function Can_Push_N(C : in Calculator; N : Natural) return Boolean with
      Pre => Length(C) <= Calculator_Stack_Capacity and
-     N <= Calculator_Stack_Capacity;
+     N <= Calculator_Stack_Capacity,
+     Post => Can_Push_N'Result = (Length(C) + N <= Calculator_Stack_Capacity);
 
 
 

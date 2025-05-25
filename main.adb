@@ -155,48 +155,51 @@ begin
          
          
          if NumTokens = MIN_TOKEN then
-            -- Check Lock status
             if Calculator.Is_Locked(C) then
                Put_Line("LOCK_ERROR: Calculator is locked");
             else
-               declare
-                  Op : String := Lines.To_String(Command);
-               begin
-                  -- calculation   
-                  if Lines.Equal(Command, Lines.From_String("+")) or else
-                    Lines.Equal(Command, Lines.From_String("-")) or else
-                    Lines.Equal(Command, Lines.From_String("*")) or else
-                    Lines.Equal(Command, Lines.From_String("/")) then
-                  
-                     -- Check #operands
-                     if Calculator.Length(C) < 2 then  
-                        Put_Line("STACK_ERROR: Need at least 2 operands");
-                     else
-                        Calculator.Calculation(C, Op);
-                     end if;
-               
-                     -- pop
-                  elsif Lines.Equal(Command, Lines.From_String("pop")) then
-                     if Calculator.Length(C) = 0 then
-                        Put_Line("STACK_ERROR: Cannot pop from empty stack");
-                     else
-                        declare
-                           Pop_num : Int32;
-                        begin
-                           Calculator.Pop(C, Pop_num);
-                           Put_Line("Popped: " & Int32'Image(Pop_num));
-                        end;
-                     end if;
-                     
-                     -- list
-                  elsif Lines.Equal(Command, Lines.From_String("list")) then
-                     MemoryStore.Print(Mem);
-                     -- Unknown command
+               -- calculation   
+               if Lines.Equal(Command, Lines.From_String("+")) then
+                  if Calculator.Length(C) < 2 then  
+                     Put_Line("STACK_ERROR: Need at least 2 operands");
                   else
-                     Put_Line("SYNTAX_ERROR: Unknown command!");
-                     exit;
+                     Calculator.Calculation(C, "+");
                   end if;
-               end;
+               elsif Lines.Equal(Command, Lines.From_String("-")) then
+                  if Calculator.Length(C) < 2 then  
+                     Put_Line("STACK_ERROR: Need at least 2 operands");
+                  else
+                     Calculator.Calculation(C, "-");
+                  end if;
+               elsif Lines.Equal(Command, Lines.From_String("*")) then
+                  if Calculator.Length(C) < 2 then  
+                     Put_Line("STACK_ERROR: Need at least 2 operands");
+                  else
+                     Calculator.Calculation(C, "*");
+                  end if;
+               elsif Lines.Equal(Command, Lines.From_String("/")) then
+                  if Calculator.Length(C) < 2 then  
+                     Put_Line("STACK_ERROR: Need at least 2 operands");
+                  else
+                     Calculator.Calculation(C, "/");
+                  end if;
+               elsif Lines.Equal(Command, Lines.From_String("pop")) then
+                  if Calculator.Length(C) = 0 then
+                     Put_Line("STACK_ERROR: Cannot pop from empty stack");
+                  else
+                     declare
+                        Pop_num : Int32;
+                     begin
+                        Calculator.Pop(C, Pop_num);
+                        Put_Line("Popped: " & Int32'Image(Pop_num));
+                     end;
+                  end if;
+               elsif Lines.Equal(Command, Lines.From_String("list")) then
+                  MemoryStore.Print(Mem);
+               else
+                  Put_Line("SYNTAX_ERROR: Unknown command!");
+                  exit;
+               end if;
             end if;
             
             ------------------------------------------------------------------

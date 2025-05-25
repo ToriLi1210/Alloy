@@ -4,7 +4,7 @@ with MemoryStore;
 with Interfaces;
 use Interfaces;
 with PIN;
-package body Calculator is
+package body Calculator with SPARK_Mode is
    ---------------------------------------------------------------------------
    --  Initialisation
    ---------------------------------------------------------------------------
@@ -22,26 +22,54 @@ package body Calculator is
 
    -- "+"
    function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 is
+      Result : Long_Long_Integer;
    begin
-      return Number_1 + Number_2;
+      Result := Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2);
+      if Result < Long_Long_Integer(Int32'First) then
+         return Int32'First;
+      elsif Result > Long_Long_Integer(Int32'Last) then
+         return Int32'Last;
+      else
+         return Int32(Result);
+      end if;
    end Addition;
 
    -- "-"
    function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 is
+      Result : Long_Long_Integer;
    begin
-      return Number_1 - Number_2;
+      Result := Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2);
+      if Result < Long_Long_Integer(Int32'First) then
+         return Int32'First;
+      elsif Result > Long_Long_Integer(Int32'Last) then
+         return Int32'Last;
+      else
+         return Int32(Result);
+      end if;
    end Subtraction;
 
    -- "*"
    function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 is
+      Result : Long_Long_Integer;
    begin
-      return Number_1*Number_2;
+      Result := Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2);
+      if Result < Long_Long_Integer(Int32'First) then
+         return Int32'First;
+      elsif Result > Long_Long_Integer(Int32'Last) then
+         return Int32'Last;
+      else
+         return Int32(Result);
+      end if;
    end Multiplication;
 
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      return Number_1 / Number_2;
+      if Number_1 = Int32'First and Number_2 = -1 then
+         return Int32'Last;
+      else
+         return Number_1 / Number_2;
+      end if;
    end Division;
 
    -- push1 <NAME>
@@ -71,7 +99,7 @@ package body Calculator is
 
 
    -- loadFrom <NAME>; loads the value stored at memory location loc and pushes it onto the operand stack
-   procedure Load_From(C:in out Calculator;D : in out MemoryStore.Database; Loc: in MemoryStore.Location_Index) is
+   procedure Load_From(C:in out Calculator;D : in MemoryStore.Database; Loc: in MemoryStore.Location_Index) is
    begin
       declare
          -- local variable
@@ -127,7 +155,8 @@ package body Calculator is
 
          -- exit if locked
          pragma Assert (not Is_Locked(C));
-
+         pragma Assert(Length(C) >= 2);
+         pragma Assert(Operation = "+" or Operation = "-" or Operation = "*" or Operation = "/");
 
          -- pop the top two values from the operand stack
 
@@ -151,15 +180,8 @@ package body Calculator is
 
             -- Division
          elsif Operation = "/" then
-            if Val_2 = 0 then
-               Put_Line("ARITHMETIC_ERROR: Divide by zero");
-            else
-               -- push2 0 1
-               -- /
-               -- /0 = 0
-               Result := Division(Val_1, Val_2);
-               Push_1(C, Result);
-            end if;
+            Result := Division(Val_1, Val_2);
+            Push_1(C, Result);
 
 
          end if;
