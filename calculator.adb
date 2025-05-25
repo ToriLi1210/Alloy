@@ -3,17 +3,17 @@ use Ada.Text_IO;
 with MemoryStore;
 with Interfaces;
 use Interfaces;
-
+with PIN;
 package body Calculator is
    ---------------------------------------------------------------------------
    --  Initialisation
    ---------------------------------------------------------------------------
-   procedure Init(C : out Calculator; Master_PIN: in PIN.PIN) is
+   procedure Init(C : out Calculator; Master_PIN: in String) is
    begin
       -- The calculator begins in the locked state.
       C.Locked:=True;
       -- User needs to supply master pin
-      C.Masterpin:=Master_PIN;
+      C.Masterpin:=PIN.From_String(Master_PIN);
       -- The size of operand stack is 0
       C.Length:=0;
       C.Operand_stack:=(others=>0);
@@ -21,28 +21,27 @@ package body Calculator is
    end Init;
 
    -- "+"
-   procedure Addition(Number_1: in Int32; Number_2: in Int32;Result: out Int32) is
+   function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      Result:= Number_1+Number_2;
+      return Number_1 + Number_2;
    end Addition;
 
    -- "-"
-   procedure Subtraction(Number_1: in Int32; Number_2: in Int32;Result: out Int32) is
+   function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      Result:= Number_1-Number_2;
-
+      return Number_1 - Number_2;
    end Subtraction;
 
    -- "*"
-   procedure Multiplication(Number_1: in Int32; Number_2: in Int32;Result: out Int32) is
+   function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      Result:= Number_1*Number_2;
+      return Number_1*Number_2;
    end Multiplication;
 
    -- "/"
-   procedure Division(Number_1: in Int32; Number_2: in Int32;Result: out Int32) is
+   function Division(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      Result:= Number_1/Number_2;
+      return Number_1 / Number_2;
    end Division;
 
    -- push1 <NAME>
@@ -78,8 +77,12 @@ package body Calculator is
          -- local variable
          Val:Int32;
       begin
+
+         -- Get has precondition Has
          Val := MemoryStore.Get(D,Loc);
          Push_1(C,Val);
+
+
       end;
    end Load_From;
 
@@ -105,10 +108,10 @@ package body Calculator is
    end Unlock;
 
    -- lock <NAME> The “lock” command allows updating the master PIN
-   procedure Lock(C:in out Calculator;P: in PIN.PIN) is
+   procedure Lock(C:in out Calculator;P: in String) is
    begin
       -- modify master pin if user locks with new Pin
-      C.Masterpin := P;
+      C.Masterpin := PIN.From_String(P);
       C.Locked := True;
    end Lock;
 
@@ -133,23 +136,31 @@ package body Calculator is
 
          -- Addition
          if Operation = "+" then
-            Addition(Val_1,Val_2,Result);
-            Push_1(C,Result);
+            Result := Addition(Val_1, Val_2);
+            Push_1(C, Result);
 
-         -- Subtraction
+            -- Subtraction
          elsif Operation = "-" then
-            Subtraction(Val_1,Val_2,Result);
-            Push_1(C,Result);
+            Result := Subtraction(Val_1, Val_2);
+            Push_1(C, Result);
 
-         -- Multiplication
+            -- Multiplication
          elsif Operation = "*" then
-            Multiplication(Val_1,Val_2,Result);
-            Push_1(C,Result);
+            Result := Multiplication(Val_1, Val_2);
+            Push_1(C, Result);
 
-         -- Division
+            -- Division
          elsif Operation = "/" then
-            Division(Val_1,Val_2,Result);
-            Push_1(C,Result);
+            if Val_2 = 0 then
+               Put_Line("ARITHMETIC_ERROR: Divide by zero");
+            else
+               -- push2 0 1
+               -- /
+               -- /0 = 0
+               Result := Division(Val_1, Val_2);
+               Push_1(C, Result);
+            end if;
+
 
          end if;
       end;
@@ -174,9 +185,8 @@ package body Calculator is
 
    function Is_Valid_Pin (S : in String) return Boolean is
    begin
-
-      return (S'Length = 4 and then
-      (for all I in S'Range => S(I) in '0' .. '9'));
+      return (S' Length = 4 and
+               (for all I in S'Range => S(I) >= '0' and S(I) <= '9'));
    end Is_Valid_Pin;
 
    function Is_Operator_Command(S: in String) return Boolean is
