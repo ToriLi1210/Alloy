@@ -235,6 +235,23 @@ package body Calculator with SPARK_Mode is
       return (Length(C) + N <= Calculator_Stack_Capacity);
    end Can_Push_N;
 
+   function Is_Valid_Integer(S : String) return Boolean is
+   begin
+      if S'Length = 0 then
+         return False;
+      end if;
+
+      for I in S'Range loop
+         if I = S'First and then (S(I) = '-' or S(I) = '+') then
+            null;
+         elsif not (S(I) in '0' .. '9') then
+            return False;
+         end if;
+      end loop;
+
+      return True;
+   end Is_Valid_Integer;
+
 
 
 

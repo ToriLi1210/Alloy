@@ -167,6 +167,7 @@ package Calculator with SPARK_Mode is
      N <= Calculator_Stack_Capacity,
      Post => Can_Push_N'Result = (Length(C) + N <= Calculator_Stack_Capacity);
 
+   function Is_Valid_Integer(S:String) return Boolean;
 
 
 

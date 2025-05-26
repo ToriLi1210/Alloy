@@ -204,13 +204,6 @@ begin
          elsif MIN_TOKEN < NumTokens and then NumTokens < MAX_TOKEN then
             Argument := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
             
-            -- check commands do not accept arguments
-            if Lines.Equal(Command, Lines.From_String("pop")) or 
-              Lines.Equal(Command, Lines.From_String("list")) then
-               Put_Line("SYNTAX_ERROR: Command does not accept arguments");
-               exit;
-            end if;
-            
             declare
                Arg_Str : String := Lines.To_String(Argument);
                Is_Arg_Blank : Boolean := True;
@@ -231,12 +224,10 @@ begin
             declare
                ArgumentString: String := Lines.To_String(Argument);
             begin
-               -- unlock
-               if Lines.Equal(Command, Lines.From_String("unlock")) then
-                  -- already unlocked
-                  if not Calculator.Is_Locked(C) then
-                     Put_Line("LOCK_ERROR: Calculator already unlocked");
-                  else
+               -- lock
+               
+               if Calculator.Is_Locked(C) then
+                  if Lines.Equal(Command, Lines.From_String("unlock")) then
                      -- invalid pin format
                      if Calculator.Is_Valid_Pin(ArgumentString) then
                         if Calculator.Is_PIN(C,PIN.From_String(ArgumentString))then
@@ -249,9 +240,12 @@ begin
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      end if;
+                  else
+                     Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
+                     exit;
                   end if;
-
-               elsif not Calculator.Is_Locked(C) then
+              -- unlock status
+               else
                   
                   -- lock
                   if Lines.Equal(Command, Lines.From_String("lock")) then
@@ -262,74 +256,83 @@ begin
                      else
                         Calculator.Lock(C, ArgumentString);
                      end if;
-		
-                     -- push1
-                  elsif Lines.Equal(Command, Lines.From_String("push1")) then
-                     if not Calculator.Can_Push_N(C, 1) then
-                        Put_Line("STACK_ERROR: Stack is full");
-                     else
-                        Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
-                     end if;
-
-                     -- loadFrom
-                  elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
-                     declare
-                        Location : Integer := StringToInteger.From_String(ArgumentString);
-                     begin
-                        
-                        if Location < 1 or Location > MemoryStore.Max_Locations then
-                           Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
-                        elsif not Calculator.Can_Push_N(C, 1) then
-                           Put_Line("STACK_ERROR: Stack is full");
-                        elsif not MemoryStore.Has(Mem, Location) then
-                           Put_Line("MEMORY_ERROR: No value at location");
-                        else
-                           Calculator.Load_From(C,Mem,Location);
-                           pragma Assert (not Calculator.Is_Locked(C));
-                        end if;
-                     end;
-               
-                     -- storeTo
-                  elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
-                     declare
-                        Location : Integer := StringToInteger.From_String(ArgumentString);
-                     begin
-                        if Location < 1 or Location > MemoryStore.Max_Locations  then
-                           Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
-                        elsif Calculator.Length(C) = 0 then
-                           Put_Line("STACK_ERROR: Cannot store from empty stack");
-                        elsif MemoryStore.Has(Mem,Location)then
-                           Put_Line("MEMORY_ERROR: The memory loc is defined");
-                        else
-                           Calculator.Store_To(C,Mem,Location);
-                           pragma Assert (not Calculator.Is_Locked(C));
-                        end if;
-                     end;
-
-                     -- remove
-                  elsif Lines.Equal(Command, Lines.From_String("remove")) then
                      
-                     declare
-                        Location : Integer := StringToInteger.From_String(ArgumentString);
-                     begin
-                        if Location < 1 or Location > MemoryStore.Max_Locations then
-                           Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
-                        else
-                           MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
-                        end if;
-                     end;
-
-                     -- unknown command
+                     -- push1
+                     -- unlock
                   else
-                     Put_Line("SYNTAX_ERROR: Unknown command");
-                     exit;
-                  end if; 
-               else
-                  Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
-                  exit;
+                     -- check argument is integer/intger32
+                     if Calculator.Is_Valid_Integer(ArgumentString) then
+                        if Lines.Equal(Command, Lines.From_String("push1")) then
+                           if not Calculator.Can_Push_N(C, 1) then
+                              Put_Line("STACK_ERROR: Stack is full");
+                           else
+                              Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
+                           end if;
+
+                           -- loadFrom
+                        elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
+                           declare
+                              Location : Integer := StringToInteger.From_String(ArgumentString);
+                           begin
+                        
+                              if Location < 1 or Location > MemoryStore.Max_Locations then
+                                 Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                              elsif not Calculator.Can_Push_N(C, 1) then
+                                 Put_Line("STACK_ERROR: Stack is full");
+                              elsif not MemoryStore.Has(Mem, Location) then
+                                 Put_Line("MEMORY_ERROR: No value at location");
+                              else
+                                 Calculator.Load_From(C,Mem,Location);
+                                 pragma Assert (not Calculator.Is_Locked(C));
+                              end if;
+                           end;
+               
+                           -- storeTo
+                        elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
+                           declare
+                              Location : Integer := StringToInteger.From_String(ArgumentString);
+                           begin
+                              if Location < 1 or Location > MemoryStore.Max_Locations  then
+                                 Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                              elsif Calculator.Length(C) = 0 then
+                                 Put_Line("STACK_ERROR: Cannot store from empty stack");
+                              elsif MemoryStore.Has(Mem,Location)then
+                                 Put_Line("MEMORY_ERROR: The memory loc is defined");
+                              else
+                                 Calculator.Store_To(C,Mem,Location);
+                                 pragma Assert (not Calculator.Is_Locked(C));
+                              end if;
+                           end;
+
+                           -- remove
+                        elsif Lines.Equal(Command, Lines.From_String("remove")) then
+                     
+                           declare
+                              Location : Integer := StringToInteger.From_String(ArgumentString);
+                           begin
+                              if Location < 1 or Location > MemoryStore.Max_Locations then
+                                 Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
+                              else
+                                 MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
+                              end if;
+                           end;
+
+                           -- unknown command
+                        else
+                           Put_Line("SYNTAX_ERROR: Unknown command");
+                           exit;
+                        end if; 
+                        
+                     else
+                        Put_Line("SYNTAX_ERROR: Argument must be Integer");
+                        exit;
+                     end if;
+                  end if;
                end if;
             end;
-            
+              
+                 
+                     
             ------------------------------------------------------------------
             --  NumTokens = 3
             ------------------------------------------------------------------
@@ -349,6 +352,9 @@ begin
                   if Lines.Equal(Command, Lines.From_String("push2")) then
                      if not Calculator.Can_Push_N(C, 2) then
                         Put_Line("STACK_ERROR: Stack full, cannot push 2 values");
+                     elsif not (Calculator.Is_Valid_Integer(Argument1_String) and Calculator.Is_Valid_Integer(Argument2_String)) then
+                        Put_Line("SYNTAX_ERROR: Argument must be Integer");
+                        exit;
                      else
                         Calculator.Push_2(C,
                                           Int32(StringToInteger.From_String(Argument1_String)),
@@ -357,7 +363,7 @@ begin
                      -- unknwon command
                   else
                      Put_Line("SYNTAX_ERROR: Unknown command");
-                     return;
+                     exit;
                   end if;
                end;
             end if;
