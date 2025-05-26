@@ -128,7 +128,11 @@ begin
             end if;
          end loop; 
           
-         
+         -- check trailing spaces
+         if Lines.To_String(S)(Lines.To_String(S)'Last) = ' ' then
+            Put_Line("INPUT_ERROR: Extra space at end of command");
+            exit;
+         end if;
          
          ------------------------------------------------------------------
          --  FATAL ERROR: Syntax validation (exit immeadiately)
@@ -193,6 +197,31 @@ begin
             
          elsif MIN_TOKEN < NumTokens and then NumTokens < MAX_TOKEN then
             Argument := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
+            
+            -- check commands do not accept arguments
+            if Lines.Equal(Command, Lines.From_String("pop")) or 
+              Lines.Equal(Command, Lines.From_String("list")) then
+               Put_Line("SYNTAX_ERROR: Command does not accept arguments");
+               exit;
+            end if;
+            
+            declare
+               Arg_Str : String := Lines.To_String(Argument);
+               Is_Arg_Blank : Boolean := True;
+            begin
+               for C of Arg_Str loop
+                  if C /= ' ' then
+                     Is_Arg_Blank := False;
+                     exit;
+                  end if;
+               end loop;
+      
+               if Is_Arg_Blank then
+                  Put_Line("INPUT_ERROR: Argument cannot be empty or whitespace");
+                  exit;
+               end if;
+            end;
+            
             declare
                ArgumentString: String := Lines.To_String(Argument);
             begin
@@ -273,11 +302,12 @@ begin
 
                      -- remove
                   elsif Lines.Equal(Command, Lines.From_String("remove")) then
+                     
                      declare
                         Location : Integer := StringToInteger.From_String(ArgumentString);
                      begin
                         if Location < 1 or Location > MemoryStore.Max_Locations then
-                           Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                           Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
                         else
                            MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
                         end if;

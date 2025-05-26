@@ -88,10 +88,9 @@ package Calculator with SPARK_Mode is
      Post=> Is_Locked(C);
 
    -- identify the command and call corresponding operation method
-   procedure Calculation(C: in out Calculator; Operation: String)
-     with
-       Pre =>
-         not Is_Locked(C) and then Length(C) >= 2 and then Is_Operator_Command(Operation),
+   procedure Calculation(C: in out Calculator; Operation: String) with
+     Pre =>
+       not Is_Locked(C) and then Length(C) >= 2 and then Is_Operator_Command(Operation),
      Post =>
        -- Pop 2 value and Push 1 result, then beside that the rest of operand stack should be remain unchanged
        ((Length(C) = Length(C'Old) - 1  and Is_Locked(C) = Is_Locked(C'Old))
