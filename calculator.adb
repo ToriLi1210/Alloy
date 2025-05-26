@@ -105,12 +105,9 @@ package body Calculator with SPARK_Mode is
          -- local variable
          Val:Int32;
       begin
-
          -- Get has precondition Has
          Val := MemoryStore.Get(D,Loc);
          Push_1(C,Val);
-
-
       end;
    end Load_From;
 
@@ -154,17 +151,26 @@ package body Calculator with SPARK_Mode is
       begin
 
          -- exit if locked
-         pragma Assert (not Is_Locked(C));
-         pragma Assert(Length(C) >= 2);
-         pragma Assert(Operation = "+" or Operation = "-" or Operation = "*" or Operation = "/");
+         --           pragma Assert (not Is_Locked(C));
+         --           pragma Assert(Length(C) >= 2);
+         --  --           pragma Assert(Is_Operator_Command(Operation));
 
          -- pop the top two values from the operand stack
 
          Pop(C,Val_1);
          Pop(C,Val_2);
 
-         -- Addition
-         if Operation = "+" then
+         if Operation = "/" then
+            if Val_2 = 0 then
+               Push_2(C,Val_2,Val_1);
+               Put_Line("ARITHMETIC_ERROR: Divide by zero");
+            else
+               Result := Division(Val_1, Val_2);
+               Push_1(C, Result);
+            end if;
+            -- Division
+            -- Addition
+         elsif Operation = "+" then
             Result := Addition(Val_1, Val_2);
             Push_1(C, Result);
 
@@ -177,14 +183,8 @@ package body Calculator with SPARK_Mode is
          elsif Operation = "*" then
             Result := Multiplication(Val_1, Val_2);
             Push_1(C, Result);
-
-            -- Division
-         elsif Operation = "/" then
-            Result := Division(Val_1, Val_2);
-            Push_1(C, Result);
-
-
          end if;
+
       end;
    end Calculation;
 

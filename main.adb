@@ -159,29 +159,12 @@ begin
                Put_Line("LOCK_ERROR: Calculator is locked");
             else
                -- calculation   
-               if Lines.Equal(Command, Lines.From_String("+")) then
+               if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
                   if Calculator.Length(C) < 2 then  
                      Put_Line("STACK_ERROR: Need at least 2 operands");
                   else
-                     Calculator.Calculation(C, "+");
-                  end if;
-               elsif Lines.Equal(Command, Lines.From_String("-")) then
-                  if Calculator.Length(C) < 2 then  
-                     Put_Line("STACK_ERROR: Need at least 2 operands");
-                  else
-                     Calculator.Calculation(C, "-");
-                  end if;
-               elsif Lines.Equal(Command, Lines.From_String("*")) then
-                  if Calculator.Length(C) < 2 then  
-                     Put_Line("STACK_ERROR: Need at least 2 operands");
-                  else
-                     Calculator.Calculation(C, "*");
-                  end if;
-               elsif Lines.Equal(Command, Lines.From_String("/")) then
-                  if Calculator.Length(C) < 2 then  
-                     Put_Line("STACK_ERROR: Need at least 2 operands");
-                  else
-                     Calculator.Calculation(C, "/");
+                     Calculator.Calculation(C, Lines.To_String(Command));
+                     pragma Assert (not Calculator.Is_Locked(C));
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
                   if Calculator.Length(C) = 0 then
@@ -196,10 +179,12 @@ begin
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("list")) then
                   MemoryStore.Print(Mem);
+                  pragma Assert (not Calculator.Is_Locked(C));
                else
                   Put_Line("SYNTAX_ERROR: Unknown command!");
                   exit;
                end if;
+
             end if;
             
             ------------------------------------------------------------------
@@ -265,6 +250,7 @@ begin
                            Put_Line("MEMORY_ERROR: No value at location");
                         else
                            Calculator.Load_From(C,Mem,Location);
+                           pragma Assert (not Calculator.Is_Locked(C));
                         end if;
                      end;
                
@@ -278,9 +264,10 @@ begin
                         elsif Calculator.Length(C) = 0 then
                            Put_Line("STACK_ERROR: Cannot store from empty stack");
                         elsif MemoryStore.Has(Mem,Location)then
-                           Put_Line("STACK_ERROR: Cannot store from empty stack");
+                           Put_Line("MEMORY_ERROR: The memory loc is defined");
                         else
                            Calculator.Store_To(C,Mem,Location);
+                           pragma Assert (not Calculator.Is_Locked(C));
                         end if;
                      end;
 

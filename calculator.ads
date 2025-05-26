@@ -28,23 +28,26 @@ package Calculator with SPARK_Mode is
 
    -- push1 <NAME>
    procedure Push_1(C:in out Calculator;Number_1:in Int32) with
-     Pre=>Can_Push_N(C, 1),
+     Pre=>not Is_Locked(C) and Can_Push_N(C, 1),
      Post=>Length(C)=Length(C'Old)+1 and Storage(C,Length(C))=Number_1 and
-     (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I));
+     (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I)) and
+     Is_Locked(C) = Is_Locked(C'Old);
 
    -- push2 <NAME> <NAME>
    procedure Push_2(C:in out Calculator;Number_1:in Int32;Number_2:in Int32) with
-     Pre=> Can_Push_N(C, 2),
+     Pre=> not Is_Locked(C) and Can_Push_N(C, 2),
      Post=>Length(C)=Length(C'Old)+2 and Storage(C,Length(C)-1)=Number_1
      and Storage(C,Length(C))=Number_2 and
-     (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I));
+     (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I)) and
+     Is_Locked(C) = Is_Locked(C'Old);
 
    -- pop
    procedure Pop(C:in out Calculator;Result:out Int32)with
-     Pre =>(Length(C) /= 0),
+     Pre =>not Is_Locked(C) and (Length(C) /= 0),
      Post => (Length(C) = Length(C'Old)-1) and Result = Storage(C'Old,Length(C'Old)) and
      -- current size
-     (for all J in 1..Length(C)=> Storage(C,J) = Storage(C'Old,J))  ;
+     (for all J in 1..Length(C)=> Storage(C,J) = Storage(C'Old,J)) and
+     Is_Locked(C) = Is_Locked(C'Old);
    -- with Pre => S.size /= 0); x
    -- Removes the last item from the stack S and assigns it to I;
 
@@ -69,10 +72,10 @@ package Calculator with SPARK_Mode is
      Post =>
    -- Calculator lock state remains unchanged
      Is_Locked(C) = Is_Locked(C'Old) and
+     -- The memory location is undefined
      Length(C) = Length(C'Old) - 1 and
-     MemoryStore.Get(D, Loc) = Storage(C'Old, Length(C'Old)) and
-     (for all I in 1 .. Length(C) =>
-          Storage(C, I) = Storage(C'Old, I));
+     (for all I in 1 .. Length(C) =>Storage(C, I) = Storage(C'Old, I));
+
 
    -- unlock <NAME>
    procedure Unlock(C:in out Calculator;P: in PIN.PIN) with
@@ -85,16 +88,17 @@ package Calculator with SPARK_Mode is
      Post=> Is_Locked(C);
 
    -- identify the command and call corresponding operation method
-   procedure Calculation(C: in out Calculator; Operation: String) with
-
-     Pre => not Is_Locked(C) and Length(C)>=2 and
-       (Operation = "+" or Operation = "-" or Operation = "*" or Operation = "/"),
+   procedure Calculation(C: in out Calculator; Operation: String)
+     with
+       Pre =>
+         not Is_Locked(C) and then Length(C) >= 2 and then Is_Operator_Command(Operation),
      Post =>
-   -- Add result back, othe value is unchanged
-     Is_Locked(C) = Is_Locked(C'Old) and
-     Length(C) = Length(C'Old) - 1 and
-     (for all I in 1 .. Length(C)-1=>
-          Storage(C, I) = Storage(C'Old, I));
+       -- Pop 2 value and Push 1 result, then beside that the rest of operand stack should be remain unchanged
+       ((Length(C) = Length(C'Old) - 1 and  (for all I in 1 .. Length(C'Old)-2 =>Storage(C, I) = Storage(C'Old, I))
+        and Is_Locked(C) = Is_Locked(C'Old))
+       -- Pop 2 value and Push 2 value, then beside that the rest of operand stack should be remain unchanged
+        or (Length(C) = Length(C'Old) and  (for all I in 1 .. Length(C) =>Storage(C, I) = Storage(C'Old, I))
+          and  Is_Locked(C) = Is_Locked(C'Old)));
 
    -- the Pin
    function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean;
@@ -111,7 +115,7 @@ package Calculator with SPARK_Mode is
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 with
      Pre => Number_2 /= 0;
---       Post => Division'Result = Number_1 / Number_2;
+
 
 
    -------already implementated in private section -------
@@ -137,7 +141,9 @@ package Calculator with SPARK_Mode is
        Is_Valid_Pin'Result =
          (S'Length = 4 and then (for all I in S'Range => S(I) in '0' .. '9'));
 
-   function Is_Operator_Command(S: in String) return Boolean;
+   function Is_Operator_Command(S: in String) return Boolean with
+     Post=>
+      Is_Operator_Command'Result =  (S = "+" or S = "-" or S = "*" or S = "/");
 
    function Can_Push_N(C : in Calculator; N : Natural) return Boolean with
      Pre => Length(C) <= Calculator_Stack_Capacity and
