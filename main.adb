@@ -240,7 +240,9 @@ begin
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      end if;
-                  else
+                  elsif Lines.Equal(Command, Lines.From_String("lock"))then
+                     Put_Line("Already locked");
+                  else 
                      Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                      exit;
                   end if;
@@ -256,7 +258,8 @@ begin
                      else
                         Calculator.Lock(C, ArgumentString);
                      end if;
-                     
+                  elsif Lines.Equal(Command, Lines.From_String("unlock"))then
+                     Put_Line("Already unlocked");
                      -- push1
                      -- unlock
                   else
