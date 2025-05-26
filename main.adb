@@ -191,7 +191,7 @@ begin
                   MemoryStore.Print(Mem);
                   pragma Assert (not Calculator.Is_Locked(C));
                else
-                  Put_Line("SYNTAX_ERROR: Unknown command!");
+                  Put_Line("SYNTAX_ERROR: Invalid Input!");
                   exit;
                end if;
 
@@ -241,7 +241,12 @@ begin
                         exit;
                      end if;
                   elsif Lines.Equal(Command, Lines.From_String("lock"))then
-                     Put_Line("Already locked");
+                     if not Calculator.Is_Valid_Pin(ArgumentString) then
+                        Put_Line("INPUT_ERROR: Invalid PIN format");
+                        exit;
+                     else
+                        Put_Line("Already locked");
+                     end if;
                   else 
                      Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                      exit;
@@ -259,7 +264,12 @@ begin
                         Calculator.Lock(C, ArgumentString);
                      end if;
                   elsif Lines.Equal(Command, Lines.From_String("unlock"))then
-                     Put_Line("Already unlocked");
+                     if not Calculator.Is_Valid_Pin(ArgumentString) then
+                        Put_Line("INPUT_ERROR: Invalid PIN format");
+                        exit;
+                     else
+                        Put_Line("Already unlocked");
+                     end if;
                      -- push1
                      -- unlock
                   else
@@ -315,6 +325,8 @@ begin
                            begin
                               if Location < 1 or Location > MemoryStore.Max_Locations then
                                  Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
+                              elsif not MemoryStore.Has(Mem,Location) then
+                                 Put_Line("MEMORY_ERROR: Cannot remove from undefined location");
                               else
                                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
                               end if;
@@ -322,7 +334,7 @@ begin
 
                            -- unknown command
                         else
-                           Put_Line("SYNTAX_ERROR: Unknown command");
+                           Put_Line("SYNTAX_ERROR: Invalid Input");
                            exit;
                         end if; 
                         
@@ -365,7 +377,7 @@ begin
                      end if;
                      -- unknwon command
                   else
-                     Put_Line("SYNTAX_ERROR: Unknown command");
+                     Put_Line("SYNTAX_ERROR: Invalid Input");
                      exit;
                   end if;
                end;
