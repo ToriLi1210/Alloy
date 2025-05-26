@@ -127,6 +127,11 @@ begin
                exit;
             end if;
          end loop; 
+         
+         if Lines.To_String(S)(Lines.To_String(S)'Last) = ' ' then
+            Put_Line("Syntex_Exception: Please do not end your input with a SPACE!");
+            return;
+         end if;
           
          
          
@@ -156,7 +161,8 @@ begin
          
          if NumTokens = MIN_TOKEN then
             if Calculator.Is_Locked(C) then
-               Put_Line("LOCK_ERROR: Calculator is locked");
+               Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
+               exit;
             else
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
@@ -286,10 +292,11 @@ begin
                      -- unknown command
                   else
                      Put_Line("SYNTAX_ERROR: Unknown command");
-                     return;
+                     exit;
                   end if; 
                else
-                  Put_Line("LOCK_ERROR: Calculator is locked");
+                  Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
+                  exit;
                end if;
             end;
             
@@ -299,7 +306,8 @@ begin
          elsif NumTokens = MAX_TOKEN then
             -- is locked
             if Calculator.Is_Locked(C) then
-               Put_Line("LOCK_ERROR: Calculator is locked");
+               Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
+               exit;
             else
                declare
                   Argument_1:Lines.MyString := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
