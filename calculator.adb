@@ -22,54 +22,26 @@ package body Calculator with SPARK_Mode is
 
    -- "+"
    function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 is
-      Result : Long_Long_Integer;
    begin
-      Result := Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2);
-      if Result < Long_Long_Integer(Int32'First) then
-         return Int32'First;
-      elsif Result > Long_Long_Integer(Int32'Last) then
-         return Int32'Last;
-      else
-         return Int32(Result);
-      end if;
+      return Number_1+Number_2;
    end Addition;
 
    -- "-"
    function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 is
-      Result : Long_Long_Integer;
    begin
-      Result := Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2);
-      if Result < Long_Long_Integer(Int32'First) then
-         return Int32'First;
-      elsif Result > Long_Long_Integer(Int32'Last) then
-         return Int32'Last;
-      else
-         return Int32(Result);
-      end if;
+      return Number_1-Number_2;
    end Subtraction;
 
    -- "*"
    function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 is
-      Result : Long_Long_Integer;
    begin
-      Result := Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2);
-      if Result < Long_Long_Integer(Int32'First) then
-         return Int32'First;
-      elsif Result > Long_Long_Integer(Int32'Last) then
-         return Int32'Last;
-      else
-         return Int32(Result);
-      end if;
+      return Number_1*Number_2;
    end Multiplication;
 
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 is
    begin
-      if Number_1 = Int32'First and Number_2 = -1 then
-         return Int32'Last;
-      else
-         return Number_1 / Number_2;
-      end if;
+      return Number_1/Number_2;
    end Division;
 
    -- push1 <NAME>
@@ -147,6 +119,9 @@ package body Calculator with SPARK_Mode is
          Val_1:Int32;
          Val_2:Int32;
          Result:Int32;
+         Temp:Long_Long_Integer;
+         Max_Int32: constant Int32:=Int32'Last;
+         Min_Int32: constant Int32:=Int32'First;
 
       begin
 
@@ -164,6 +139,9 @@ package body Calculator with SPARK_Mode is
             if Val_2 = 0 then
                Push_2(C,Val_2,Val_1);
                Put_Line("ARITHMETIC_ERROR: Divide by zero");
+            elsif Val_1 = Min_Int32 and Val_2 = -1 then
+               Push_2(C, Val_2, Val_1);
+               Put_Line("ARITHMETIC_ERROR: Division overflow");
             else
                Result := Division(Val_1, Val_2);
                Push_1(C, Result);
@@ -171,18 +149,54 @@ package body Calculator with SPARK_Mode is
             -- Division
             -- Addition
          elsif Operation = "+" then
-            Result := Addition(Val_1, Val_2);
-            Push_1(C, Result);
+            -- convert from Int32 to Long Long Int32
+            Temp:=Long_Long_Integer(Val_1)+Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if Temp > Long_Long_Integer(Max_Int32) or
+              Temp < Long_Long_Integer(Min_Int32) then
+
+               -- push back to operand stack
+               Push_2(C,Val_1,Val_2);
+               Put_Line("ARITHMETIC_ERROR: Addition overflow");
+            else
+                Result := Addition(Val_1,Val_2);
+                Push_1(C,Result);
+            end if;
 
             -- Subtraction
          elsif Operation = "-" then
-            Result := Subtraction(Val_1, Val_2);
-            Push_1(C, Result);
+            Temp:=Long_Long_Integer(Val_1)-Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if Temp > Long_Long_Integer(Max_Int32) or
+              Temp < Long_Long_Integer(Min_Int32) then
+
+               -- push back to operand stack
+               Push_2(C,Val_1,Val_2);
+               Put_Line("ARITHMETIC_ERROR: Subtraction overflow");
+            else
+               Result := Subtraction(Val_1, Val_2);
+               Push_1(C, Result);
+            end if;
+
 
             -- Multiplication
          elsif Operation = "*" then
-            Result := Multiplication(Val_1, Val_2);
+
+           Temp:=Long_Long_Integer(Val_1)*Long_Long_Integer(Val_2);
+
+            -- ensure the result not overflow
+            if Temp > Long_Long_Integer(Max_Int32) or
+              Temp < Long_Long_Integer(Min_Int32) then
+
+               -- push back to operand stack
+               Push_2(C,Val_1,Val_2);
+               Put_Line("ARITHMETIC_ERROR: Multiplication overflow");
+            else
+                Result := Multiplication(Val_1, Val_2);
             Push_1(C, Result);
+            end if;
          end if;
 
       end;

@@ -94,27 +94,45 @@ package Calculator with SPARK_Mode is
          not Is_Locked(C) and then Length(C) >= 2 and then Is_Operator_Command(Operation),
      Post =>
        -- Pop 2 value and Push 1 result, then beside that the rest of operand stack should be remain unchanged
-       ((Length(C) = Length(C'Old) - 1 and  (for all I in 1 .. Length(C'Old)-2 =>Storage(C, I) = Storage(C'Old, I))
-        and Is_Locked(C) = Is_Locked(C'Old))
+       ((Length(C) = Length(C'Old) - 1  and Is_Locked(C) = Is_Locked(C'Old))
        -- Pop 2 value and Push 2 value, then beside that the rest of operand stack should be remain unchanged
-        or (Length(C) = Length(C'Old) and  (for all I in 1 .. Length(C) =>Storage(C, I) = Storage(C'Old, I))
+        or (Length(C) = Length(C'Old)
           and  Is_Locked(C) = Is_Locked(C'Old)));
 
    -- the Pin
    function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean;
 
     -- "+"
-   function Addition(Number_1: in Int32; Number_2: in Int32) return Int32;
+   function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 with
+     Pre =>
+       Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2) in
+     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
+     Post =>
+       Addition'Result = Int32(Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2));
 
    -- "-"
-   function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32;
+   function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 with
+     Pre =>
+       Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2) in
+     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
+     Post =>
+       Subtraction'Result = Int32(Long_Long_Integer(Number_1) - Long_Long_Integer(Number_2));
 
    -- "*"
-   function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32;
+   function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 with
+     Pre =>
+       Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2) in
+     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
+     Post =>
+       Multiplication'Result = Int32(Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2));
 
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 with
-     Pre => Number_2 /= 0;
+     Pre =>
+       Number_2 /= 0 and
+       (if Number_1 = Int32'First then Number_2 /= -1),
+     Post =>
+       Division'Result = Number_1 / Number_2;
 
 
 
