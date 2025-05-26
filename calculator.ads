@@ -92,11 +92,11 @@ package Calculator with SPARK_Mode is
      Pre =>
        not Is_Locked(C) and then Length(C) >= 2 and then Is_Operator_Command(Operation),
      Post =>
-       -- Pop 2 value and Push 1 result, then beside that the rest of operand stack should be remain unchanged
-       ((Length(C) = Length(C'Old) - 1  and Is_Locked(C) = Is_Locked(C'Old))
-       -- Pop 2 value and Push 2 value, then beside that the rest of operand stack should be remain unchanged
-        or (Length(C) = Length(C'Old)
-          and  Is_Locked(C) = Is_Locked(C'Old)));
+   -- Pop 2 value and Push 1 result, then beside that the rest of operand stack should be remain unchanged
+     ((Length(C) = Length(C'Old) - 1  and Is_Locked(C) = Is_Locked(C'Old))
+      -- Pop 2 value and Push 2 value, then beside that the rest of operand stack should be remain unchanged
+      or (Length(C) = Length(C'Old)
+        and  Is_Locked(C) = Is_Locked(C'Old)));
 
    -- the Pin
    function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean;
