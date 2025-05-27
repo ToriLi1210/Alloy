@@ -150,6 +150,8 @@ begin
    MemoryStore.Init (Mem);
    
    loop
+
+      pragma Loop_Invariant (Calculator.Length(C) in 0..Calculator.Calculator_Stack_Capacity);
       
       declare
          T : MyStringTokeniser.TokenArray(1..MAX_TOKEN) := (others => (Start => 1, Length => 0));
@@ -190,8 +192,11 @@ begin
                Input_Str : String := Lines.To_String(S);
                Is_Blank  : Boolean := True;
             begin
-               for C of Input_Str loop
-                  if C /= ' ' then
+               for C in Input_Str'Range loop
+                  pragma Loop_Invariant (C in Input_Str'Range);
+                  pragma Loop_Invariant (if C > Input_Str'First then 
+                                           (for all J in Input_Str'First..C-1 => Input_Str(J) = ' '));
+                  if Input_Str(C) /= ' ' then
                      Is_Blank := False;
                      exit;
                   end if;
@@ -207,11 +212,14 @@ begin
 
          -- check nul character
          for I in 1..Lines.Length(S) loop
+            pragma Loop_Invariant (I in 1..Lines.Length(S));
+            pragma Loop_Invariant (for all J in 1..I-1 => 
+                                     Lines.To_String(S)(J) /= Ada.Characters.Latin_1.NUL);
             if Lines.To_String(S)(I) = Ada.Characters.Latin_1.NUL then
                Put_Line("INPUT_ERROR: NUL characters not allowed");
                exit;
             end if;
-         end loop; 
+         end loop;
          
 
          -- check trailing whitespace (space, tab, etc.)
