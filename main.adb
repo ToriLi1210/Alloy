@@ -3,7 +3,7 @@
 -- Sean(Aoxiang) Xiao, Student ID: 1174270
 -- To prove our implementation is secure, the following security properties are satisfied:
 
---  The arithmetic operations (“+”, “-”, “*”, “/”), load, store, remove, and lock operations can
+--  The arithmetic operations ("+", "-", "*", "/"), load, store, remove, and lock operations can
 --  only ever be performed when the calculator is in the unlocked state.
 
 --  To ensure operations can only be performed when the calculator is in the unlocked state, 
