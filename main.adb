@@ -1,9 +1,9 @@
 -- Author
--- Hanying(Tori) Li, Student ID: 1181148
--- Aoxiang(Sean) Xiao, Student ID: 1174270
+-- Tori(Hanying) Li, Student ID: 1181148
+-- Sean(Aoxiang) Xiao, Student ID: 1174270
 -- To prove our implementation is secure, the following security properties are satisfied:
 
---  The arithmetic operations ("+"€, "€œ-"€, "€œ*"€, "/"€), load, store, remove, and lock operations can
+--  The arithmetic operations (â€œ+â€, â€œ-â€, â€œ*â€, â€œ/â€), load, store, remove, and lock operations can
 --  only ever be performed when the calculator is in the unlocked state.
 
 --  To ensure operations can only be performed when the calculator is in the unlocked state, 
@@ -29,61 +29,45 @@
 --  and pragma Assert (Calculator.Is_Locked(C)) after successful locking to verify that the lock transition has occurred. 
 --  These SPARK annotations and runtime assertions together guarantee that unlocking only happens from a locked state, and improper transitions are caught either by formal proof or runtime checks.
 
--- 3. The Lock operation, when it is performed, should update the master PIN with the new PIN that is supplied.
+-- The Lock operation, when it is performed, should update the master PIN with the new PIN that is supplied.
 
--- This security property was proved through a manner of putting postcondition of PIN."="(PinIn, GetPin(C)) after the Lock() procedure
--- is performed specified in the mycalculator.ads. Same as the two previous properties, no complain was made by the SPARK prover
--- indicating that this security property to be true. To strength the prove, assertion of pragma Assert(CC.IsPin(ArgumentString) = True) was made
--- before updating the PIN in the system making sure that the provided update PIN is a valid PIN.
+-- To ensure that the Lock operation correctly updates the calculatorâ€™s master PIN with the newly supplied PIN string, 
+-- we specify the postcondition Post => Get_PIN(C) = PIN.From_String(P) in the contract of the Lock procedure. 
+-- This guarantees that after locking, the internal Master_PIN field of the calculator is updated to the PIN version of the input string. 
+-- The precondition Pre => not Is_Locked(C) and Is_Valid_Pin(P) ensures that lock calculator with new PIN is only allowed 
+-- when the calculator is currently unlocked and the input string is a valid PIN. 
+-- Additionally, a runtime assertion pragma Assert(Calculator.Is_Locked(C)) is placed immediately after locking to 
+-- confirm that the state transition to locked has occurred.
+-- Together, these SPARK annotations and assertions ensure both functional correctness (PIN is updated) and secure state transition (calculator becomes locked).
 
--- 4. ADDITIONAL: When the program is started, the provided command line of the initial PIN for the calculator should not be empty, including NUL or not following the PIN format.
+-- The stack operation "pop","push1","push2" can only ever be performed when they do not cause stack underflow or overflow.
 
--- This security property might be a property which is out-of-scope here, however it is an important property that might often be ignored.
--- This property was not directly proved through the SPARK prover since it does not have the capability to do so, however, if an invalid, NUL included or empty
--- PIN was provided when the program first starts, it would be a severe problem harming the further run of the system. This property was guranteed
--- by adding pre-checks on the command line arguments before the program runs, it can be found at the very beginning section of the main.adb file,
--- whenever an invalid PIN was provided initially, the program would be refusing to execute, and returning the correct use to the user through the command line argument.
+-- To verify this, we use SPARK preconditions such as Pre => Length(C) /= 0 in Pop to prevent popping from an empty stack, 
+-- and Pre => Can_Push_N(C, N) in Push_1 and Push_2 to ensure the stack has enough space before pushing new values. 
+-- These annotations enforce safe bounds on stack size and guarantee that no stack operation will exceed the defined capacity (Calculator_Stack_Capacity)
 
--- 5. ADDITIONAL: User Input should not be empty, full of spaces, including 'NUL' characters, end with spaces or exceeding the maximum length
+-- The memory location operation "remove","storeTo","loadFrom" can only ever be performed when they do not cause memory access violations,such as reading from undefined locations or overwriting existing entries.
 
--- The string tokeniser is taken in place to deal with the user input in the system, thus the user input should be strictly
--- checked and make sure its a valid one that can be used by the system. For the empty input and 'NUL' character included inputs, it was directly picked up by the 
--- SPARK prover automatically with counterexamples of: 1. input'First >= input'Last 2. input'First = 0, input'Last = 4 (others => 'NUL'). While for the input full of
--- spaces and end with spaces, it was found by manual testing after SPARK has rised a concern on the input format as we just mentioned, SPARK has provided us with 
--- a counter example that after string tokenising, the token length was actually shrinked by 1 or directly shown to be zero it might be due to the implementation of the string tokeniser, 
--- that it could not handle inputs with more than one spaces included, since it seperates tokens with spaces. Finally, for the exceeding maximum length, it was according to the specification
--- of the assignment with a maximum input length limited. This property was proved by putting pre-checks before the user input is actually used by the main.adb and starts
--- tokenising, if either of these scenarios takes in place, the system would consider it as an invalid input and stop the program from further processing.
+-- To verify this, we use SPARK preconditions: Pre => MemoryStore.Has(D, Loc) in loadFrom and remove guarantees that a value exists before loading, 
+-- and Pre => not MemoryStore.Has(D, Loc) in storeTo ensures a location is not overwritten. 
+-- Additionally, bounds checks such as Loc in 1 .. MemoryStore.Max_Locations prevent invalid memory index access. These constraints collectively enforce memory safety and data consistency.
 
--- 6. ADDITIONAL: Overall correctness of the stack. When pushing a number to the stack (performing the "push" operator), the stack should not be full, the pushed number should sit on the top of the stack, 
--- other elements within the stack should remain unchanged and the size of the stack should be increased.
+-- The arithmetic operations (â€œ+â€, â€œ-â€, â€œ*â€, â€œâ€) can only ever be performed when they do not cause 32-bit integer overflow or divide-by-zero.
 
--- For this security property, it was obtained from the common properties and understanding of a stack and any array like elements in programming. It was proved through
--- the preconditions and postconditions specified in the mycalculator.ads on the PushNumber() procedure. SPARK prover has no complain on these conditions, meaning that this property is correct and supported.
+-- To verify this, we use SPARK preconditions that restrict input values to safe ranges(32-bit Integer'First,32-bit Integer'Last). 
+-- The helper function Addition, Subtraction, and Multiplication all include checks that the result lies within the bounds of a 32-bit signed integer using expressions 
+-- like Pre => Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2) in Int32'Range. 
+-- The Division operation uses Pre => Number_2 /= 0 and a special case Number_1 = Int32'First and Number_2 /= -1 to avoid overflow caused by dividing the smallest negative number by -1. 
+-- These properties guarantee arithmetic safety and prevent runtime exceptions due to invalid calculations.
 
--- 7. ADDITIONAL: Overall correctness of the stack. When popping a number from the stack (performing the "pop" operator), the stack should not be empty, the popped number should be popped from the top of the stack, 
--- other elements within the stack should remain unchanged and the size of the stack should be decreased.
+-- The lock state of the calculator (Is_Locked(C)) can only be modified when the Lock and Unlock operations are successfully performed, while all other valid operations preserve the unchanged state.
 
--- For this security property, it was obtained from the common properties and understanding of a stack and any array like elements in programming. It was proved through
--- the preconditions and postconditions specified in the mycalculator.ads on the PopNumber() procedure. SPARK prover has no complain on these conditions, meaning that this property is correct and supported.
+-- To verify this, we use SPARK postconditions such as Post => Is_Locked(C) = Is_Locked(C'Old) in all procedures except Lock and Unlock, 
+-- ensuring that the lock status is not altered during their execution. In contrast, Lock and Unlock have contracts that permit controlled state transitions. 
+-- Additionally, we place pragma Assert (not Calculator.Is_Locked(C)) before and after operations like Calculation and Pop to ensure these are only executed in the unlocked state. 
+-- Furthermore, for valid commands that receive correct syntax and arguments but cannot complete due to runtime conditions (e.g., stack overflow or empty stack), 
+-- We allow the system to issue a warning without performing the operation or exiting, ensuring that all calculator statesâ€”including the lock statusâ€”remain unchanged in such cases.
 
--- 8. ADDITIONAL: When overflow takes in place during arithmetic operation, the stack should remain unchanged
-
--- For this security property, it was automatically picked up by the SPARK prover through counter examples indicates that overflows might be taken in place during calculations. Therefore, we've performed judgement
--- in the implementation around line 130 to line 160 in mycalculator.adb, when overflow takes in place, the system would return an error from the terminal indicating the issue. Meanwhile, to strengthen
--- the prove, on line 74 of mycalculator.ads postcondition of (Size(C) = Size(C'Old)) is provided indicating that some of the times the stack size should remain unchanged. This postcondition was not
--- complained by the SPARK prover, thus we believe that this security property is supported by our implementation.
-
--- 9. ADDITIONAL: When performing any arithmetic operation, there should be at least two elements already on the stack currently 
-
--- For this security property, it was proved on line 71 with a precondition of Size(C) >= 2, SPARK prover did not complain about this precondition and thus this property can be proved. Meanwhile, to strengthen the
--- prove, before performing any operations, in main.adb, we've placed judgement on it to check the stack size, if the user attempt to do such a behaviour, the system would stop them and return an error message printed
--- out in the terminal.
-
--- 10. ADDITIONAL: When performing "load" and "store" operation, the variable name should be a valid one.
-
--- For this security property, it was checked by the postcondition in line 78 and 90 in mycalculator.ads (commands can be seen there). SPARK prover did not complain about these postconditions, thus we believe
--- that this security property is proved and supported by our implementation.
 pragma SPARK_Mode (On);
 
 with MyCommandLine;
@@ -256,24 +240,17 @@ begin
             else
 
                pragma Assert (not Calculator.Is_Locked(C));
-
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
-
-
-
                   if Calculator.Length(C) < 2 then  
                      Put_Line("STACK_ERROR: Need at least 2 operands");
-                     exit;
                   else
                      Calculator.Calculation(C, Lines.To_String(Command));
                      pragma Assert (not Calculator.Is_Locked(C));
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
-
                   if Calculator.Length(C) = 0 then
                      Put_Line("STACK_ERROR: Cannot pop from empty stack");
-                     exit;
                   else
                      declare
                         Pop_num : Int32;
@@ -328,12 +305,10 @@ begin
                      -- invalid pin format
                      if Calculator.Is_Valid_Pin(ArgumentString) then
                         if Calculator.Is_PIN(C,PIN.From_String(ArgumentString))then
-                           pragma Assert (Calculator.Is_Locked(C));
                            Calculator.Unlock(C, PIN.From_String(ArgumentString));
                            pragma Assert (not Calculator.Is_Locked(C));
                         else
                            Put_Line("UNLOCK_ERROR: Incorrect PIN");
-                           exit;
                         end if;
                      
                      else
@@ -361,7 +336,6 @@ begin
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      else
-                        pragma Assert (not Calculator.Is_Locked(C));
                         Calculator.Lock(C, ArgumentString);
                         pragma Assert (Calculator.Is_Locked(C));
                      end if;
@@ -377,11 +351,10 @@ begin
                   else
                      -- check argument is integer/intger32
                      if Calculator.Is_Valid_Integer(ArgumentString) then
-                        pragma Assert (not Calculator.Is_Locked(C));
+
                         if Lines.Equal(Command, Lines.From_String("push1")) then
                            if not Calculator.Can_Push_N(C, 1) then
                               Put_Line("STACK_ERROR: Stack is full");
-                              exit;
                            else
                               Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
                               pragma Assert (not Calculator.Is_Locked(C));
@@ -389,20 +362,16 @@ begin
 
                         -- loadFrom
                         elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
-
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
                         
                               if Location < 1 or Location > MemoryStore.Max_Locations then
                                  Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
-                                 exit;
                               elsif not Calculator.Can_Push_N(C, 1) then
                                  Put_Line("STACK_ERROR: Stack is full");
-                                 exit;
                               elsif not MemoryStore.Has(Mem, Location) then
                                  Put_Line("MEMORY_ERROR: No value at location");
-                                 exit;
                               else
                                  Calculator.Load_From(C,Mem,Location);
                                  pragma Assert (not Calculator.Is_Locked(C));
@@ -411,19 +380,15 @@ begin
                
                            -- storeTo
                         elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
-
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
                               if Location < 1 or Location > MemoryStore.Max_Locations  then
                                  Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
-                                 exit;
                               elsif Calculator.Length(C) = 0 then
                                  Put_Line("STACK_ERROR: Cannot store from empty stack");
-                                 exit;
                               elsif MemoryStore.Has(Mem,Location)then
-                                 Put_Line("MEMORY_ERROR: The memory location is already used");
-                                 exit;
+                                 Put_Line("MEMORY_ERROR: The memory loc is defined");
                               else
                                  Calculator.Store_To(C,Mem,Location);
                                  pragma Assert (not Calculator.Is_Locked(C));
@@ -432,16 +397,14 @@ begin
 
                            -- remove
                         elsif Lines.Equal(Command, Lines.From_String("remove")) then
-
+                     
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
                               if Location < 1 or Location > MemoryStore.Max_Locations then
                                  Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
-                                 exit;
                               elsif not MemoryStore.Has(Mem,Location) then
                                  Put_Line("MEMORY_ERROR: Cannot remove from undefined location");
-                                 exit;
                               else
                                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
                                  pragma Assert (not Calculator.Is_Locked(C));
@@ -473,7 +436,6 @@ begin
                Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                exit;
             else
-               pragma Assert (not Calculator.Is_Locked(C));
                declare
                   Argument_1:Lines.MyString := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
                   Argument_2:Lines.MyString := Lines.Substring(S,T(3).Start,T(3).Start+T(3).Length-1);
@@ -485,7 +447,6 @@ begin
                   if Lines.Equal(Command, Lines.From_String("push2")) then
                      if not Calculator.Can_Push_N(C, 2) then
                         Put_Line("STACK_ERROR: Stack full, cannot push 2 values");
-                        exit;
                      elsif not (Calculator.Is_Valid_Integer(Argument1_String) and Calculator.Is_Valid_Integer(Argument2_String)) then
                         Put_Line("SYNTAX_ERROR: Argument must be Integer");
                         exit;
@@ -509,7 +470,7 @@ begin
                
          else
             Put_Line("SYNTAX_ERROR: Invalid number of arguments");
-            exit;
+            return;
          end if;
       end;
 end loop;
@@ -636,3 +597,4 @@ end loop;
    
       
 end Main;
+
