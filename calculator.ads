@@ -79,14 +79,14 @@ package Calculator with SPARK_Mode is
 
 
    -- unlock <NAME>
-   procedure Unlock(C:in out Calculator;P: in PIN.PIN) with
-     Pre=> Is_Locked(C) and Is_PIN(C,P),
+   procedure Unlock(C:in out Calculator;P: in String) with
+     Pre=> (Is_Locked(C) and Is_Valid_Pin(P)) and then Is_PIN(C,P),
      Post=> not Is_Locked(C);
 
    -- lock <NAME>
    procedure Lock(C:in out Calculator;P: in String) with
      Pre=> not Is_Locked(C) and Is_Valid_Pin(P),
-     Post=> Is_Locked(C) and (Get_PIN(C)=PIN.From_String(P));
+     Post=> Is_Locked(C) and Is_PIN(C,P);
 
    -- identify the command and call corresponding operation method
    procedure Calculation(C: in out Calculator; Operation: String) with
@@ -100,7 +100,11 @@ package Calculator with SPARK_Mode is
         and  Is_Locked(C) = Is_Locked(C'Old)));
 
    -- the Pin
-   function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean;
+   function Is_PIN(C : in Calculator;P: in String) return Boolean with
+     Pre => Is_Valid_Pin(P),
+     Post =>
+       Is_PIN'Result =
+         (Get_Pin(C)=PIN.From_String(P));
 
     -- "+"
    function Addition(Number_1: in Int32; Number_2: in Int32) return Int32 with
@@ -169,6 +173,9 @@ package Calculator with SPARK_Mode is
      Post => Can_Push_N'Result = (Length(C) + N <= Calculator_Stack_Capacity);
 
    function Is_Valid_Integer(S:String) return Boolean;
+
+
+
 
 
 

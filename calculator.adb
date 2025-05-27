@@ -97,7 +97,7 @@ package body Calculator with SPARK_Mode is
    end Store_To;
 
    -- unlock <NAME>
-   procedure Unlock(C:in out Calculator;P: in PIN.PIN) is
+   procedure Unlock(C:in out Calculator;P: in String) is
    begin
       if Is_PIN(C,P) then
          C.Locked := False;
@@ -208,10 +208,10 @@ package body Calculator with SPARK_Mode is
    ---------------------------------------------------------------------------
 
    -- the Pin
-   function Is_PIN(C : in Calculator;P: in PIN.PIN) return Boolean is
+   function Is_PIN(C : in Calculator;P: in String) return Boolean is
    begin
       -- PIN equality
-      if PIN."="(P,C.Masterpin) then
+      if PIN."="(PIN.From_String(P),C.Masterpin) then
          return True;
       else
          return False;

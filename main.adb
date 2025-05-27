@@ -246,7 +246,7 @@ begin
                Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                exit;
             else
-
+               -- operation can only be performed in unlock status
                pragma Assert (not Calculator.Is_Locked(C));
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
@@ -254,6 +254,7 @@ begin
                      Put_Line("STACK_ERROR: Need at least 2 operands");
                   else
                      Calculator.Calculation(C, Lines.To_String(Command));
+                     -- operations will not change state
                      pragma Assert (not Calculator.Is_Locked(C));
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
@@ -263,6 +264,7 @@ begin
                      declare
                         Pop_num : Int32;
                      begin
+                        -- operations will not change state
                         Calculator.Pop(C, Pop_num);
                         Put_Line("Popped: " & Int32'Image(Pop_num));
                         pragma Assert (not Calculator.Is_Locked(C));
@@ -305,24 +307,28 @@ begin
             declare
                ArgumentString: String := Lines.To_String(Argument);
             begin
-               -- lock
-               
+               -- The Unlock operation can only ever be performed 
+               -- when the calculator is in the locked state.
                if Calculator.Is_Locked(C) then
                   pragma Assert (Calculator.Is_Locked(C));
                   if Lines.Equal(Command, Lines.From_String("unlock")) then
-                     -- invalid pin format
+                     -- invalid pin format 
                      if Calculator.Is_Valid_Pin(ArgumentString) then
-                        if Calculator.Is_PIN(C,PIN.From_String(ArgumentString))then
-                           Calculator.Unlock(C, PIN.From_String(ArgumentString));
+                        if Calculator.Is_PIN(C,ArgumentString)then
+                           Calculator.Unlock(C, ArgumentString);
+                           
+                           -- state changed locked -> unlocked
                            pragma Assert (not Calculator.Is_Locked(C));
                         else
                            Put_Line("UNLOCK_ERROR: Incorrect PIN");
                         end if;
                      
                      else
+                        -- i.e unlock invalid
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      end if;
+                     -- lock in locked state, operations not performed
                   elsif Lines.Equal(Command, Lines.From_String("lock"))then
                      if not Calculator.Is_Valid_Pin(ArgumentString) then
                         Put_Line("INPUT_ERROR: Invalid PIN format");
@@ -337,15 +343,17 @@ begin
               -- unlock status
                else
                   pragma Assert (not Calculator.Is_Locked(C));
-                  -- lock
                   if Lines.Equal(Command, Lines.From_String("lock")) then
                      -- invalid pin format
                      if not Calculator.Is_Valid_Pin(ArgumentString) then
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      else
+                        -- state changed unlock -> lock
                         Calculator.Lock(C, ArgumentString);
                         pragma Assert (Calculator.Is_Locked(C));
+                        -- new masterpin
+                        pragma Assert (Calculator.Is_PIN(C,ArgumentString)=True);
                      end if;
                   elsif Lines.Equal(Command, Lines.From_String("unlock"))then
                      if not Calculator.Is_Valid_Pin(ArgumentString) then
@@ -578,7 +586,7 @@ end loop;
 --     ------------------------------------------------------------------
 --     --  PIN equality demo
 --     ------------------------------------------------------------------
---     If PIN."="(PIN1,PIN2) then
+--     If F"="(PIN1,PIN2) then
 --        Put_Line("The two PINs are equal, as expected.");
 --     end if;
 --     
