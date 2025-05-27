@@ -168,10 +168,13 @@ begin
                Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                exit;
             else
-
+               pragma Assert (not Calculator.Is_Locked(C));
 
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
+
+
+
                   if Calculator.Length(C) < 2 then  
                      Put_Line("STACK_ERROR: Need at least 2 operands");
                      exit;
@@ -180,6 +183,7 @@ begin
                      pragma Assert (not Calculator.Is_Locked(C));
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
+
                   if Calculator.Length(C) = 0 then
                      Put_Line("STACK_ERROR: Cannot pop from empty stack");
                      exit;
@@ -189,6 +193,7 @@ begin
                      begin
                         Calculator.Pop(C, Pop_num);
                         Put_Line("Popped: " & Int32'Image(Pop_num));
+                        pragma Assert (not Calculator.Is_Locked(C));
                      end;
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("list")) then
@@ -235,7 +240,9 @@ begin
                      -- invalid pin format
                      if Calculator.Is_Valid_Pin(ArgumentString) then
                         if Calculator.Is_PIN(C,PIN.From_String(ArgumentString))then
+                           pragma Assert (Calculator.Is_Locked(C));
                            Calculator.Unlock(C, PIN.From_String(ArgumentString));
+                           pragma Assert (not Calculator.Is_Locked(C));
                         else
                            Put_Line("UNLOCK_ERROR: Incorrect PIN");
                            exit;
@@ -266,7 +273,9 @@ begin
                         Put_Line("INPUT_ERROR: Invalid PIN format");
                         exit;
                      else
+                        pragma Assert (not Calculator.Is_Locked(C));
                         Calculator.Lock(C, ArgumentString);
+                        pragma Assert (Calculator.Is_Locked(C));
                      end if;
                   elsif Lines.Equal(Command, Lines.From_String("unlock"))then
                      if not Calculator.Is_Valid_Pin(ArgumentString) then
@@ -280,17 +289,19 @@ begin
                   else
                      -- check argument is integer/intger32
                      if Calculator.Is_Valid_Integer(ArgumentString) then
-
+                        pragma Assert (not Calculator.Is_Locked(C));
                         if Lines.Equal(Command, Lines.From_String("push1")) then
                            if not Calculator.Can_Push_N(C, 1) then
                               Put_Line("STACK_ERROR: Stack is full");
                               exit;
                            else
                               Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
+                              pragma Assert (not Calculator.Is_Locked(C));
                            end if;
 
                         -- loadFrom
                         elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
+
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
@@ -312,6 +323,7 @@ begin
                
                            -- storeTo
                         elsif Lines.Equal(Command, Lines.From_String("storeTo")) then 
+
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
@@ -332,7 +344,7 @@ begin
 
                            -- remove
                         elsif Lines.Equal(Command, Lines.From_String("remove")) then
-                     
+
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
                            begin
@@ -344,6 +356,7 @@ begin
                                  exit;
                               else
                                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
+                                 pragma Assert (not Calculator.Is_Locked(C));
                               end if;
                            end;
 
@@ -372,6 +385,7 @@ begin
                Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                exit;
             else
+               pragma Assert (not Calculator.Is_Locked(C));
                declare
                   Argument_1:Lines.MyString := Lines.Substring(S,T(2).Start,T(2).Start+T(2).Length-1);
                   Argument_2:Lines.MyString := Lines.Substring(S,T(3).Start,T(3).Start+T(3).Length-1);
@@ -390,6 +404,7 @@ begin
                         Calculator.Push_2(C,
                                           Int32(StringToInteger.From_String(Argument1_String)),
                                           Int32(StringToInteger.From_String(Argument2_String)));
+                        pragma Assert (not Calculator.Is_Locked(C));
                      end if;
                      -- unknwon command
                   else
