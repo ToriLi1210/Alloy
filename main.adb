@@ -174,6 +174,7 @@ begin
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
                   if Calculator.Length(C) < 2 then  
                      Put_Line("STACK_ERROR: Need at least 2 operands");
+                     exit;
                   else
                      Calculator.Calculation(C, Lines.To_String(Command));
                      pragma Assert (not Calculator.Is_Locked(C));
@@ -181,6 +182,7 @@ begin
                elsif Lines.Equal(Command, Lines.From_String("pop")) then
                   if Calculator.Length(C) = 0 then
                      Put_Line("STACK_ERROR: Cannot pop from empty stack");
+                     exit;
                   else
                      declare
                         Pop_num : Int32;
@@ -236,6 +238,7 @@ begin
                            Calculator.Unlock(C, PIN.From_String(ArgumentString));
                         else
                            Put_Line("UNLOCK_ERROR: Incorrect PIN");
+                           exit;
                         end if;
                      
                      else
@@ -281,6 +284,7 @@ begin
                         if Lines.Equal(Command, Lines.From_String("push1")) then
                            if not Calculator.Can_Push_N(C, 1) then
                               Put_Line("STACK_ERROR: Stack is full");
+                              exit;
                            else
                               Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
                            end if;
@@ -293,10 +297,13 @@ begin
                         
                               if Location < 1 or Location > MemoryStore.Max_Locations then
                                  Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                                 exit;
                               elsif not Calculator.Can_Push_N(C, 1) then
                                  Put_Line("STACK_ERROR: Stack is full");
+                                 exit;
                               elsif not MemoryStore.Has(Mem, Location) then
                                  Put_Line("MEMORY_ERROR: No value at location");
+                                 exit;
                               else
                                  Calculator.Load_From(C,Mem,Location);
                                  pragma Assert (not Calculator.Is_Locked(C));
@@ -310,10 +317,13 @@ begin
                            begin
                               if Location < 1 or Location > MemoryStore.Max_Locations  then
                                  Put_Line("MEMORY_ERROR: Location must be between 1 and 256");
+                                 exit;
                               elsif Calculator.Length(C) = 0 then
                                  Put_Line("STACK_ERROR: Cannot store from empty stack");
+                                 exit;
                               elsif MemoryStore.Has(Mem,Location)then
                                  Put_Line("MEMORY_ERROR: The memory loc is defined");
+                                 exit;
                               else
                                  Calculator.Store_To(C,Mem,Location);
                                  pragma Assert (not Calculator.Is_Locked(C));
@@ -328,8 +338,10 @@ begin
                            begin
                               if Location < 1 or Location > MemoryStore.Max_Locations then
                                  Put_Line("MEMORY_ERROR: Location must be an integer between 1 and 256");
+                                 exit;
                               elsif not MemoryStore.Has(Mem,Location) then
                                  Put_Line("MEMORY_ERROR: Cannot remove from undefined location");
+                                 exit;
                               else
                                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
                               end if;
@@ -370,6 +382,7 @@ begin
                   if Lines.Equal(Command, Lines.From_String("push2")) then
                      if not Calculator.Can_Push_N(C, 2) then
                         Put_Line("STACK_ERROR: Stack full, cannot push 2 values");
+                        exit;
                      elsif not (Calculator.Is_Valid_Integer(Argument1_String) and Calculator.Is_Valid_Integer(Argument2_String)) then
                         Put_Line("SYNTAX_ERROR: Argument must be Integer");
                         exit;
@@ -392,7 +405,7 @@ begin
                
          else
             Put_Line("SYNTAX_ERROR: Invalid number of arguments");
-            return;
+            exit;
          end if;
       end;
 end loop;
