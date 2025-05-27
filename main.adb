@@ -1,3 +1,89 @@
+-- Author
+-- Tori(Hanying) Li, Student ID: 1181148
+-- Sean(Aoxiang) Xiao, Student ID: 1174270
+-- To prove our implementation is secure, the following security properties are satisfied:
+
+--  The arithmetic operations (“+”, “-”, “*”, “”), load, store, remove, and lock operations can
+--  only ever be performed when the calculator is in the unlocked state.
+
+--  To ensure operations can only be performed when the calculator is in the unlocked state, 
+--  we use the precondition Pre=>not Is_Locked(C) in each operation's contract. 
+--  This enforces that Is_Locked(C) = False (calculator in unlocked state) must hold for an operation to execute. 
+--  If the precondition does not hold (i.e., Is_Locked(C) = True), 
+--  the operation cannot be performed as it would violate the contract 
+--  and raise a exception "LOCK_ERROR: Invalid input, Calculator is locked Please unlock first" and exit calaculator immediately.
+--  We also use the postcondition Post=>Is_Locked(C) = Is_Locked(C'Old) to ensure that the lock state remains unchanged after the operation executes, 
+--  guaranteeing that operations performed in the unlocked state maintain that state. 
+--  Furthermore, a assertation pragma Assert (not Calculator.Is_Locked(C)) statements 
+--  is used to verify the unlocked state before and after operation execution.
+
+
+-- The Unlock operation can only ever be performed when the calculator is in the locked state.
+
+--  To ensure that the Unlock operation is only performed when the calculator is in the locked state, 
+--  we specify the precondition Pre => Is_Locked(C) the Unlock procedure’s contract. 
+--  This enforces that the calculator must be locked. If the calculator is already unlocked, 
+--  the operation cannot be performed as it would violate the contract 
+--  and issue a warning message "Already unlocked" instead of proceeding with the unlock operation. 
+--  We also use pragma Assert (not Calculator.Is_Locked(C)) before executing to ensure that the calculator is unlocked, 
+--  and pragma Assert (Calculator.Is_Locked(C)) after successful locking to verify that the lock transition has occurred. 
+--  These SPARK annotations and runtime assertions together guarantee that unlocking only happens from a locked state, and improper transitions are caught either by formal proof or runtime checks.
+
+-- 3. The Lock operation, when it is performed, should update the master PIN with the new PIN that is supplied.
+
+-- This security property was proved through a manner of putting postcondition of PIN."="(PinIn, GetPin(C)) after the Lock() procedure
+-- is performed specified in the mycalculator.ads. Same as the two previous properties, no complain was made by the SPARK prover
+-- indicating that this security property to be true. To strength the prove, assertion of pragma Assert(CC.IsPin(ArgumentString) = True) was made
+-- before updating the PIN in the system making sure that the provided update PIN is a valid PIN.
+
+-- 4. ADDITIONAL: When the program is started, the provided command line of the initial PIN for the calculator should not be empty, including NUL or not following the PIN format.
+
+-- This security property might be a property which is out-of-scope here, however it is an important property that might often be ignored.
+-- This property was not directly proved through the SPARK prover since it does not have the capability to do so, however, if an invalid, NUL included or empty
+-- PIN was provided when the program first starts, it would be a severe problem harming the further run of the system. This property was guranteed
+-- by adding pre-checks on the command line arguments before the program runs, it can be found at the very beginning section of the main.adb file,
+-- whenever an invalid PIN was provided initially, the program would be refusing to execute, and returning the correct use to the user through the command line argument.
+
+-- 5. ADDITIONAL: User Input should not be empty, full of spaces, including 'NUL' characters, end with spaces or exceeding the maximum length
+
+-- The string tokeniser is taken in place to deal with the user input in the system, thus the user input should be strictly
+-- checked and make sure its a valid one that can be used by the system. For the empty input and 'NUL' character included inputs, it was directly picked up by the 
+-- SPARK prover automatically with counterexamples of: 1. input'First >= input'Last 2. input'First = 0, input'Last = 4 (others => 'NUL'). While for the input full of
+-- spaces and end with spaces, it was found by manual testing after SPARK has rised a concern on the input format as we just mentioned, SPARK has provided us with 
+-- a counter example that after string tokenising, the token length was actually shrinked by 1 or directly shown to be zero it might be due to the implementation of the string tokeniser, 
+-- that it could not handle inputs with more than one spaces included, since it seperates tokens with spaces. Finally, for the exceeding maximum length, it was according to the specification
+-- of the assignment with a maximum input length limited. This property was proved by putting pre-checks before the user input is actually used by the main.adb and starts
+-- tokenising, if either of these scenarios takes in place, the system would consider it as an invalid input and stop the program from further processing.
+
+-- 6. ADDITIONAL: Overall correctness of the stack. When pushing a number to the stack (performing the "push" operator), the stack should not be full, the pushed number should sit on the top of the stack, 
+-- other elements within the stack should remain unchanged and the size of the stack should be increased.
+
+-- For this security property, it was obtained from the common properties and understanding of a stack and any array like elements in programming. It was proved through
+-- the preconditions and postconditions specified in the mycalculator.ads on the PushNumber() procedure. SPARK prover has no complain on these conditions, meaning that this property is correct and supported.
+
+-- 7. ADDITIONAL: Overall correctness of the stack. When popping a number from the stack (performing the "pop" operator), the stack should not be empty, the popped number should be popped from the top of the stack, 
+-- other elements within the stack should remain unchanged and the size of the stack should be decreased.
+
+-- For this security property, it was obtained from the common properties and understanding of a stack and any array like elements in programming. It was proved through
+-- the preconditions and postconditions specified in the mycalculator.ads on the PopNumber() procedure. SPARK prover has no complain on these conditions, meaning that this property is correct and supported.
+
+-- 8. ADDITIONAL: When overflow takes in place during arithmetic operation, the stack should remain unchanged
+
+-- For this security property, it was automatically picked up by the SPARK prover through counter examples indicates that overflows might be taken in place during calculations. Therefore, we've performed judgement
+-- in the implementation around line 130 to line 160 in mycalculator.adb, when overflow takes in place, the system would return an error from the terminal indicating the issue. Meanwhile, to strengthen
+-- the prove, on line 74 of mycalculator.ads postcondition of (Size(C) = Size(C'Old)) is provided indicating that some of the times the stack size should remain unchanged. This postcondition was not
+-- complained by the SPARK prover, thus we believe that this security property is supported by our implementation.
+
+-- 9. ADDITIONAL: When performing any arithmetic operation, there should be at least two elements already on the stack currently 
+
+-- For this security property, it was proved on line 71 with a precondition of Size(C) >= 2, SPARK prover did not complain about this precondition and thus this property can be proved. Meanwhile, to strengthen the
+-- prove, before performing any operations, in main.adb, we've placed judgement on it to check the stack size, if the user attempt to do such a behaviour, the system would stop them and return an error message printed
+-- out in the terminal.
+
+-- 10. ADDITIONAL: When performing "load" and "store" operation, the variable name should be a valid one.
+
+-- For this security property, it was checked by the postcondition in line 78 and 90 in mycalculator.ads (commands can be seen there). SPARK prover did not complain about these postconditions, thus we believe
+-- that this security property is proved and supported by our implementation.
 pragma SPARK_Mode (On);
 
 with MyCommandLine;
@@ -169,7 +255,7 @@ begin
                exit;
             else
 
-
+               pragma Assert (not Calculator.Is_Locked(C));
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
                   if Calculator.Length(C) < 2 then  
@@ -189,6 +275,7 @@ begin
                      begin
                         Calculator.Pop(C, Pop_num);
                         Put_Line("Popped: " & Int32'Image(Pop_num));
+                        pragma Assert (not Calculator.Is_Locked(C));
                      end;
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("list")) then
@@ -231,11 +318,13 @@ begin
                -- lock
                
                if Calculator.Is_Locked(C) then
+                  pragma Assert (Calculator.Is_Locked(C));
                   if Lines.Equal(Command, Lines.From_String("unlock")) then
                      -- invalid pin format
                      if Calculator.Is_Valid_Pin(ArgumentString) then
                         if Calculator.Is_PIN(C,PIN.From_String(ArgumentString))then
                            Calculator.Unlock(C, PIN.From_String(ArgumentString));
+                           pragma Assert (not Calculator.Is_Locked(C));
                         else
                            Put_Line("UNLOCK_ERROR: Incorrect PIN");
                            exit;
@@ -258,7 +347,7 @@ begin
                   end if;
               -- unlock status
                else
-                  
+                  pragma Assert (not Calculator.Is_Locked(C));
                   -- lock
                   if Lines.Equal(Command, Lines.From_String("lock")) then
                      -- invalid pin format
@@ -267,6 +356,7 @@ begin
                         exit;
                      else
                         Calculator.Lock(C, ArgumentString);
+                        pragma Assert (Calculator.Is_Locked(C));
                      end if;
                   elsif Lines.Equal(Command, Lines.From_String("unlock"))then
                      if not Calculator.Is_Valid_Pin(ArgumentString) then
@@ -287,6 +377,7 @@ begin
                               exit;
                            else
                               Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
+                              pragma Assert (not Calculator.Is_Locked(C));
                            end if;
 
                         -- loadFrom
@@ -344,6 +435,7 @@ begin
                                  exit;
                               else
                                  MemoryStore.Remove(Mem,StringToInteger.From_String(ArgumentString));
+                                 pragma Assert (not Calculator.Is_Locked(C));
                               end if;
                            end;
 
@@ -378,6 +470,7 @@ begin
                   Argument1_String: String := Lines.To_String(Argument_1);
                   Argument2_String: String := Lines.To_String(Argument_2);
                begin
+                  pragma Assert (not Calculator.Is_Locked(C));
                   -- push2
                   if Lines.Equal(Command, Lines.From_String("push2")) then
                      if not Calculator.Can_Push_N(C, 2) then
@@ -390,6 +483,7 @@ begin
                         Calculator.Push_2(C,
                                           Int32(StringToInteger.From_String(Argument1_String)),
                                           Int32(StringToInteger.From_String(Argument2_String)));
+                        pragma Assert (not Calculator.Is_Locked(C));
                      end if;
                      -- unknwon command
                   else

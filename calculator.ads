@@ -1,4 +1,5 @@
 with PIN;
+use PIN;
 with MemoryStore;
 with Interfaces;  -- supplies Int32_32 type
 use Interfaces;
@@ -85,7 +86,7 @@ package Calculator with SPARK_Mode is
    -- lock <NAME>
    procedure Lock(C:in out Calculator;P: in String) with
      Pre=> not Is_Locked(C) and Is_Valid_Pin(P),
-     Post=> Is_Locked(C);
+     Post=> Is_Locked(C) and (Get_PIN(C)=PIN.From_String(P));
 
    -- identify the command and call corresponding operation method
    procedure Calculation(C: in out Calculator; Operation: String) with
