@@ -117,9 +117,8 @@ begin
                end if;
             end;
          end if;
-
-         
         
+
          -- check nul character
          for I in 1..Lines.Length(S) loop
             if Lines.To_String(S)(I) = Ada.Characters.Latin_1.NUL then
@@ -128,16 +127,17 @@ begin
             end if;
          end loop; 
          
-         if Lines.To_String(S)(Lines.To_String(S)'Last) = ' ' then
-            Put_Line("Syntex_Exception: Please do not end your input with a SPACE!");
-            return;
-         end if;
-          
-         -- check trailing spaces
-         if Lines.To_String(S)(Lines.To_String(S)'Last) = ' ' then
-            Put_Line("INPUT_ERROR: Extra space at end of command");
-            exit;
-         end if;
+
+         -- check trailing whitespace (space, tab, etc.)
+         declare
+            Last_Char : Character := Lines.To_String(S)(Lines.To_String(S)'Last);
+         begin
+            if Last_Char = ' ' or Last_Char = Ada.Characters.Latin_1.HT then
+               Put_Line("INPUT_ERROR: Extra whitespace at end of command");
+               exit;
+            end if;
+         end;   
+
          
          ------------------------------------------------------------------
          --  FATAL ERROR: Syntax validation (exit immeadiately)
@@ -168,6 +168,8 @@ begin
                Put_Line("LOCK_ERROR: Invalid input, Calculator is locked Please unlock first");
                exit;
             else
+
+
                -- calculation   
                if Calculator.Is_Operator_Command(Lines.To_String(Command)) then
                   if Calculator.Length(C) < 2 then  
@@ -275,6 +277,7 @@ begin
                   else
                      -- check argument is integer/intger32
                      if Calculator.Is_Valid_Integer(ArgumentString) then
+
                         if Lines.Equal(Command, Lines.From_String("push1")) then
                            if not Calculator.Can_Push_N(C, 1) then
                               Put_Line("STACK_ERROR: Stack is full");
@@ -282,7 +285,7 @@ begin
                               Calculator.Push_1(C,Int32(StringToInteger.From_String(ArgumentString)));
                            end if;
 
-                           -- loadFrom
+                        -- loadFrom
                         elsif Lines.Equal(Command, Lines.From_String("loadFrom")) then
                            declare
                               Location : Integer := StringToInteger.From_String(ArgumentString);
