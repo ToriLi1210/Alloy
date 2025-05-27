@@ -322,7 +322,7 @@ begin
                                  Put_Line("STACK_ERROR: Cannot store from empty stack");
                                  exit;
                               elsif MemoryStore.Has(Mem,Location)then
-                                 Put_Line("MEMORY_ERROR: The memory loc is defined");
+                                 Put_Line("MEMORY_ERROR: The memory location is already used");
                                  exit;
                               else
                                  Calculator.Store_To(C,Mem,Location);
