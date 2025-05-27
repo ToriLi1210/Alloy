@@ -1,9 +1,9 @@
 -- Author
--- Tori(Hanying) Li, Student ID: 1181148
--- Sean(Aoxiang) Xiao, Student ID: 1174270
+-- Hanying(Tori) Li, Student ID: 1181148
+-- Aoxiang(Sean) Xiao, Student ID: 1174270
 -- To prove our implementation is secure, the following security properties are satisfied:
 
---  The arithmetic operations (â€œ+â€, â€œ-â€, â€œ*â€, â€œâ€), load, store, remove, and lock operations can
+--  The arithmetic operations ("+"€, "€œ-"€, "€œ*"€, "/"€), load, store, remove, and lock operations can
 --  only ever be performed when the calculator is in the unlocked state.
 
 --  To ensure operations can only be performed when the calculator is in the unlocked state, 
