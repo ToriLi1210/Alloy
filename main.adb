@@ -3,7 +3,31 @@
 --  Aoxiang Xiao, Student ID: 1174270
 --  To prove our implementation is secure, the following security properties are satisfied:
 
---  [1] The arithmetic operations ("+", "-", "*", "/"), load, store, remove, and lock operations can
+--  [1] The program is Initially Locked with The Supplied PIN
+
+--  To verify this, we specify the initialization behavior using SPARK annotations in the Init procedure. The postcondition 
+--  Post => Length(C) = 0 and Is_Locked(C) = True and Is_PIN(C, Master_PIN)
+--  ensures that the calculator starts with an empty operand stack, enters the locked state, and correctly stores the user-supplied PIN. 
+--  At runtime, we confirm this behavior with assertions placed immediately after initialization:
+--  pragma Assert (Calculator.Is_Locked(C));  
+--  pragma Assert (Calculator.Is_PIN(C, MyCommandLine.Argument(1)) = True);
+
+--  [2] If Unlock Unlocks The State, then The PIN Matches The Master PIN
+
+--  To verify this, we specify the unlock behavior using SPARK pre- and postconditions in the Unlock procedure. The precondition
+--  Pre => (Is_Locked(C) and Is_Valid_Pin(P)) and then Is_PIN(C,P) and then
+--  ensures that the calculator is currently locked, that the input string is a valid PIN format, 
+--  and that the provided PIN matches the stored master PIN. The postcondition confirms that unlocking only occurs under these correct authentication conditions. 
+--  This ensures that only authorized users can access the calculator. 
+--  At runtime, the command-handling logic enforces this by rejecting unlock attempts with invalid or incorrect PINs and only calling Unlock when these checks pass. 
+
+
+--  [3] Irrelevant operations (+,-,*,/,...) don'T Change Locked/Unlocked/PIN
+
+--  To ensure separation between authentication and computation, we use SPARK postconditions in all arithmetic, stack, and memory operations such as Calculation, Push, Pop, Load_From, and Store_To. 
+--  Each of these procedures includes Post => Is_Locked(C) = Is_Locked(C'Old), Get_Pin(C) = Get_Pin(C'Old)which guarantee that neither the lock state nor the stored PIN is modified during these operations. These annotations prevent unintended security state changes during standard calculations or data manipulation.
+
+--  [4] The arithmetic operations ("+", "-", "*", "/"), load, store, remove, and lock operations can
 --  only ever be performed when the calculator is in the unlocked state.
 
 --  To ensure operations can only be performed when the calculator is in the unlocked state, 
@@ -18,7 +42,7 @@
 --  are used to verify the unlocked state before and after operation execution.
 
 
---  [2] The Unlock operation can only ever be performed when the calculator is in the locked state.
+--  [5] The Unlock operation can only ever be performed when the calculator is in the locked state.
 
 --  To ensure that the Unlock operation is only performed when the calculator is in the locked state, 
 --  we specify the precondition Pre => Is_Locked(C) in the Unlock procedure's contract. 
@@ -29,7 +53,7 @@
 --  and pragma Assert (Calculator.Is_Locked(C)) after successful locking to verify that the lock transition has occurred. 
 --  These SPARK annotations and runtime assertions together guarantee that unlocking only happens from a locked state, and improper transitions are caught either by formal proof or runtime checks.
 
---  [3] The Lock operation, when it is performed, should update the master PIN with the new PIN that is supplied.
+--  [6] The Lock operation, when it is performed, should update the master PIN with the new PIN that is supplied.
 
 --  To ensure that the Lock operation correctly updates the calculator's master PIN with the newly supplied PIN string, 
 --  we specify the postcondition Post => Get_PIN(C) = PIN.From_String(P) in the contract of the Lock procedure. 
@@ -40,19 +64,19 @@
 --  confirm that the state transition to locked has occurred.
 --  Together, these SPARK annotations and assertions ensure both functional correctness (PIN is updated) and secure state transition (calculator becomes locked).
 
---  [4] The stack operation "pop","push1","push2" can only ever be performed when they do not cause stack underflow or overflow.
+--  [7] The stack operation "pop","push1","push2" can only ever be performed when they do not cause stack underflow or overflow.
 
 --  To verify this, we use SPARK preconditions such as Pre => Length(C) /= 0 in Pop to prevent popping from an empty stack, 
 --  and Pre => Can_Push_N(C, N) in Push_1 and Push_2 to ensure the stack has enough space before pushing new values. 
 --  These annotations enforce safe bounds on stack size and guarantee that no stack operation will exceed the defined capacity (Calculator_Stack_Capacity)
 
---  [5] The memory location operation "remove","storeTo","loadFrom" can only ever be performed when they do not cause memory access violations, such as reading from undefined locations or overwriting existing entries.
+--  [8] The memory location operation "remove","storeTo","loadFrom" can only ever be performed when they do not cause memory access violations, such as reading from undefined locations or overwriting existing entries.
 
 --  To verify this, we use SPARK preconditions: Pre => MemoryStore.Has(D, Loc) in loadFrom and remove guarantees that a value exists before loading, 
 --  and Pre => not MemoryStore.Has(D, Loc) in storeTo ensures a location is not overwritten. 
 --  Additionally, bounds checks such as Loc in 1 .. MemoryStore.Max_Locations prevent invalid memory index access. These constraints collectively enforce memory safety and data consistency.
 
---  [6] The arithmetic operations ("+", "-", "*", "/") can only ever be performed when they do not cause 32-bit integer overflow or divide-by-zero.
+--  [9] The arithmetic operations ("+", "-", "*", "/") can only ever be performed when they do not cause 32-bit integer overflow or divide-by-zero.
 
 --  To verify this, we use SPARK preconditions that restrict input values to safe ranges(32-bit Integer'First,32-bit Integer'Last). 
 --  The helper function Addition, Subtraction, and Multiplication all include checks that the result lies within the bounds of a 32-bit signed integer using expressions 
@@ -60,7 +84,7 @@
 --  The Division operation uses Pre => Number_2 /= 0 and a special case Number_1 = Int32'First and Number_2 /= -1 to avoid overflow caused by dividing the smallest negative number by -1. 
 --  These properties guarantee arithmetic safety and prevent runtime exceptions due to invalid calculations.
 
---  [7] The lock state of the calculator (Is_Locked(C)) can only be modified when the Lock and Unlock operations are successfully performed, while all other valid operations preserve the unchanged state.
+--  [10] The lock state of the calculator (Is_Locked(C)) can only be modified when the Lock and Unlock operations are successfully performed, while all other valid operations preserve the unchanged state.
 
 --  To verify this, we use SPARK postconditions such as Post => Is_Locked(C) = Is_Locked(C'Old) in all procedures except Lock and Unlock, 
 --  ensuring that the lock status is not altered during their execution. In contrast, Lock and Unlock have contracts that permit controlled state transitions. 
@@ -68,35 +92,13 @@
 --  Furthermore, for valid commands that receive correct syntax and arguments but cannot complete due to runtime conditions (e.g., stack overflow or empty stack), 
 --  We allow the system to issue a warning without performing the operation or exiting, ensuring that all calculator states remain unchanged in such cases.
 
---  [8] Loop invariants ensure safe iteration bounds and prevent array violations during input processing.
+--  [11] Loop invariants ensure safe iteration bounds and prevent array violations during input processing.
 
 --  We use pragma Loop_Invariant (Calculator.Length(C) in 0..Calculator.Calculator_Stack_Capacity) in the main loop, 
 --  bounds checking invariants like (C in Input_Str'Range) and property maintenance invariants for whitespace and NUL detection loops. 
 --  These invariants were essential for SPARK to prove loop safety and prevent potential access violations.
 
 
---  [9] The program is Initially Locked with The Supplied PIN
-
---  To verify this, we specify the initialization behavior using SPARK annotations in the Init procedure. The postcondition 
---  Post => Length(C) = 0 and Is_Locked(C) = True and Is_PIN(C, Master_PIN)
---  ensures that the calculator starts with an empty operand stack, enters the locked state, and correctly stores the user-supplied PIN. 
---  At runtime, we confirm this behavior with assertions placed immediately after initialization:
---  pragma Assert (Calculator.Is_Locked(C));  
---  pragma Assert (Calculator.Is_PIN(C, MyCommandLine.Argument(1)) = True);
-
---  [10] If Unlock Unlocks The State, then The PIN Matches The Master PIN
---  To verify this, we specify the unlock behavior using SPARK pre- and postconditions in the Unlock procedure. The precondition
---  Pre => (Is_Locked(C) and Is_Valid_Pin(P)) and then Is_PIN(C,P) and then
---  ensures that the calculator is currently locked, that the input string is a valid PIN format, 
---  and that the provided PIN matches the stored master PIN. The postcondition confirms that unlocking only occurs under these correct authentication conditions. 
---  This ensures that only authorized users can access the calculator. 
---  At runtime, the command-handling logic enforces this by rejecting unlock attempts with invalid or incorrect PINs and only calling Unlock when these checks pass. 
-
-
---  [11] Irrelevant operations (+,-,*,/,...) don'T Change Locked/Unlocked/PIN
-
---  To ensure separation between authentication and computation, we use SPARK postconditions in all arithmetic, stack, and memory operations such as Calculation, Push, Pop, Load_From, and Store_To. 
---  Each of these procedures includes Post => Is_Locked(C) = Is_Locked(C'Old), Get_Pin(C) = Get_Pin(C'Old)which guarantee that neither the lock state nor the stored PIN is modified during these operations. These annotations prevent unintended security state changes during standard calculations or data manipulation.
 
 pragma SPARK_Mode (On);
 
