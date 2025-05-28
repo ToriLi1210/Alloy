@@ -84,6 +84,16 @@
 --  The Division operation uses Pre => Number_2 /= 0 and a special case Number_1 = Int32'First and Number_2 /= -1 to avoid overflow caused by dividing the smallest negative number by -1. 
 --  These properties guarantee arithmetic safety and prevent runtime exceptions due to invalid calculations.
 
+--  The Multiplication operation handles overflow prevention through division-based precondition checks 
+--  rather than using Long_Long_Integer conversion. Three cases are addressed:
+--  - Both positive numbers: Pre => Number_1 <= Int32'Last / Number_2 to prevent positive overflow
+--  - Both negative numbers: Pre => (-Number_1) <= Int32'Last / (-Number_2) to prevent positive overflow of the result
+--  - Mixed signs (one positive, one negative): Pre => Number_1 >= (Int32'First + 1) / Number_2 to prevent negative overflow
+--  The +1 adjustment in (Int32'First + 1) accounts for integer division truncation behavior to ensure 
+--  accurate boundary checking. Int32'First values are explicitly excluded as abs(Int32'First) exceeds 
+--  representable positive Int32 range. These division-based checks verify multiplication safety without 
+--  performing potentially overflowing operations during verification itself.
+
 --  [10] The lock state of the calculator (Is_Locked(C)) can only be modified when the Lock and Unlock operations are successfully performed, while all other valid operations preserve the unchanged state.
 
 --  To verify this, we use SPARK postconditions such as Post => Is_Locked(C) = Is_Locked(C'Old) in all procedures except Lock and Unlock, 
