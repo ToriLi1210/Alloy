@@ -302,7 +302,6 @@ begin
                         Calculator.Pop(C, Pop_num);
                         Put_Line("Popped: " & Int32'Image(Pop_num));
                         pragma Assert (not Calculator.Is_Locked(C));
-                        pragma Assert (not Calculator.Is_Locked(C));
                      end;
                   end if;
                elsif Lines.Equal(Command, Lines.From_String("list")) then
