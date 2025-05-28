@@ -14,7 +14,7 @@ package Calculator with SPARK_Mode is
    -- If we want to change the type in the future
    -- we only need to update one place — this improves maintainability.
 
-    -- The capacity of the calculator’s operand stack is 512.
+    -- The capacity of the calculator's operand stack is 512.
    Calculator_Stack_Capacity : constant Positive := 512;
 
    --  The calculator specification allows "any 32-bit signed Int32".

@@ -213,6 +213,8 @@ package body Calculator with SPARK_Mode is
                   end if;
                end if;
             end;
+         else
+            Push_2(C, Val_2, Val_1);
          end if;
       end;
    end Calculation;
