@@ -24,7 +24,7 @@ package Calculator with SPARK_Mode is
    -- PIN.PIN  the type PIN defined inside the package PIN
    procedure Init(C : out Calculator; Master_PIN: in String) with
      Pre=> Is_Valid_Pin(Master_PIN),
-     Post=>Length(C) = 0 and Is_Locked(C) = True;
+     Post=>Length(C) = 0 and Is_Locked(C) = True and Is_PIN(C,Master_PIN);
 
 
    -- push1 <NAME>
