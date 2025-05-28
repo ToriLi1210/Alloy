@@ -32,7 +32,8 @@ package Calculator with SPARK_Mode is
      Pre=>not Is_Locked(C) and Can_Push_N(C, 1),
      Post=>Length(C)=Length(C'Old)+1 and Storage(C,Length(C))=Number_1 and
      (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I)) and
-     Is_Locked(C) = Is_Locked(C'Old);
+     Is_Locked(C) = Is_Locked(C'Old) and Get_Pin(C) = Get_Pin(C'Old);
+
 
    -- push2 <NAME> <NAME>
    procedure Push_2(C:in out Calculator;Number_1:in Int32;Number_2:in Int32) with
@@ -40,7 +41,7 @@ package Calculator with SPARK_Mode is
      Post=>Length(C)=Length(C'Old)+2 and Storage(C,Length(C)-1)=Number_1
      and Storage(C,Length(C))=Number_2 and
      (for all I in 1..Length(C'Old)=>Storage(C,I)=Storage(C'Old,I)) and
-     Is_Locked(C) = Is_Locked(C'Old);
+     Is_Locked(C) = Is_Locked(C'Old) and Get_Pin(C) = Get_Pin(C'Old);
 
    -- pop
    procedure Pop(C:in out Calculator;Result:out Int32)with
@@ -48,7 +49,7 @@ package Calculator with SPARK_Mode is
      Post => (Length(C) = Length(C'Old)-1) and Result = Storage(C'Old,Length(C'Old)) and
      -- current size
      (for all J in 1..Length(C)=> Storage(C,J) = Storage(C'Old,J)) and
-     Is_Locked(C) = Is_Locked(C'Old);
+     Is_Locked(C) = Is_Locked(C'Old) and Get_Pin(C) = Get_Pin(C'Old);
    -- with Pre => S.size /= 0); x
    -- Removes the last item from the stack S and assigns it to I;
 
@@ -59,7 +60,7 @@ package Calculator with SPARK_Mode is
      MemoryStore.Has(D, Loc),
      Post =>
    -- Calculator lock state remains unchanged
-     Is_Locked(C) = Is_Locked(C'Old) and
+     Is_Locked(C) = Is_Locked(C'Old) and Get_Pin(C) = Get_Pin(C'Old) and
      Length(C) = Length(C'Old) + 1 and
      Storage(C, Length(C)) = MemoryStore.Get(D, Loc) and
      (for all I in 1 .. Length(C'Old) =>
@@ -72,7 +73,7 @@ package Calculator with SPARK_Mode is
      not MemoryStore.Has(D, Loc),
      Post =>
    -- Calculator lock state remains unchanged
-     Is_Locked(C) = Is_Locked(C'Old) and
+     Is_Locked(C) = Is_Locked(C'Old) and Get_Pin(C) = Get_Pin(C'Old) and
      -- The memory location is undefined
      Length(C) = Length(C'Old) - 1 and
      (for all I in 1 .. Length(C) =>Storage(C, I) = Storage(C'Old, I));
@@ -112,7 +113,7 @@ package Calculator with SPARK_Mode is
        Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2) in
      Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
      Post =>
-       Addition'Result = Int32(Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2));
+          Addition'Result = Int32(Long_Long_Integer(Number_1) + Long_Long_Integer(Number_2));
 
    -- "-"
    function Subtraction(Number_1: in Int32; Number_2: in Int32) return Int32 with
@@ -125,10 +126,21 @@ package Calculator with SPARK_Mode is
    -- "*"
    function Multiplication(Number_1: in Int32; Number_2: in Int32) return Int32 with
      Pre =>
-       Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2) in
-     Long_Long_Integer(Int32'First) .. Long_Long_Integer(Int32'Last),
+       -- both negative
+       ((Number_1 < 0 and Number_2 < 0) and then
+          (Number_1 /= Int32'First and Number_2 /= Int32'First) and then
+          (-Number_1) <= Int32'Last / (-Number_2)) or
+       -- both positive
+       ((Number_1 > 0 and Number_2 > 0) and then
+          Number_1 <= Int32'Last / Number_2) or
+       -- one negative one positive
+       ((Number_1 < 0 and Number_2 > 0) and then
+          Number_1 >= (Int32'First + 1) / Number_2) or
+       -- one positive one negative
+       ((Number_1 > 0 and Number_2 < 0) and then
+          Number_2 >= (Int32'First + 1) / Number_1),
      Post =>
-       Multiplication'Result = Int32(Long_Long_Integer(Number_1) * Long_Long_Integer(Number_2));
+       Multiplication'Result = Number_1 * Number_2;
 
    -- "/"
    function Division(Number_1: in Int32; Number_2: in Int32) return Int32 with

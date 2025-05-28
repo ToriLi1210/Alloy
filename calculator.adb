@@ -104,7 +104,7 @@ package body Calculator with SPARK_Mode is
       end if;
    end Unlock;
 
-   -- lock <NAME> The “lock” command allows updating the master PIN
+   -- lock <NAME> The "lock" command allows updating the master PIN
    procedure Lock(C:in out Calculator;P: in String) is
    begin
       -- modify master pin if user locks with new Pin
@@ -183,22 +183,37 @@ package body Calculator with SPARK_Mode is
 
             -- Multiplication
          elsif Operation = "*" then
-
-           Temp:=Long_Long_Integer(Val_1)*Long_Long_Integer(Val_2);
-
-            -- ensure the result not overflow
-            if Temp > Long_Long_Integer(Max_Int32) or
-              Temp < Long_Long_Integer(Min_Int32) then
-
-               -- push back to operand stack
-               Push_2(C,Val_1,Val_2);
-               Put_Line("ARITHMETIC_ERROR: Multiplication overflow");
-            else
-                Result := Multiplication(Val_1, Val_2);
-            Push_1(C, Result);
-            end if;
+            declare
+               IsProductZero : Boolean := (Val_1 = 0 or Val_2 = 0);
+               IsProductPositive : Boolean := (Val_1 > 0 and Val_2 > 0) or (Val_1 < 0 and Val_2 < 0);
+               IsProductNegative : Boolean := (Val_1 > 0 and Val_2 < 0) or (Val_1 < 0 and Val_2 > 0);
+            begin
+               if IsProductZero then
+                  Result := 0;
+                  Push_1(C, Result);
+               elsif IsProductPositive then
+                  if ((Val_1 > 0 and Val_2 > 0) and then Val_1 <= Max_Int32 / Val_2) then
+                     Result := Multiplication(Val_1, Val_2);
+                     Push_1(C, Result);
+                  elsif ((Val_1 < 0 and Val_2 < 0) and then (Val_1 /= Min_Int32 and Val_2 /= Min_Int32) and then (-Val_1) <= Max_Int32 / (-Val_2)) then
+                     Result := Multiplication(Val_1, Val_2);
+                     Push_1(C, Result);
+                  else
+                     Push_2(C, Val_2, Val_1);
+                     Put_Line("ARITHMETIC_ERROR: Multiplication overflow");
+                  end if;
+               elsif IsProductNegative then
+                  if ((Val_1 >= (Min_Int32 + 1) / Val_2) and (Val_1 < 0 and Val_2 > 0))
+                    or ((Val_2 >= (Min_Int32 + 1) / Val_1) and (Val_1 > 0 and Val_2 < 0)) then
+                     Result := Multiplication(Val_1, Val_2);
+                     Push_1(C, Result);
+                  else
+                     Push_2(C, Val_2, Val_1);
+                     Put_Line("ARITHMETIC_ERROR: Multiplication overflow");
+                  end if;
+               end if;
+            end;
          end if;
-
       end;
    end Calculation;
 
